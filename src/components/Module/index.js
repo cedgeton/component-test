@@ -40,7 +40,7 @@ export default class TagModule extends React.Component {
     return (
       <Box>
         {this.props.category &&
-          <TitleIcon name={this.props.category} bg={"#F1F2F5"} color={"#9CA4B1"} w={23} p={4} />
+          <TitleIcon name={this.props.category} bg={"#F1F2F5"} color={"#9CA4B1"} w={28} p={4} />
         }
         <ModuleTitle>
           {this.props.title}

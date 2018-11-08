@@ -3,6 +3,7 @@ html{
 }
 body{
   background: #fafafa;
+  overflow: hidden;
 }
 a{
   color: #2D85FB;

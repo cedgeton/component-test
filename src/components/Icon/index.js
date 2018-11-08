@@ -75,7 +75,7 @@ export default class Icon extends React.Component {
   render(){
     var ico = icons[this.props.name]
     var p = this.props.p != null ? this.props.p : 3;
-    var w = this.props.w != null ? this.props.w-p : 30;
+    var w = this.props.w != null ? this.props.w-p*2 : 30;
     return (
       <IconWrapper className={this.props.className} bg={this.props.bg} w={w} h={w} p={p}>
         <svg width={w+"px"} height={w+"px"} style={{fill: this.props.color}} viewBox="0 0 24 24">

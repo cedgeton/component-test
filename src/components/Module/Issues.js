@@ -9,10 +9,6 @@ const JumpLinks = styled.ul`
   line-height: 26px;
   padding: 0 18px;
   margin: 0 0 40px;
-  -moz-column-count: 2;
-  -moz-column-gap: 20px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 20px;
   column-count: 2;
   column-gap: 20px;
   width: 100%;
