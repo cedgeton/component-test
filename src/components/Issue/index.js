@@ -69,11 +69,6 @@ const SuggestionIcon = styled.span`
 const ItemIcon = styled(Icon)`
     display: flex;
     border: 3px solid #E1E4E9;
-    color: #969EA8;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    line-height: 30px;
     display: inline-block;
 `;
 const More = styled.div`
@@ -97,7 +92,7 @@ function renderItemIcon(item){
   if (icon === "suggestion"){
     return <SuggestionIcon />
   }else{
-    return <ItemIcon name={icon} bg={"transparent"} />
+    return <ItemIcon name={icon} bg={"transparent"} color={"#969EA8"} w={30} p={5} />
   }
 }
 

@@ -22,7 +22,7 @@ class App extends Component {
           <Module
             title = "Issues"
             type  = "issues"
-            icon  = "face"
+            category  = "issues"
             issues  = {[
                   {
                     title: "Possible Atrial Standstill",
@@ -106,7 +106,7 @@ class App extends Component {
           <Module
             title = "Allergies"
             type  = "tag"
-            icon  = "face"
+            category  = "medication"
             tags  = {[
                   {text: "Mold", bg: "grey"},
                   {text: "Dust", bg: "grey"},
@@ -119,7 +119,7 @@ class App extends Component {
           <Module
             title = "Medications"
             type  = "table"
-            icon  = "face"
+            category  = "medication"
             rows  = {[
                   {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
                   {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
@@ -127,7 +127,7 @@ class App extends Component {
           />
           <Module
             title   = "Notes"
-            icon    = "face"
+            category    = "note"
             content = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
           />
         </Column>

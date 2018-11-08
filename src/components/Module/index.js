@@ -20,13 +20,9 @@ const ModuleContent = styled.span`
     display: block;
 `;
 const TitleIcon = styled(Icon)`
-    font-size: 1.2em;
-    width: 1.2em;
-    height:1.2em;
-    line-height:1.2em;
     float:right;
     text-align: center;
-    margin: 13px 13px 0 0;
+    margin: 10px 12px 0 0;
 `;
 const DefaultContent = styled.span`
     font-weight: 400;
@@ -43,7 +39,9 @@ export default class TagModule extends React.Component {
   render(){
     return (
       <Box>
-        <TitleIcon name={this.props.icon} bg={"#F1F2F5"} color={"#9CA4B1"} />
+        {this.props.category &&
+          <TitleIcon name={this.props.category} bg={"#F1F2F5"} color={"#9CA4B1"} w={23} p={4} />
+        }
         <ModuleTitle>
           {this.props.title}
         </ModuleTitle>
