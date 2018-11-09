@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../components/Icon';
+import PopoverSidebar from '../../components/PopoverSidebar';
 
 
 const Sidebar = styled.div`
@@ -38,17 +39,18 @@ const Vignette = styled.div`
   left: 56px;
   position: absolute;
   backdrop-filter: blur(10px);
-  display: none;
 `;
 const PopOver = styled.div`
-  width: 23vw;
   background: #fff;
   height: calc(100vh - 56px);
   position: absolute;
-  left: -23vw;
+  left: 56px;
   top: 56px;
   border-right: 1px solid #F3F4F6;
+  text-align:left;
   z-index: 2;
+  padding: 0;
+  border-sizing: border-box;
 `;
 
 export default class MemberSidebar extends React.Component {
@@ -64,7 +66,9 @@ export default class MemberSidebar extends React.Component {
           <MenuItem name="medication" color={'#7E8690'} w={24} p={0} />
           <MenuItem name="list" color={'#7E8690'} w={24} p={0} />
         </MenuHolder>
-        <PopOver>Name</PopOver>
+        <PopOver>
+          <PopoverSidebar links={this.props.links} selected={this.props.selected}  />
+        </PopOver>
         <Vignette />
       </Sidebar>
     )
