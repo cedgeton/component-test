@@ -6,7 +6,7 @@ const Header = styled.div`
   grid-area: header;
   background: #fff;
   border-bottom: 1px solid #E1E4E9;
-  box-shadow: 0 4px 0px 0 rgba(0,0,0,0.06);
+  box-shadow: 0 4px 0px 0 rgba(0,0,0,0.04);
   z-index: 2;
   margin-left: -1px;
   padding-top: 9px;
