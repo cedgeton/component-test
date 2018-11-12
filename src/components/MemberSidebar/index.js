@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../components/Icon';
-import PopoverSidebar from '../../components/PopoverSidebar';
+import Popover from '../../components/Popover';
 
 
 const Sidebar = styled.div`
@@ -19,7 +19,7 @@ const MenuHolder = styled.div`
   z-index: 3;
   position: relative;
 `;
-const MenuItem = styled(Icon)`
+const MenuIcon = styled(Icon)`
   display: block;
   width: 100%;
   padding: 10px 0;
@@ -31,28 +31,6 @@ const MenuItem = styled(Icon)`
     }
   }
 `;
-const Vignette = styled.div`
-  height: calc(100vh - 56px);
-  width: calc(100vw - 56px);
-  background: rgba(0,0,0,.7);
-  top: 56px;
-  left: 56px;
-  position: absolute;
-  backdrop-filter: blur(10px);
-`;
-const PopOver = styled.div`
-  background: #fff;
-  height: calc(100vh - 56px);
-  position: absolute;
-  left: 56px;
-  top: 56px;
-  border-right: 1px solid #F3F4F6;
-  text-align:left;
-  z-index: 2;
-  padding: 0;
-  border-sizing: border-box;
-`;
-
 export default class MemberSidebar extends React.Component {
 
   render(){
@@ -60,16 +38,13 @@ export default class MemberSidebar extends React.Component {
       <Sidebar>
         <Icon name="profile-circle" color={'#2D85FB'} w={56} p={9} />
         <MenuHolder>
-          <MenuItem name="event" color={'#7E8690'} w={24} p={0} />
-          <MenuItem name="issues" color={'#7E8690'} w={24} p={0} />
-          <MenuItem name="lab" color={'#7E8690'} w={24} p={0} />
-          <MenuItem name="medication" color={'#7E8690'} w={24} p={0} />
-          <MenuItem name="list" color={'#7E8690'} w={24} p={0} />
+          <MenuIcon name="event" color={'#7E8690'} w={24} />
+          <MenuIcon name="issues" color={'#7E8690'} w={24} />
+          <MenuIcon name="lab" color={'#7E8690'} w={24} />
+          <MenuIcon name="medication" color={'#7E8690'} w={24} />
+          <MenuIcon name="list" color={'#7E8690'} w={24} />
         </MenuHolder>
-        <PopOver>
-          <PopoverSidebar links={this.props.links} selected={this.props.selected}  />
-        </PopOver>
-        <Vignette />
+        <Popover links={this.props.links} selected={this.props.selected} />
       </Sidebar>
     )
   }

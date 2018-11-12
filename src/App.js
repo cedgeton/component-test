@@ -32,19 +32,29 @@ const Content = styled.div`
   grid-area: content;
   z-index: 1;
   padding: 19px 0 21px 21px;
+  scroll-behavior: smooth;
 `;
 const issues = [
   {
     title: "Possible Atrial Standstill",
+    favorite: true,
+    status: "high",
     assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
     planItems: [
-        {name:"Metoprolol Tartrate 25 mg, 30 TABLET, 6 refill(s)", type:"medication"},
+        {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
         {name:"NT-proBNP", type:"lab", result:"Abnormal"},
-        {name:"CK-MB(CK-2)", type:"lab"},
+        {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
         {name:"Troponin T", type:"lab"},
       ],
-    favorite: true,
-    status: "high"
+    goals: [
+      'Lower Cholesterol to 185 mg/dL',
+      'Lose 10lb (145b)'
+    ],
+    workflows: [
+      'Lorem Ipsum Doler',
+      'Sit Amet rap airhorn'
+    ],
+    notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
   },
   {
     title: "Depressed Mood",
@@ -109,11 +119,11 @@ const issues = [
     ]
   }
 ];
-const needs = [
+const needs = [ //hardcoded the submenu for the issues menu so I could get the rest done
   {title:'Referral for Psychiatry'},
   {title:'Device to aid weight loss'}
 ];
-const preventive = [
+const preventive = [//hardcoded the submenu for the issues menu so I could get the rest done
   {title:'Pap smear'},
   {title:'Mammography'},
   {title:'Colorectal cancer'},
@@ -127,7 +137,7 @@ const preventive = [
   {title:'Hemoglobin A1c'},
   {title:'Vaccines'}
 ];
-const sidebarlinks = [
+const sidebarlinks = [ //hardcoded the submenu for the issues menu so I could get the rest done
   {group:'Issues', array: issues},
   {group:'Needs', array: needs},
   {group:'Preventive Care', array: preventive},
@@ -135,9 +145,10 @@ const sidebarlinks = [
 
 class App extends Component {
   render() {
+    var selectedIssue = sidebarlinks[0].array[0];//hardcode selected issue for now
     return (
       <AppWrapper className="App">
-        <MemberSidebar links={sidebarlinks} selected={{group:'Issues', id:0}} />
+        <MemberSidebar links={sidebarlinks} selected={{group:'Issues',issue:selectedIssue, id:0}} />
         <MemberHeader
           name="Alexandre Paiva"
           dob="Nov 26, 1983"
@@ -176,8 +187,8 @@ class App extends Component {
                 type  = "table"
                 category  = "medication"
                 rows  = {[
-                      {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
-                      {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
+                      {name: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
+                      {name: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
                     ]}
               />
               <Module

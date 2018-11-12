@@ -30,7 +30,7 @@ export default class TableContent extends React.Component {
       rows.map(function(row, i){
          return(
           <RowStyle>
-            <RowTitle>{row.title}</RowTitle><RowSubTitle>{row.subtitle}</RowSubTitle>
+            <RowTitle>{row.name}</RowTitle><RowSubTitle>{row.subtitle}</RowSubTitle>
             <Line2>{row.line2}</Line2>
           </RowStyle>
         )

@@ -25,6 +25,16 @@ const RiskTag = styled(Tag)`
   margin-left: 6px;
   border-radius: 2px;
 `;
+const IssueBox = styled.div`
+  background: #F8F9FB;
+  border: 1px solid #E1E4E9;
+  box-shadow: 0 0 1px 0 rgba(10,31,68,0.08), 0 3px 4px 0 rgba(10,31,68,0.10);
+  margin: 21px 18px;
+  padding-bottom: 21px;
+  border-radius: 2px;
+  font-size: 14px;
+`;
+
 function renderJumpLinks(issues){
   return(
     <JumpLinks>
@@ -47,7 +57,11 @@ export default class IssueContent extends React.Component {
     return ([
         renderJumpLinks(issues),
         issues.map(function(issue, i){
-           return <Issue issue={issue} issueID={i} />
+           return(
+            <IssueBox id={"issue"+i}>
+              <Issue issue={issue} summary />
+            </IssueBox>
+          )
         })
     ])
   }

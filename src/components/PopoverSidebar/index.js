@@ -4,7 +4,6 @@ import Bull from '../Module/Bull.js';
 import RiskStatus from '../../components/RiskStatus';
 
 const PopoverSidebarWrapper = styled.div`
-  margin-right: 30px;
   padding: 26px 0 28px 0;
   height: calc(100vh - 56px);
   overflow: auto;
@@ -38,6 +37,7 @@ const Link = styled.a`
   color: #616871;
   padding: 7px 0;
   display: block;
+  max-width: 230px;
 `;
 const GroupTitle = styled.div`
   font-weight: 500;
@@ -59,7 +59,7 @@ const ListRiskStatus = styled(RiskStatus)`
 
 export default class PopoverSidebar extends React.Component {
   render(){
-    var selected = {group:'Issues', id:0};
+    var selected = this.props.selected;
     return (
       <PopoverSidebarWrapper>
         {this.props.links.map(function(group, i){
@@ -79,8 +79,8 @@ export default class PopoverSidebar extends React.Component {
                 })}
               </PopoverLinks>
             </div>
-          );
-        })};
+          )
+        })}
       </PopoverSidebarWrapper>
     )
   }

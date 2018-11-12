@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Tag = styled.span`
   border-radius: 100px;
-  padding: 6px 10px;
+  padding: 2px 9px;
   margin: 4px 8px 4px 0;
   display: inline-block;
   font-size: 11px;
