@@ -13,7 +13,7 @@ const RiskTag = styled(Tag)`
 export default class RiskStatus extends React.Component {
   render(){
     if(this.props.status === "moderate"){
-      return <RiskTag text="Moderate" bg="yellow" className={this.props.className} />
+      return <RiskTag text="Medium" bg="grey" className={this.props.className} />
     }else if(this.props.status === "high"){
       return <RiskTag text="High" bg="red" className={this.props.className} />
     }else{
