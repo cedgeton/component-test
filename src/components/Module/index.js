@@ -32,13 +32,16 @@ const DefaultContent = styled.span`
     padding: 0 16px 16px;
     display: block;
 `;
+const StyledBox = styled(Box)`
+    text-align: left;
+`;
 
 
 
 export default class TagModule extends React.Component {
   render(){
     return (
-      <Box>
+      <StyledBox>
         {this.props.category &&
           <TitleIcon name={this.props.category} bg={"#F1F2F5"} color={"#9CA4B1"} w={28} p={4} />
         }
@@ -56,7 +59,7 @@ export default class TagModule extends React.Component {
             <DefaultContent>{this.props.content}</DefaultContent>
           )}
         </ModuleContent>
-      </Box>
+      </StyledBox>
     )
   }
 }
