@@ -6,6 +6,7 @@ import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
 import Code from './components/Code';
+import PropTable from './components/Props';
 
 const Content = styled.div`
   overflow: auto;
@@ -80,7 +81,7 @@ const Column = styled.section`
 const IconComponent = styled(Icon)`
   margin: 10px;
 `;
-const Props = styled.div`
+const Table = styled.div`
   table{
     width: 100%;
     margin: 15px 0 65px;
@@ -150,6 +151,13 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
+const properties = [
+  {property:'text', description:'The content of the tag', type: 'string', options: [], default: ''},
+  {property:'bg', description:'Background color of the tag', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'grey'], default: 'blue'},
+  {property:'big', description:'Larger tag with more padding', type: 'bool', options: [], default: 'false'},
+  {property:'squared', description:'Squared off corners', type: 'bool', options: [], default: 'false'},
+];
+
 class Guide extends Component {
   render() {
     return (
@@ -169,56 +177,17 @@ class Guide extends Component {
               <Tag text="Red Tag" bg="red" big />
             </SubGroup>
           </ComponentType>
-          <Props>
+          <Table>
             <ComponentTitle>Props</ComponentTitle>
-            <table>
-              <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Description</th>
-                  <th>Type</th>
-                  <th>Options</th>
-                  <th>Default</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>text</td>
-                  <td>The content of the tag</td>
-                  <td>string</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>bg</td>
-                  <td>Background color of the tag</td>
-                  <td>string</td>
-                  <td>
-                    <Color color={'blue'}>blue</Color> <br />
-                    <Color color={'green'}>green</Color> <br />
-                    <Color color={'yellow'}>yellow</Color> <br />
-                    <Color color={'red'}>red</Color> <br />
-                    <Color color={'grey'}>grey</Color>
-                  </td>
-                  <td><Color color={'blue'}>blue</Color></td>
-                </tr>
-                <tr>
-                  <td>big</td>
-                  <td>Larger tag with more padding</td>
-                  <td>bool</td>
-                  <td></td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>squared</td>
-                  <td>Squared off corners</td>
-                  <td>bool</td>
-                  <td></td>
-                  <td>false</td>
-                </tr>
-              </tbody>
-            </table>
-          </Props>
+            <PropTable
+              properties = {[
+                {property:'text', description:'The content of the tag', type: 'string', options: [], default: ''},
+                {property:'bg', description:'Background color of the tag', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'grey'], default: 'blue'},
+                {property:'big', description:'Larger tag with more padding', type: 'bool', options: [], default: 'false'},
+                {property:'squared', description:'Squared off corners', type: 'bool', options: [], default: 'false'},
+              ]}
+            />
+          </Table>
           <ComponentTitle>Code <span>Tag</span></ComponentTitle>
           <Code
             scope={scope}
@@ -276,58 +245,19 @@ class Guide extends Component {
             <ComponentTitle topMargin >Icon Set</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
           </ComponentType>
-          <Props>
+          <Table>
             <ComponentTitle>Props</ComponentTitle>
-            <table>
-              <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Description</th>
-                  <th>Type</th>
-                  <th>Options</th>
-                  <th>Default</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>color</td>
-                  <td>Hex code for the color for the icon.</td>
-                  <td>string</td>
-                  <td></td>
-                  <td>#000000</td>
-                </tr>
-                <tr>
-                  <td>bg</td>
-                  <td>Hex code for the background color for the circle behind the icon.</td>
-                  <td>string</td>
-                  <td></td>
-                  <td>transparent</td>
-                </tr>
-                <tr>
-                  <td>name</td>
-                  <td>Name of the icon</td>
-                  <td>string</td>
-                  <td><a href="#iconTable">See Table</a></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>w</td>
-                  <td>Height & width of the icon</td>
-                  <td>num</td>
-                  <td></td>
-                  <td>30</td>
-                </tr>
-                <tr>
-                  <td>p</td>
-                  <td>Padding of the icon</td>
-                  <td>num</td>
-                  <td></td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-          </Props>
-          <Props id="iconTable" className="iconTable">
+            <PropTable
+              properties = {[
+                {property:'color', description:'Hex code for the color for the icon.', type: 'string', options: [], default: '#000000'},
+                {property:'bg', description:'Hex code for the background color for the circle behind the icon.', type: 'string', options: [], default: 'transparent'},
+                {property:'name', description:'Name of the icon', type: 'string', options: ['See Table'], default: ''},
+                {property:'w', description:'Height & width of the circular icon', type: 'num', options: [], default: '30'},
+                {property:'p', description:'Padding of the icon', type: 'num', options: [], default: '0'},
+              ]}
+            />
+          </Table>
+          <Table id="iconTable" className="iconTable">
             <ComponentTitle>Icons</ComponentTitle>
             <table>
               <thead>
@@ -351,7 +281,7 @@ class Guide extends Component {
                 })}
               </tbody>
             </table>
-          </Props>
+          </Table>
           <ComponentTitle>Code</ComponentTitle>
           <Code
             scope={scope}
@@ -382,81 +312,20 @@ class Guide extends Component {
               />
             </Column>
           </ComponentType>
-          <Props>
+          <Table>
             <ComponentTitle>Props</ComponentTitle>
-            <table>
-              <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Description</th>
-                  <th>Type</th>
-                  <th>Options</th>
-                  <th>Default</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Title</td>
-                  <td>Text for title of the module</td>
-                  <td>string</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>type</td>
-                  <td>Type of Module</td>
-                  <td>string</td>
-                  <td>
-                    <Color color={'grey'}>basic</Color> <br />
-                    <Color color={'grey'}>tag</Color> <br />
-                    <Color color={'grey'}>table</Color> <br />
-                    <Color color={'grey'}>issues</Color> <br />
-                  </td>
-                  <td>basic</td>
-                </tr>
-                <tr>
-                  <td>category</td>
-                  <td>The category the module relates to. Determines the icon.</td>
-                  <td>string</td>
-                  <td>Any Icon Name</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>content</td>
-                  <td>The text for a basic module</td>
-                  <td>string</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>tags</td>
-                  <td>An Array of tags for the Tags Module. Each tag is a keyed array with the props for the Tag component</td>
-                  <td>array</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>rows</td>
-                  <td>
-                    An Array of rows for the Rows Module. Each row is a keyed array:<br />
-                    &#123;title:'title of row', subtitle: 'smaller text on the first row', line2: 'text for the second line' &#125;
-                  </td>
-                  <td>array</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>issues</td>
-                  <td>
-                    An Array of issues for the Issues Module. Each row is a keyed array:
-                  </td>
-                  <td>array</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </Props>
+            <PropTable
+              properties = {[
+                {property:'title', description:'Text for title of the module', type: 'string', options: [], default: ''},
+                {property:'type', description:'Type of Module', type: 'string', options: ['basic', 'tag', 'table', 'issues'], default: 'basic'},
+                {property:'category', description:'The category the module relates to. Determines the icon.', type: 'string', options: ['icon name'], default: ''},
+                {property:'content', description:'The text for a basic module', type: 'string', options: [], default: ''},
+                {property:'tags', description:'An Array of tags for the Tags Module.', type: 'array', options: [], default: ''},
+                {property:'rows', description:'An Array of rows for the Rows Module.', type: 'array', options: [], default: ''},
+                {property:'issues', description:'  An Array of issues for the Issues Module.', type: 'array', options: [], default: ''},
+              ]}
+            />
+          </Table>
           <ComponentType>
             <ComponentTitle>Basic Module</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
