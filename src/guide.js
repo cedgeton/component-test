@@ -113,37 +113,6 @@ const Table = styled.div`
     vertical-align: middle;
   }
 `;
-const Color = styled.span`
-  color: ${props => {
-    var col = props.color;
-    if (col === 'blue') {
-      return '#2D85FB';
-    } else if (col === 'green') {
-      return '#00C596';
-    } else if (col === 'yellow') {
-      return '#FCA200';
-    } else if (col === 'red') {
-      return '#EC4068';
-    } else {
-      return '#1F262D';
-    }
-  }}
-  ${props =>{
-    if(props.default){
-      return `:after{
-        background: #F1F2F5;
-        color: #616871;
-        font-weight: bold;
-        content: 'default';
-        padding: 3px;
-        margin-left: 6px;
-        text-transform: uppercase;
-        font-size: 10px;
-      }`
-    }
-  }}
-`;
-const scope = {styled, Icon, Tag, Module};
 const iconKeys = Object.keys(icons);
 const tableKeys = iconKeys.reduce(function(result, value, index, array) {
   if (index % 2 === 0)
@@ -151,12 +120,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const properties = [
-  {property:'text', description:'The content of the tag', type: 'string', options: [], default: ''},
-  {property:'bg', description:'Background color of the tag', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'grey'], default: 'blue'},
-  {property:'big', description:'Larger tag with more padding', type: 'bool', options: [], default: 'false'},
-  {property:'squared', description:'Squared off corners', type: 'bool', options: [], default: 'false'},
-];
+const scope = {styled, Icon, Tag, Module};
 
 class Guide extends Component {
   render() {
