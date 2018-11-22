@@ -7,6 +7,7 @@ import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
 import Code from './components/Code';
 import PropTable from './components/Props';
+import Loader from './components/Loader';
 
 const Content = styled.div`
   overflow: auto;
@@ -120,7 +121,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const scope = {styled, Icon, Tag, Module};
+const scope = {styled, Icon, Tag, Module, Loader};
 
 class Guide extends Component {
   render() {
@@ -194,6 +195,32 @@ class Guide extends Component {
   <Tag text="Tag" bg="yellow" big squared />
   <Tag text="Tag" bg="red" big squared />
   <Tag text="Tag" bg="grey" big squared />
+</div>`}
+          />
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          Loader
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'size', description:'The size of the loading indicator', type: 'string', options: ['small', 'medium', 'large'], default: 'medium'},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<div>
+  <Loader size='small' />
+  <Loader size='medium' />
+  <Loader size='large' />
 </div>`}
           />
         </Topic>
