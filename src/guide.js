@@ -8,6 +8,7 @@ import icons from './components/Icon/icons.js';
 import Code from './components/Code';
 import PropTable from './components/Props';
 import Loader from './components/Loader';
+import Button from './components/Button';
 
 const Content = styled.div`
   overflow: auto;
@@ -18,9 +19,8 @@ const Content = styled.div`
   background: #fff;
 `;
 const Topic = styled.section`
-  padding-bottom: 85px;
   margin-bottom: 45px;
-  padding: 19px 21px 21px 21px;
+  padding: 50px 60px 55px 60px;
 `;
 const TopicTitle = styled.h2`
   font-weight: 400;
@@ -32,7 +32,7 @@ const TopicTitle = styled.h2`
   border-bottom: 1px solid #E1E4E9;
   width: 100%;
   margin: 0 0 15px;
-  padding: 45px 21px 20px;
+  padding: 45px 51px 25px;
   box-sizing: border-box;
 `;
 const ComponentType = styled.section`
@@ -121,12 +121,58 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader};
+const scope = {styled, Icon, Tag, Module, Loader, Button};
 
 class Guide extends Component {
   render() {
     return (
       <Content>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          Button
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <SubGroup>
+              <Button style='primary' outline>Button</Button>
+              <Button style='primary' size='small'>Button</Button>
+            </SubGroup>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'style', description:'The style of the button', type: 'string', options: ['primary', 'secondary', 'confirm', 'destroy', 'cancel'], default: 'primary'},
+                {property:'type', description:'The type of the button', type: 'string', options: ['button', 'submit'], default: 'button'},
+                {property:'size', description:'The size of the button', type: 'string', options: ['small', 'medium'], default: 'medium'},
+                {property:'outline', description:'Gives the button an outline and a transparent background', type: 'bool', options: [], default: 'false'},
+                {property:'disabled', description:'Make the button disabled', type: 'bool', options: [], default: 'false'},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code <span>Button</span></ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<div>
+  <Button style='primary'>Button</Button>
+  <Button style='secondary'>Button</Button>
+  <Button style='confirm'>Button</Button>
+  <Button style='destroy'>Button</Button>
+  <Button style='cancel'>Button</Button>
+</div>`}
+          />
+          <ComponentTitle>Code <span>Button Outline</span></ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<div>
+  <Button style='primary' outline>Button</Button>
+  <Button style='secondary' outline>Button</Button>
+  <Button style='confirm' outline>Button</Button>
+  <Button style='destroy' outline>Button</Button>
+</div>`}
+          />
+        </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
           Tag
