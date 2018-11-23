@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Colors}  from '../../components/System';
+import {Colors, Header} from '../../components/System';
 import Icon from '../../components/Icon';
 import Tag from '../../components/Tag';
 import Bull from '../Module/Bull.js';
@@ -16,19 +16,9 @@ const TitleSection = styled.div`
       background: #fff;
     }
 `;
-const Title = styled.span`
-    font-weight: 500;
+const Title = styled(Header)`
     display: inline-block;
-    font-size: 20px;
-    color: ${Colors.black.c400.hex()};
-    letter-spacing: 0.5px;
-    line-height: 28px;
-    margin-bottom:6px;
-    span.summary & {
-      color: ${Colors.black.c800.hex()};
-      line-height: 24px;
-      font-size: 18px;
-    }
+    margin-bottom: 6px;
 `;
 const IconClose = styled(Icon)`
     float:right;
@@ -104,7 +94,7 @@ export default class Issue extends React.Component {
           {!summary &&
             <IconClose name="close" color={Colors.black.c200.hex()} w={18} />
           }
-          <Title>
+          <Title level={summary ? 2 : 1 }>
             {issue.favorite ? (<TitleBull>&bull;</TitleBull>):("")}
             {issue.title}
             <RiskStatus status={issue.status} />

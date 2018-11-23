@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import Module from './components/Module';
-import {Colors}  from './components/System';
+import {Colors, Header}  from './components/System';
 import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';

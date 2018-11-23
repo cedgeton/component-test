@@ -34,9 +34,28 @@ export const Colors = {
   },
 }
 const HeaderStyle = styled.div`
+  font-size: ${props => {
+    switch(props.level) {
+      case 2:
+          return '16px'
+      default:
+          return '20px'
+  }}};
+  line-height: ${props => {
+    switch(props.level) {
+      case 2:
+          return '24px'
+      default:
+          return '28px'
+  }}};
   font-weight: 500;
-  font-size: 20px;
   color: ${Colors.black.c800.hex()};
   letter-spacing: 0.5px;
-  line-height: 28px;
+  margin: 0;
 `;
+
+export class Header extends React.Component {
+  render(){
+    return <HeaderStyle className={this.props.className} level={this.props.level}>{this.props.children}</HeaderStyle>
+  }
+}
