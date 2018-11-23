@@ -4,48 +4,39 @@ import {Colors}  from '../../components/System';
 
 const Tag = styled.span`
   border-radius: ${props => props.squared? '2px' : '100px'};
-  padding: ${props => props.squared? '2px 5px' : '2px 9px'};
+  padding: ${props =>
+    {if(props.big){
+        return '6px 10px'
+      } else if(props.squared){
+        return '2px 5px'
+      } else{
+        return '2px 9px';
+      }
+    }
+  };
   margin: 4px 8px 4px 0;
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
   text-transform: capitalize;
-
-  /* Color the bg and text with theme */
-  background: ${props => props.bgColor};
-  color: ${props => props.textColor};
-`;
-const BigTag = styled(Tag)`
-  padding: 6px 10px;
+  background: ${props => {
+    switch(props.bg) {
+      case 'grey':
+          return Colors.grey.c300.hex()
+      case 'green':
+          return Colors.green.hex()
+      case 'yellow':
+          return Colors.yellow.hex()
+      case 'red':
+          return Colors.red.hex()
+      default:
+          return Colors.blue.hex()
+  }}};
+  color: ${props => props.bg == 'grey' ? Colors.black.c400.hex() : Colors.white.hex()};
 `;
 
 export default class TagObj extends React.Component {
-  constructor(props) {
-    super(props);
-    this.theme = {
-      textColor: '#fff',
-      bgColor: Colors.blue.hex(),
-    };
-
-    if (props.bg == "grey") {
-      this.theme.textColor = Colors.black.c400.hex();
-      this.theme.bgColor = Colors.grey.c300.hex();
-    }
-    else if (props.bg == "green") {
-      this.theme.bgColor = Colors.green.hex();
-    }
-    else if (props.bg == "yellow") {
-      this.theme.bgColor = Colors.yellow.hex();
-    }
-    else if (props.bg == "red") {
-      this.theme.bgColor = Colors.red.hex();
-    }
-  }
   render(){
-    if(this.props.big){
-      return <BigTag bgColor={this.theme.bgColor} textColor={this.theme.textColor} className={this.props.className} squared={this.props.squared}>{this.props.text}</BigTag>
-    }else{
-      return <Tag bgColor={this.theme.bgColor} textColor={this.theme.textColor} className={this.props.className} squared={this.props.squared}>{this.props.text}</Tag>
-    }
+    return <Tag bg={this.props.bg} className={this.props.className} squared={this.props.squared} big={this.props.big}>{this.props.text}</Tag>
   }
 }
