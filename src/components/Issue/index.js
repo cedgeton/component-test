@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors}  from '../../components/System';
 import Icon from '../../components/Icon';
 import Tag from '../../components/Tag';
 import Bull from '../Module/Bull.js';
@@ -10,7 +11,7 @@ const TitleSection = styled.div`
     background: transparent;
     span.summary & {
       padding: 16px;
-      border-bottom: 1px solid #E1E4E9;
+      border-bottom: 1px solid ${Colors.grey.c400.hex()};
       border-radius: 2px 2px 0 0;
       background: #fff;
     }
@@ -19,12 +20,12 @@ const Title = styled.span`
     font-weight: 500;
     display: inline-block;
     font-size: 20px;
-    color: #616871;
+    color: ${Colors.black.c400.hex()};
     letter-spacing: 0.5px;
     line-height: 28px;
     margin-bottom:6px;
     span.summary & {
-      color: #1F262D;
+      color: ${Colors.black.c800.hex()};
       line-height: 24px;
       font-size: 18px;
     }
@@ -35,7 +36,7 @@ const IconClose = styled(Icon)`
 const Assessment = styled.span`
     font-weight: 400;
     font-size: 12px;
-    color: #8C93A0;
+    color: ${Colors.grey.c900.hex()};
     letter-spacing: 0;
     line-height: 24px;
     margin-bottom: 24px;
@@ -55,18 +56,10 @@ const Assessment = styled.span`
 const More = styled.div`
     font-weight: 400;
     font-size: 12px;
-    color: #A7AFBC;
+    color: ${Colors.grey.c600.hex()};
     text-align: center;
     line-height: 16px;
     margin-top: 21px;
-`;
-const Result = styled.div`
-    font-weight: 400;
-    font-size: 12px;
-    color: #FCA200;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
 `;
 const Goals = styled.div`
     margin-bottom: 38px;
@@ -74,7 +67,7 @@ const Goals = styled.div`
 const Goal = styled.div`
     font-weight: 400;
     font-size: 12px;
-    color: #8C93A0;
+    color: ${Colors.grey.c900.hex()};
     letter-spacing: 0;
     line-height: 16px;
 `;
@@ -85,10 +78,10 @@ const TitleBull = styled(Bull)`
     }
 `;
 const Notes = styled.div`
-    background: #F8F9FB;
+    background: ${Colors.grey.c200.hex()};
     font-weight: 400;
     font-size: 12px;
-    color: #616871;
+    color: ${Colors.black.c400.hex()};
     line-height: 20px;
     padding:20px;
     margin-top: 60px;
@@ -96,7 +89,7 @@ const Notes = styled.div`
 const NotesTitle = styled.div`
     font-weight: 500;
     font-size: 16px;
-    color: #616871;
+    color: ${Colors.black.c400.hex()};
     line-height: 24px;
 `;
 
@@ -109,7 +102,7 @@ export default class Issue extends React.Component {
       <span className={summary? "issue summary" : "issue"}>
         <TitleSection>
           {!summary &&
-            <IconClose name="close" color="#969EA8" w={18} />
+            <IconClose name="close" color={Colors.black.c200.hex()} w={18} />
           }
           <Title>
             {issue.favorite ? (<TitleBull>&bull;</TitleBull>):("")}

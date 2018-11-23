@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors}  from '../../components/System';
 import Icon from '../../components/Icon';
 import Popover from '../../components/Popover';
 
@@ -13,7 +14,7 @@ const Sidebar = styled.div`
 `;
 const MenuHolder = styled.div`
   background: #fff;
-  border-right: 1px solid #E1E4E9;
+  border-right: 1px solid ${Colors.grey.c400.hex()};
   padding-top: 7px;
   height: calc(100vh - 56px);
   z-index: 3;
@@ -27,22 +28,23 @@ const MenuIcon = styled(Icon)`
   &:hover {
     cursor: pointer;
     svg{
-      fill: #2D85FB !important;
+      fill: ${Colors.blue.hex()} !important;
     }
   }
 `;
 export default class MemberSidebar extends React.Component {
 
   render(){
+    var iconColor = Colors.black.c300.hex();
     return (
       <Sidebar>
-        <Icon name="profile-circle" color={'#2D85FB'} w={56} p={9} />
+        <Icon name="profile-circle" color={Colors.blue.hex()} w={56} p={9} />
         <MenuHolder>
-          <MenuIcon name="event" color={'#7E8690'} w={24} />
-          <MenuIcon name="issues" color={'#7E8690'} w={24} />
-          <MenuIcon name="lab" color={'#7E8690'} w={24} />
-          <MenuIcon name="medication" color={'#7E8690'} w={24} />
-          <MenuIcon name="list" color={'#7E8690'} w={24} />
+          <MenuIcon name="event" color={iconColor} w={24} />
+          <MenuIcon name="issues" color={iconColor} w={24} />
+          <MenuIcon name="lab" color={iconColor} w={24} />
+          <MenuIcon name="medication" color={iconColor} w={24} />
+          <MenuIcon name="list" color={iconColor} w={24} />
         </MenuHolder>
         <Popover links={this.props.links} selected={this.props.selected} />
       </Sidebar>

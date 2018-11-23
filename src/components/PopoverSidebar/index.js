@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Bull from '../Module/Bull.js';
 import RiskStatus from '../../components/RiskStatus';
+import {Colors}  from '../../components/System';
 
 const PopoverSidebarWrapper = styled.div`
   padding: 26px 0 28px 0;
   height: calc(100vh - 56px);
   overflow: auto;
-  border-right: 1px solid #E1E4E9;
+  border-right: 1px solid ${Colors.grey.c400.hex()};
   background: #fff;
 `;
 
@@ -21,20 +22,20 @@ const PopoverLinks = styled.ul`
   li{
     padding: 0 32px 0 24px;
     &.selected{
-      background: #F1F2F5;
+      background: ${Colors.grey.c300.hex()};
       font-weight: 600;
       &:hover a{
-        background: #F1F2F5;
+        background: ${Colors.grey.c300.hex()};
       }
     }
     &:hover{
-      background: #F1F2F5;
+      background: ${Colors.grey.c300.hex()};
     }
   }
 `;
 const Link = styled.a`
   font-size: 12px;
-  color: #616871;
+  color: ${Colors.black.c400.hex()};
   padding: 7px 0;
   display: block;
   max-width: 230px;
@@ -42,7 +43,7 @@ const Link = styled.a`
 const GroupTitle = styled.div`
   font-weight: 500;
   font-size: 12px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   line-height: 16px;
   text-transform: uppercase;
   margin-bottom: 8px;

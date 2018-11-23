@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes }  from 'styled-components';
+import {Colors}  from '../../components/System';
 
 
 const rotate = keyframes`
@@ -11,10 +12,10 @@ const dash = keyframes`
     100% {stroke-dasharray: 89, 200;stroke-dashoffset: -124px;}
 `;
 const color = keyframes`
-    100%, 0% {stroke: #EC4068;}
-    40% {stroke: #2D85FB;}
-    66% {stroke: #00A978;}
-    80%, 90% {stroke: #FCA200;}
+    100%, 0% {stroke: ${Colors.red.hex()};}
+    40% {stroke: ${Colors.blue.hex()};}
+    66% {stroke: ${Colors.green.hex()};}
+    80%, 90% {stroke: ${Colors.yellow.hex()};}
 `;
 
 const Loading = styled.div`

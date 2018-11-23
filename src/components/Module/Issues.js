@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors} from '../../components/System';
 import Issue from '../../components/Issue';
 import Bull from '../Module/Bull.js';
 import Tag from '../../components/Tag';
@@ -17,7 +18,10 @@ const JumpLinks = styled.ul`
 const Link = styled.a`
   font-weight: 400;
   font-size: 12px;
-  color: #2D85FB;
+  color: ${Colors.blue.hex()};
+  &:hover{
+    color: ${Colors.blue.hsl().darken(.2).string()};
+  }
 `;
 const RiskTag = styled(Tag)`
   padding: 0px 4px;
@@ -26,8 +30,8 @@ const RiskTag = styled(Tag)`
   border-radius: 2px;
 `;
 const IssueBox = styled.div`
-  background: #F8F9FB;
-  border: 1px solid #E1E4E9;
+  background: ${Colors.grey.c200.hex()};
+  border: 1px solid ${Colors.grey.c400.hex()};
   box-shadow: 0 0 1px 0 rgba(10,31,68,0.08), 0 3px 4px 0 rgba(10,31,68,0.10);
   margin: 21px 18px;
   padding-bottom: 21px;

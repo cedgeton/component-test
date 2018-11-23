@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors}  from '../../components/System';
 
 const Tag = styled.span`
   border-radius: ${props => props.squared? '2px' : '100px'};
@@ -23,21 +24,21 @@ export default class TagObj extends React.Component {
     super(props);
     this.theme = {
       textColor: '#fff',
-      bgColor: '#2D85FB',
+      bgColor: Colors.blue.hex(),
     };
 
     if (props.bg == "grey") {
-      this.theme.textColor = '#616871';
-      this.theme.bgColor = '#F1F2F5';
+      this.theme.textColor = Colors.black.c400.hex();
+      this.theme.bgColor = Colors.grey.c300.hex();
     }
     else if (props.bg == "green") {
-      this.theme.bgColor = '#00C596';
+      this.theme.bgColor = Colors.green.hex();
     }
     else if (props.bg == "yellow") {
-      this.theme.bgColor = '#FCA200';
+      this.theme.bgColor = Colors.yellow.hex();
     }
     else if (props.bg == "red") {
-      this.theme.bgColor = '#EC4068';
+      this.theme.bgColor = Colors.red.hex();
     }
   }
   render(){

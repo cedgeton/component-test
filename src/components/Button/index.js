@@ -1,11 +1,11 @@
 import React from 'react';
 import styled  from 'styled-components';
-import Colors  from '../../components/System';
+import {Colors}  from '../../components/System';
 import Icon  from '../../components/Icon';
 
 const ButtonColors = {
   primary: {bg:Colors.blue, text:Colors.white},
-  secondary: {bg:Colors.white, text:Colors.grey400},
+  secondary: {bg:Colors.white, text:Colors.black.c400},
   confirm: {bg:Colors.green, text:Colors.white},
   destroy: {bg:Colors.red, text:Colors.white},
   cancel: {bg:Colors.transparent, text:Colors.blue},
@@ -20,16 +20,16 @@ const ButtonWrapper = styled.button`
     cursor: pointer;
     font-weight: 500;
     font-size: ${props => props.size == 'small' ? '11px' : '13px'};
-    color: ${props => (props.outline && props.buttonStyle != 'secondary') ? ButtonColors[props.buttonStyle].bg.hsl().string() : ButtonColors[props.buttonStyle].text.hsl().string()};
+    color: ${props => (props.outline && props.buttonStyle != 'secondary') ? ButtonColors[props.buttonStyle].bg.hex() : ButtonColors[props.buttonStyle].text.hex()};
     text-align: center;
     line-height: ${props => props.size == 'small' ? '16px' : '18px'};
     margin: 4px;
     padding: ${props => props.size == 'small' ? '2px 10px' : '5px 17px'};
     border: ${props =>
       {if(props.outline && props.buttonStyle === 'secondary' && props.buttonStyle != 'cancel'){
-          return '1px solid ' + ButtonColors[props.buttonStyle].text.hsl().string()
+          return '1px solid ' + ButtonColors[props.buttonStyle].text.hex()
         } else if(props.outline && props.buttonStyle != 'cancel'){
-          return '1px solid ' + ButtonColors[props.buttonStyle].bg.hsl().string()
+          return '1px solid ' + ButtonColors[props.buttonStyle].bg.hex()
         } else{
           return 0;
         }
@@ -38,9 +38,9 @@ const ButtonWrapper = styled.button`
     &:hover{
       background: ${props =>
         {if(props.outline && props.buttonStyle === 'secondary'){
-            return ButtonColors[props.buttonStyle].text.hsl().string()
+            return ButtonColors[props.buttonStyle].text.hex()
           } else if(props.outline){
-            return ButtonColors[props.buttonStyle].bg.hsl().string()
+            return ButtonColors[props.buttonStyle].bg.hex()
           } else{
             return ButtonColors[props.buttonStyle].bg.hsl().darken(0.1).string()
           }
@@ -48,7 +48,7 @@ const ButtonWrapper = styled.button`
       };
       color: ${props =>
         {if(props.outline){
-            return '#ffffff'
+            return Colors.white.hex()
           } else if(props.buttonStyle === 'cancel'){
             return ButtonColors[props.buttonStyle].text.darken(0.4).hsl().string()
           }
@@ -58,7 +58,7 @@ const ButtonWrapper = styled.button`
     }
     &:disabled{
       background: transparent;
-      color: ${props => Colors['grey400'].lighten(0.8).hsl().string()};
+      color: ${props => Colors.black.c400.lighten(0.8).hsl().string()};
       cursor: not-allowed;
     }
 

@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors}  from '../../components/System';
 
 
 const Title = styled.div`
   font-weight: 500;
   font-size: 20px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   letter-spacing: 0.5px;
   line-height: 28px;
 `;
 const SubTitle = styled.div`
   font-weight: 400;
   font-size: 14px;
-  color: #8C93A0;
+  color: ${Colors.grey.c900.hex()};
   line-height: 20px;
 `;
 

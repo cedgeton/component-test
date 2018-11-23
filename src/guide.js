@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import Module from './components/Module';
+import {Colors}  from './components/System';
 import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
@@ -25,11 +26,11 @@ const Topic = styled.section`
 const TopicTitle = styled.h2`
   font-weight: 400;
   font-size: 40px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   letter-spacing: 0.5px;
   line-height: 40px;
-  background: #F8F9FB;
-  border-bottom: 1px solid #E1E4E9;
+  background: ${Colors.grey.c200.hex()};
+  border-bottom: 1px solid ${Colors.grey.c400.hex()};
   width: 100%;
   margin: 0 0 15px;
   padding: 45px 51px 25px;
@@ -41,7 +42,7 @@ const ComponentType = styled.section`
 const ComponentTitle = styled.h3`
   font-weight: 500;
   font-size: 16px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   letter-spacing: 0;
   line-height: 24px;
   margin-bottom: 6px;
@@ -56,7 +57,7 @@ const SubGroup = styled.div`
 const SubTitle = styled.h4`
   font-weight: 400;
   font-size: 11px;
-  color: #969EA8;
+  color: ${Colors.black.c200.hex()};
   letter-spacing: 0;
   line-height: 16px;
   text-transform: uppercase;
@@ -65,7 +66,7 @@ const SubTitle = styled.h4`
 const Explanation = styled.p`
   font-weight: 400;
   font-size: 13px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   letter-spacing: 0;
   line-height: 16px;
   margin-top: 0;
@@ -91,9 +92,9 @@ const Table = styled.div`
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    color: #1F262D;
+    color: ${Colors.black.c800.hex()};
     thead{
-      background:#F8F9FB;
+      background:${Colors.grey.c200.hex()};
       th{
         font-weight: 400;
         border-bottom-width: 2px;
@@ -101,7 +102,7 @@ const Table = styled.div`
     }
     td,th{
       padding: 20px;
-      border-bottom: 1px solid #E1E4E9;
+      border-bottom: 1px solid ${Colors.grey.c400.hex()};
       vertical-align: top;
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     }
@@ -121,7 +122,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors};
 
 class Guide extends Component {
   render() {
@@ -276,7 +277,7 @@ class Guide extends Component {
         </TopicTitle>
         <Topic>
           {iconKeys.map(function(icon, i){
-            return <IconComponent name={icon} color={"#9CA4B1"} />
+            return <IconComponent name={icon} color={Colors.grey.c800.hex()} />
           })}
           <ComponentType>
             <ComponentTitle topMargin >Icon Set</ComponentTitle>
@@ -309,9 +310,9 @@ class Guide extends Component {
                 {tableKeys.map(function(icon, i){
                   return (
                     <tr>
-                      <td><IconComponent name={icon[0]} color={"#9CA4B1"} w={25} /></td>
+                      <td><IconComponent name={icon[0]} color={Colors.grey.c800.hex()} w={25} /></td>
                       <td>{icon[0]}</td>
-                      <td><IconComponent name={icon[1]} color={"#9CA4B1"} w={25} /></td>
+                      <td><IconComponent name={icon[1]} color={Colors.grey.c800.hex()} w={25} /></td>
                       <td>{icon[1]}</td>
                     </tr>
                   )
@@ -323,8 +324,8 @@ class Guide extends Component {
           <Code
             scope={scope}
             code={`<div>
-  <Icon name={'activity'} color={'#2D85FB'} w={30} />
-  <Icon name={'activity'} color={'#ffffff'} bg={'#2D85FB'} w={30} p={4} />
+  <Icon name={'activity'} color={Colors.blue.hex()} w={30} />
+  <Icon name={'activity'} color={Colors.white.hex()} bg={Colors.blue.hex()} w={30} p={4} />
 </div>`}
           />
         </Topic>

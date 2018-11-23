@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Colors}  from '../../components/System';
 
 const RowStyle = styled.div`
     padding: 14px 16px;
-    border-top: 1px solid #F1F2F5;
+    border-top: 1px solid ${Colors.grey.c400.hex()};
 `;
 const RowTitle = styled.span`
   font-weight: 500;
   font-size: 14px;
-  color: #1F262D;
+  color: ${Colors.black.c800.hex()};
   line-height: 20px;
   margin-right: 5px;
 `;
 const RowSubTitle = styled.span`
   font-family: 400;
   font-size: 11px;
-  color: #A7AFBC;
+  color: ${Colors.grey.c700.hex()};
   line-height: 16px;
 `;
 const Line2 = styled(RowSubTitle)`

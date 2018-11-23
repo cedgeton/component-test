@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../components/Icon';
+import {Colors} from '../../components/System';
 
 const Header = styled.div`
   grid-area: header;
   background: #fff;
-  border-bottom: 1px solid #E1E4E9;
+  border-bottom: 1px solid ${Colors.grey.c400.hex()};
   box-shadow: 0 4px 0px 0 rgba(0,0,0,0.04);
   z-index: 2;
   margin-left: -1px;
@@ -14,13 +15,13 @@ const Header = styled.div`
 const Title = styled.div`
   font-weight: 500;
   font-size: 14px;
-  color: #616871;
+  color: ${Colors.black.c400.hex()};
   line-height: 20px;
 `;
 const SubTitle = styled.div`
   font-weight: 300;
   font-size: 11px;
-  color: #616871;
+  color: ${Colors.black.c400.hex()};
   line-height: 16px;
 `;
 

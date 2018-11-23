@@ -19,7 +19,7 @@ const PopoverWrapper = styled.div`
   text-align:left;
   z-index: 2;
   padding: 0;
-  border-sizing: border-box;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 0;
@@ -28,35 +28,6 @@ const PopoverWrapper = styled.div`
 `;
 const PopoverContent = styled.div`
   padding: 26px 26px 32px;
-`;
-const Title = styled.div`
-  font-weight: 500;
-  font-size: 20px;
-  color: #616871;
-  letter-spacing: 0.5px;
-  line-height: 28px;
-  margin-bottom:6px;
-`;
-const IconClose = styled(Icon)`
-  float:right;
-`;
-const Assessment = styled.div`
-  font-weight: 400;
-  font-size: 12px;
-  color: #8C93A0;
-  letter-spacing: 0;
-  line-height: 24px;
-  margin-bottom: 24px;
-`;
-const Goals = styled.div`
-  margin-bottom: 38px;
-`;
-const Goal = styled.div`
-  font-weight: 400;
-  font-size: 12px;
-  color: #8C93A0;
-  letter-spacing: 0;
-  line-height: 16px;
 `;
 const Vignette = styled.div`
   height: calc(100vh - 56px);
