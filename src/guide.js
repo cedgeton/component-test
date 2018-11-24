@@ -10,6 +10,7 @@ import Code from './components/Code';
 import PropTable from './components/Props';
 import Loader from './components/Loader';
 import Button from './components/Button';
+import Avatar from './components/Avatar';
 
 const Content = styled.div`
   overflow: auto;
@@ -27,9 +28,10 @@ const TopicTitle = styled.div`
   background: ${Colors.grey.c200.hex()};
   border-bottom: 1px solid ${Colors.grey.c400.hex()};
   width: 100%;
-  margin: 0 0 15px;
+  margin: 0;
   padding: 45px 51px 25px;
   box-sizing: border-box;
+  clear: both;
 `;
 const ComponentType = styled.section`
   margin: 0 0 60px 0;
@@ -117,7 +119,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar};
 
 class Guide extends Component {
   render() {
@@ -129,11 +131,18 @@ class Guide extends Component {
         </TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
             <SubGroup>
+              <Button style='primary'>Button</Button>
+              <Button style='secondary'>Button</Button>
+              <Button style='confirm'>Button</Button>
+              <Button style='destroy'>Button</Button>
               <Button style='primary' outline>Button</Button>
-              <Button style='primary' size='small'>Button</Button>
+              <Button style='secondary' outline>Button</Button>
+              <Button style='confirm' outline>Button</Button>
+              <Button style='destroy' outline>Button</Button>
+              <Button style='cancel'>Cancel</Button>
             </SubGroup>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -147,26 +156,10 @@ class Guide extends Component {
               ]}
             />
           </Table>
-          <ComponentTitle>Code <span>Button</span></ComponentTitle>
+          <ComponentTitle>Code</ComponentTitle>
           <Code
             scope={scope}
-            code={`<div>
-  <Button style='primary'>Button</Button>
-  <Button style='secondary'>Button</Button>
-  <Button style='confirm'>Button</Button>
-  <Button style='destroy'>Button</Button>
-  <Button style='cancel'>Button</Button>
-</div>`}
-          />
-          <ComponentTitle>Code <span>Button Outline</span></ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Button style='primary' outline>Button</Button>
-  <Button style='secondary' outline>Button</Button>
-  <Button style='confirm' outline>Button</Button>
-  <Button style='destroy' outline>Button</Button>
-</div>`}
+            code={`<Button style='primary'>Button</Button>`}
           />
         </Topic>
         <TopicTitle>
@@ -175,14 +168,19 @@ class Guide extends Component {
         </TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
             <SubGroup>
               <Tag text="Grey Tag" bg="grey" big />
               <Tag text="Blue Tag" big />
               <Tag text="Green Tag" bg="green" big />
               <Tag text="Yellow Tag" bg="yellow" big />
               <Tag text="Red Tag" bg="red" big />
+              <Tag text="Red Tag" bg="red" squared />
+              <Tag text="Yellow Tag" bg="yellow" squared />
+              <Tag text="Green Tag" bg="green" squared />
+              <Tag text="Blue Tag" squared />
+              <Tag text="Grey Tag" bg="grey" squared />
             </SubGroup>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -195,50 +193,90 @@ class Guide extends Component {
               ]}
             />
           </Table>
-          <ComponentTitle>Code <span>Tag</span></ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Tag text="Tag" bg="blue"/>
-  <Tag text="Tag" bg="green"/>
-  <Tag text="Tag" bg="yellow"/>
-  <Tag text="Tag" bg="red"/>
-  <Tag text="Tag" bg="grey"/>
-</div>`}
-          />
-          <ComponentTitle>Code <span>Tag Big</span></ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Tag text="Tag" bg="blue" big />
-  <Tag text="Tag" bg="green" big />
-  <Tag text="Tag" bg="yellow" big />
-  <Tag text="Tag" bg="red" big />
-  <Tag text="Tag" bg="grey" big />
-</div>`}
-          />
-          <ComponentTitle>Code <span>Tag Squared</span></ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Tag text="Tag" bg="blue" squared />
-  <Tag text="Tag" bg="green" squared />
-  <Tag text="Tag" bg="yellow" squared />
-  <Tag text="Tag" bg="red" squared />
-  <Tag text="Tag" bg="grey" squared />
-</div>`}
-          />
-          <ComponentTitle>Code <span>Tag Big Squared</span></ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Tag text="Tag" bg="blue" big squared />
-  <Tag text="Tag" bg="green" big squared />
-  <Tag text="Tag" bg="yellow" big squared />
-  <Tag text="Tag" bg="red" big squared />
-  <Tag text="Tag" bg="grey" big squared />
-</div>`}
-          />
+          <div>
+            <Column>
+              <ComponentTitle>Code <span>Tag</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Tag text="Tag" bg="green" big />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Squared</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Tag text="Tag" bg="red" squared />`}
+              />
+            </Column>
+          </div>
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Avatar</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+          <SubGroup>
+            <Avatar size='small' type='icon' content='activity' />
+            <Avatar size='medium' type='icon' content='activity' />
+            <Avatar size='large' type='icon' content='activity' />
+            <Avatar size='small' type='default-profile' color='purple' />
+            <Avatar size='medium' type='default-profile' color='purple' />
+            <Avatar size='large' type='default-profile' color='purple' />
+            <Avatar size='small' content='ce' color='red' />
+            <Avatar size='medium' content='ce' color='red' />
+            <Avatar size='large' content='ce' color='red' />
+            <Avatar size='small' type='image' />
+            <Avatar size='medium' type='image' />
+            <Avatar size='large' type='image' />
+          </SubGroup>
+          <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'default-profile', 'image'], default: 'initials'},
+                {property:'color', description:'Color of avatar', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
+                {property:'size', description:'The size of the avater', type: 'string', options: ['small', 'medium', 'large'], default: 'large'},
+                {property:'content', description:'The name of the icon for type icon or the initials for type intials', type: 'string', options: [], default: ''},
+                {property:'url', description:'The url of the image for avatar of type image', type: 'string', options: [], default: 'a random cat photo'},
+              ]}
+            />
+          </Table>
+          <div>
+            <Column>
+              <ComponentTitle>Code <span>Initials</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' content='ce' color='red' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Default Profile</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='default-profile' color='purple' />`}
+              />
+            </Column>
+          </div>
+          <div>
+            <Column>
+              <ComponentTitle>Code <span>Icon</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='icon' content='activity' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Image</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='image' url='http://placekitten.com/429/429' />`}
+              />
+            </Column>
+          </div>
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -315,14 +353,22 @@ class Guide extends Component {
               </tbody>
             </table>
           </Table>
-          <ComponentTitle>Code</ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Icon name={'activity'} color={Colors.blue.hex()} w={30} />
-  <Icon name={'activity'} color={Colors.white.hex()} bg={Colors.blue.hex()} w={30} p={4} />
-</div>`}
-          />
+          <div>
+            <Column>
+              <ComponentTitle>Code <span>Icon</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Icon name={'activity'} color={Colors.blue.hex()} w={30} />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Tag with Background</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Icon name={'activity'} color={Colors.white.hex()} bg={Colors.blue.hex()} w={30} p={4} />`}
+              />
+            </Column>
+          </div>
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>

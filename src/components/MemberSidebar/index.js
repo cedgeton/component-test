@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Colors}  from '../../components/System';
 import Icon from '../../components/Icon';
 import Popover from '../../components/Popover';
+import Avatar from '../../components/Avatar';
 
 
 const Sidebar = styled.div`
@@ -19,6 +20,17 @@ const MenuHolder = styled.div`
   height: calc(100vh - 56px);
   z-index: 3;
   position: relative;
+`;
+const AvaHolder = styled.div`
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
+const HeaderAvatar = styled(Avatar)`
+  margin-right:0;
 `;
 const MenuIcon = styled(Icon)`
   display: block;
@@ -38,7 +50,9 @@ export default class MemberSidebar extends React.Component {
     var iconColor = Colors.black.c300.hex();
     return (
       <Sidebar>
-        <Icon name="profile-circle" color={Colors.blue.hex()} w={56} p={9} />
+        <AvaHolder>
+          <HeaderAvatar type='default-profile' size='medium' />
+        </AvaHolder>
         <MenuHolder>
           <MenuIcon name="event" color={iconColor} w={24} />
           <MenuIcon name="issues" color={iconColor} w={24} />

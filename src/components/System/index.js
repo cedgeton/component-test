@@ -8,6 +8,7 @@ export const Colors = {
   green: Color('#00C596'),
   red: Color('#EC4068'),
   yellow: Color('#FCA200'),
+  purple: Color('#735BFA'),
   transparent: Color('#000000').fade(1),
   black: {
     c900: Color('#07090A'),

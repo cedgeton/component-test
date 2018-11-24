@@ -25,13 +25,14 @@ const ButtonWrapper = styled.button`
     line-height: ${props => props.size == 'small' ? '16px' : '18px'};
     margin: 4px;
     padding: ${props => props.size == 'small' ? '2px 10px' : '5px 17px'};
-    border: ${props =>
+    box-sizing: border-box;
+    border: 1px solid ${props =>
       {if(props.outline && props.buttonStyle === 'secondary' && props.buttonStyle != 'cancel'){
-          return '1px solid ' + ButtonColors[props.buttonStyle].text.hex()
+          return ButtonColors[props.buttonStyle].text.hex()
         } else if(props.outline && props.buttonStyle != 'cancel'){
-          return '1px solid ' + ButtonColors[props.buttonStyle].bg.hex()
+          return ButtonColors[props.buttonStyle].bg.hex()
         } else{
-          return 0;
+          return 'transparent';
         }
       }
     };
