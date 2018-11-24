@@ -2,7 +2,6 @@ import React from 'react';
 import styled  from 'styled-components';
 import Color  from 'color';
 
-
 export const Colors = {
   blue: Color('#2D85FB'),
   white: Color('#ffffff'),
@@ -33,29 +32,41 @@ export const Colors = {
     c100: Color('#FCFCFD'),
   },
 }
+
+
 const HeaderStyle = styled.div`
   font-size: ${props => {
     switch(props.level) {
+      case 0:
+        return '40px'
       case 2:
-          return '16px'
+        return '16px'
       default:
-          return '20px'
+        return '20px'
   }}};
   line-height: ${props => {
     switch(props.level) {
+      case 0:
+        return '40px'
       case 2:
-          return '24px'
+        return '24px'
       default:
-          return '28px'
+        return '28px'
   }}};
-  font-weight: 500;
+  font-weight: ${props => {
+    switch(props.level) {
+      case 0:
+        return '400'
+      default:
+        return '500'
+  }}};
   color: ${Colors.black.c800.hex()};
-  letter-spacing: 0.5px;
   margin: 0;
 `;
 
 export class Header extends React.Component {
   render(){
     return <HeaderStyle className={this.props.className} level={this.props.level}>{this.props.children}</HeaderStyle>
+
   }
 }

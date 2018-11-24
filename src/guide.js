@@ -23,12 +23,7 @@ const Topic = styled.section`
   margin-bottom: 45px;
   padding: 50px 60px 55px 60px;
 `;
-const TopicTitle = styled.h2`
-  font-weight: 400;
-  font-size: 40px;
-  color: ${Colors.black.c800.hex()};
-  letter-spacing: 0.5px;
-  line-height: 40px;
+const TopicTitle = styled.div`
   background: ${Colors.grey.c200.hex()};
   border-bottom: 1px solid ${Colors.grey.c400.hex()};
   width: 100%;
@@ -130,7 +125,7 @@ class Guide extends Component {
       <Content>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          Button
+          <Header level={0} >Button</Header>
         </TopicTitle>
         <Topic>
           <ComponentType>
@@ -176,7 +171,7 @@ class Guide extends Component {
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          Tag
+          <Header level={0} >Tag</Header>
         </TopicTitle>
         <Topic>
           <ComponentType>
@@ -247,7 +242,7 @@ class Guide extends Component {
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          Loader
+          <Header level={0} >Loader</Header>
         </TopicTitle>
         <Topic>
           <ComponentType>
@@ -273,7 +268,7 @@ class Guide extends Component {
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          Icon
+          <Header level={0} >Icon</Header>
         </TopicTitle>
         <Topic>
           {iconKeys.map(function(icon, i){
@@ -331,7 +326,7 @@ class Guide extends Component {
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          Module
+          <Header level={0} >Module</Header>
         </TopicTitle>
         <Topic>
           <ComponentType>
