@@ -77,10 +77,26 @@ const Column = styled.section`
     padding-right: 21px;
   }
 `;
+const Columns = styled.div`
+  clear:both;
+`;
+const ColorExample = styled.div`
+  width: 100%;
+  color: ${Colors.white.hex()};
+  background: ${props => props.bg ? props.bg : 'transparent'};
+  padding: 10px;
+  margin: 5px 5px 5px 0;
+  font-size: 11px;
+  box-sizing: border-box;
+  .greys &{
+    color: ${Colors.black.c600.hex()}
+  }
+`;
 const IconComponent = styled(Icon)`
   margin: 10px;
 `;
 const Table = styled.div`
+  clear:both;
   table{
     width: 100%;
     margin: 15px 0 65px;
@@ -119,12 +135,66 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
   }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample};
 
 class Guide extends Component {
   render() {
     return (
       <Content>
+        <TopicTitle>
+          <SubTitle>System</SubTitle>
+          <Header level={0} >Colors</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Columns>
+              <Column>
+                <SubTitle>Blacks</SubTitle>
+                {Object.keys(Colors.black).map(function(color, i){
+                  return <ColorExample bg={Colors.black[color].hex()}>Black {color}</ColorExample>
+                })}
+              </Column>
+              <Column className="greys">
+                <SubTitle>Greys</SubTitle>
+                {Object.keys(Colors.grey).map(function(color, i){
+                  return <ColorExample bg={Colors.grey[color].hex()}>Grey {color}</ColorExample>
+                })}
+              </Column>
+            </Columns>
+            <Columns>
+              <Column>
+                <SubTitle>Colors</SubTitle>
+                <ColorExample bg={Colors.red.hex()}>Red</ColorExample>
+                <ColorExample bg={Colors.yellow.hex()}>Yellow</ColorExample>
+                <ColorExample bg={Colors.green.hex()}>Green</ColorExample>
+                <ColorExample bg={Colors.blue.hex()}>Blue</ColorExample>
+                <ColorExample bg={Colors.purple.hex()}>Purple</ColorExample>
+                <ColorExample bg={Colors.pink.hex()}>Pink</ColorExample>
+              </Column>
+            </Columns>
+          </ComponentType>
+          <Columns>
+            <Column>
+              <ComponentTitle>Code</ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<ColorExample bg={Colors.black.c400.hex()}>
+  Black c400
+</ColorExample>`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code</ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<ColorExample bg={Colors.red.hex()}>
+  Red
+</ColorExample>`}
+              />
+            </Column>
+          </Columns>
+        </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
           <Header level={0} >Button</Header>
@@ -193,7 +263,7 @@ class Guide extends Component {
               ]}
             />
           </Table>
-          <div>
+          <Columns>
             <Column>
               <ComponentTitle>Code <span>Tag</span></ComponentTitle>
               <Code
@@ -208,7 +278,7 @@ class Guide extends Component {
                 code={`<Tag text="Tag" bg="red" squared />`}
               />
             </Column>
-          </div>
+          </Columns>
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -245,7 +315,7 @@ class Guide extends Component {
               ]}
             />
           </Table>
-          <div>
+          <Columns>
             <Column>
               <ComponentTitle>Code <span>Initials</span></ComponentTitle>
               <Code
@@ -260,8 +330,8 @@ class Guide extends Component {
                 code={`<Avatar size='large' type='default-profile' color='purple' />`}
               />
             </Column>
-          </div>
-          <div>
+          </Columns>
+          <Columns>
             <Column>
               <ComponentTitle>Code <span>Icon</span></ComponentTitle>
               <Code
@@ -276,7 +346,7 @@ class Guide extends Component {
                 code={`<Avatar size='large' type='image' url='http://placekitten.com/429/429' />`}
               />
             </Column>
-          </div>
+          </Columns>
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -362,7 +432,7 @@ class Guide extends Component {
               />
             </Column>
             <Column>
-              <ComponentTitle>Code <span>Tag with Background</span></ComponentTitle>
+              <ComponentTitle>Code <span>Icon with Background</span></ComponentTitle>
               <Code
                 scope={scope}
                 code={`<Icon name={'activity'} color={Colors.white.hex()} bg={Colors.blue.hex()} w={30} p={4} />`}

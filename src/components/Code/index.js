@@ -5,7 +5,7 @@ import {LiveProvider, LiveEditor, LiveError, LivePreview} from 'react-live'
 
 
 const StyledLivePreview = styled(LivePreview)`
-  padding: 20px 20vw;
+  padding: 20px 30%;
   border: 1px solid ${Colors.grey.c400.hex()};
   border-radius: 2px 2px 0 0;
   background: ${Colors.grey.c200.hex()};
@@ -29,12 +29,16 @@ const StyledLiveEditor = styled(LiveEditor)`
     color: #00D3A7;
   }
 `;
-
+const StyledLiveError = styled(LiveError)`
+  padding: 10px 10px 10px 0;
+  font-size: 12px;
+  color: ${Colors.red.hex()};
+`;
 
 export default class CodeObj extends React.Component {
   render(){
     return (<LiveProvider code={this.props.code} scope={this.props.scope}>
-      <LiveError />
+      <StyledLiveError />
       <StyledLivePreview />
       <StyledLiveEditor />
     </LiveProvider>
