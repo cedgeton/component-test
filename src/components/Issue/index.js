@@ -11,7 +11,7 @@ const TitleSection = styled.div`
     background: transparent;
     span.summary & {
       padding: 16px;
-      border-bottom: 1px solid ${Colors.grey.c400.hex()};
+      border-bottom: 1px solid ${Colors.grey.c400};
       border-radius: 2px 2px 0 0;
       background: #fff;
     }
@@ -26,7 +26,7 @@ const IconClose = styled(Icon)`
 const Assessment = styled.span`
     font-weight: 400;
     font-size: 12px;
-    color: ${Colors.grey.c900.hex()};
+    color: ${Colors.grey.c900};
     letter-spacing: 0;
     line-height: 24px;
     margin-bottom: 24px;
@@ -46,7 +46,7 @@ const Assessment = styled.span`
 const More = styled.div`
     font-weight: 400;
     font-size: 12px;
-    color: ${Colors.grey.c600.hex()};
+    color: ${Colors.grey.c600};
     text-align: center;
     line-height: 16px;
     margin-top: 21px;
@@ -57,7 +57,7 @@ const Goals = styled.div`
 const Goal = styled.div`
     font-weight: 400;
     font-size: 12px;
-    color: ${Colors.grey.c900.hex()};
+    color: ${Colors.grey.c900};
     letter-spacing: 0;
     line-height: 16px;
 `;
@@ -68,10 +68,10 @@ const TitleBull = styled(Bull)`
     }
 `;
 const Notes = styled.div`
-    background: ${Colors.grey.c200.hex()};
+    background: ${Colors.grey.c200};
     font-weight: 400;
     font-size: 12px;
-    color: ${Colors.black.c400.hex()};
+    color: ${Colors.black.c400};
     line-height: 20px;
     padding:20px;
     margin-top: 60px;
@@ -79,7 +79,7 @@ const Notes = styled.div`
 const NotesTitle = styled.div`
     font-weight: 500;
     font-size: 16px;
-    color: ${Colors.black.c400.hex()};
+    color: ${Colors.black.c400};
     line-height: 24px;
 `;
 
@@ -92,7 +92,7 @@ export default class Issue extends React.Component {
       <span className={summary? "issue summary" : "issue"}>
         <TitleSection>
           {!summary &&
-            <IconClose name="close" color={Colors.black.c200.hex()} w={18} />
+            <IconClose name="close" color={Colors.black.c200} w={18} />
           }
           <Title level={summary ? 2 : 1 }>
             {issue.favorite ? (<TitleBull>&bull;</TitleBull>):("")}

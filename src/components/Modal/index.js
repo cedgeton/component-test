@@ -19,8 +19,8 @@ const StyledModal = ModalClass.styled`
   transition: opacity ease 200ms;
 `;
 const Title = styled(Header)`
-  border-bottom: 1px solid ${Colors.grey.c400.hex()};
-  background: ${Colors.grey.c200.hex()};
+  border-bottom: 1px solid ${Colors.grey.c400};
+  background: ${Colors.grey.c200};
   display: block;
   padding: 8px 10px 5px 15px;
   border-radius: 2px 2px 0 0;
@@ -28,7 +28,7 @@ const Title = styled(Header)`
 `;
 const Footer = styled(Title)`
   text-align: right;
-  border-top: 1px solid ${Colors.grey.c400.hex()};
+  border-top: 1px solid ${Colors.grey.c400};
   border-bottom: 0;
   border-radius: 0 0 2px 2px;
 `;
@@ -88,7 +88,7 @@ export default class Modal extends React.Component {
             onBackgroundClick={this.toggleModal}
             onEscapeKeydown={this.toggleModal}
             opacity={this.state.opacity}>
-            <Title level={2}>{this.props.title} <Close name='close' w={20} p={2.5} color={Colors.black.c300.hex()}  onClick={this.toggleModal}/></Title>
+            <Title level={2}>{this.props.title} <Close name='close' w={20} p={2.5} color={Colors.black.c300}  onClick={this.toggleModal}/></Title>
             <Content>{this.props.content} </Content>
             <Footer>
               {this.props.actions.map(function(action, i){

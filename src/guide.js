@@ -9,6 +9,7 @@ import icons from './components/Icon/icons.js';
 import Loader from './components/Loader';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
+import {Input} from './components/Form';
 import Modal, {ModalProviders} from './components/Modal';
 
 import Code from './components/Code';
@@ -28,8 +29,8 @@ const Topic = styled.section`
   padding: 50px 60px 55px 60px;
 `;
 const TopicTitle = styled.div`
-  background: ${Colors.grey.c200.hex()};
-  border-bottom: 1px solid ${Colors.grey.c400.hex()};
+  background: ${Colors.grey.c200};
+  border-bottom: 1px solid ${Colors.grey.c400};
   width: 100%;
   margin: 0;
   padding: 45px 51px 25px;
@@ -42,7 +43,7 @@ const ComponentType = styled.section`
 const ComponentTitle = styled.h3`
   font-weight: 500;
   font-size: 16px;
-  color: ${Colors.black.c800.hex()};
+  color: ${Colors.black.c800};
   letter-spacing: 0;
   line-height: 24px;
   margin-bottom: 6px;
@@ -57,7 +58,7 @@ const SubGroup = styled.div`
 const SubTitle = styled.h4`
   font-weight: 400;
   font-size: 11px;
-  color: ${Colors.black.c200.hex()};
+  color: ${Colors.black.c200};
   letter-spacing: 0;
   line-height: 16px;
   text-transform: uppercase;
@@ -66,7 +67,7 @@ const SubTitle = styled.h4`
 const Explanation = styled.p`
   font-weight: 400;
   font-size: 13px;
-  color: ${Colors.black.c800.hex()};
+  color: ${Colors.black.c800};
   letter-spacing: 0;
   line-height: 16px;
   margin-top: 0;
@@ -85,14 +86,14 @@ const Columns = styled.div`
 `;
 const ColorExample = styled.div`
   width: 100%;
-  color: ${Colors.white.hex()};
+  color: ${Colors.white};
   background: ${props => props.bg ? props.bg : 'transparent'};
   padding: 10px;
   margin: 5px 5px 5px 0;
   font-size: 11px;
   box-sizing: border-box;
   .greys &{
-    color: ${Colors.black.c600.hex()}
+    color: ${Colors.black.c600}
   }
 `;
 const IconComponent = styled(Icon)`
@@ -108,9 +109,9 @@ const Table = styled.div`
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    color: ${Colors.black.c800.hex()};
+    color: ${Colors.black.c800};
     thead{
-      background:${Colors.grey.c200.hex()};
+      background:${Colors.grey.c200};
       th{
         font-weight: 400;
         border-bottom-width: 2px;
@@ -118,7 +119,7 @@ const Table = styled.div`
     }
     td,th{
       padding: 20px;
-      border-bottom: 1px solid ${Colors.grey.c400.hex()};
+      border-bottom: 1px solid ${Colors.grey.c400};
       vertical-align: top;
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     }
@@ -158,25 +159,25 @@ class Guide extends Component {
               <Column>
                 <SubTitle>Blacks</SubTitle>
                 {Object.keys(Colors.black).map(function(color, i){
-                  return <ColorExample bg={Colors.black[color].hex()}>Black {color}</ColorExample>
+                  return <ColorExample bg={Colors.black[color]}>Black {color}</ColorExample>
                 })}
               </Column>
               <Column className="greys">
                 <SubTitle>Greys</SubTitle>
                 {Object.keys(Colors.grey).map(function(color, i){
-                  return <ColorExample bg={Colors.grey[color].hex()}>Grey {color}</ColorExample>
+                  return <ColorExample bg={Colors.grey[color]}>Grey {color}</ColorExample>
                 })}
               </Column>
             </Columns>
             <Columns>
               <Column>
                 <SubTitle>Colors</SubTitle>
-                <ColorExample bg={Colors.red.hex()}>Red</ColorExample>
-                <ColorExample bg={Colors.yellow.hex()}>Yellow</ColorExample>
-                <ColorExample bg={Colors.green.hex()}>Green</ColorExample>
-                <ColorExample bg={Colors.blue.hex()}>Blue</ColorExample>
-                <ColorExample bg={Colors.purple.hex()}>Purple</ColorExample>
-                <ColorExample bg={Colors.pink.hex()}>Pink</ColorExample>
+                <ColorExample bg={Colors.red}>Red</ColorExample>
+                <ColorExample bg={Colors.yellow}>Yellow</ColorExample>
+                <ColorExample bg={Colors.green}>Green</ColorExample>
+                <ColorExample bg={Colors.blue}>Blue</ColorExample>
+                <ColorExample bg={Colors.purple}>Purple</ColorExample>
+                <ColorExample bg={Colors.pink}>Pink</ColorExample>
               </Column>
             </Columns>
           </ComponentType>
@@ -185,7 +186,7 @@ class Guide extends Component {
               <ComponentTitle>Code</ComponentTitle>
               <Code
                 scope={scope}
-                code={`<ColorExample bg={Colors.black.c400.hex()}>
+                code={`<ColorExample bg={Colors.black.c400}>
   Black c400
 </ColorExample>`}
               />
@@ -194,7 +195,7 @@ class Guide extends Component {
               <ComponentTitle>Code</ComponentTitle>
               <Code
                 scope={scope}
-                code={`<ColorExample bg={Colors.red.hex()}>
+                code={`<ColorExample bg={Colors.red}>
   Red
 </ColorExample>`}
               />
@@ -342,7 +343,7 @@ class Guide extends Component {
               <ComponentTitle>Code <span>Icon</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Avatar size='large' type='icon' content='activity' />`}
+                code={`<Avatar size='large' type='icon' content='forward' />`}
               />
             </Column>
             <Column>
@@ -386,7 +387,7 @@ class Guide extends Component {
         </TopicTitle>
         <Topic>
           {iconKeys.map(function(icon, i){
-            return <IconComponent name={icon} color={Colors.grey.c800.hex()} />
+            return <IconComponent name={icon} color={Colors.grey.c800} />
           })}
           <ComponentType>
             <ComponentTitle topMargin >Icon Set</ComponentTitle>
@@ -419,9 +420,9 @@ class Guide extends Component {
                 {tableKeys.map(function(icon, i){
                   return (
                     <tr>
-                      <td><IconComponent name={icon[0]} color={Colors.grey.c800.hex()} w={25} /></td>
+                      <td><IconComponent name={icon[0]} color={Colors.grey.c800} w={25} /></td>
                       <td>{icon[0]}</td>
-                      <td><IconComponent name={icon[1]} color={Colors.grey.c800.hex()} w={25} /></td>
+                      <td><IconComponent name={icon[1]} color={Colors.grey.c800} w={25} /></td>
                       <td>{icon[1]}</td>
                     </tr>
                   )
@@ -434,14 +435,14 @@ class Guide extends Component {
               <ComponentTitle>Code <span>Icon</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Icon name={'activity'} color={Colors.blue.hex()} w={30} />`}
+                code={`<Icon name={'activity'} color={Colors.blue} w={30} />`}
               />
             </Column>
             <Column>
               <ComponentTitle>Code <span>Icon with Background</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Icon name={'activity'} color={Colors.white.hex()} bg={Colors.blue.hex()} w={30} p={4} />`}
+                code={`<Icon name={'activity'} color={Colors.white} bg={Colors.blue} w={30} p={4} />`}
               />
             </Column>
           </div>

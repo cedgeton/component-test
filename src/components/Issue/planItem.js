@@ -24,11 +24,11 @@ const Item = styled.div`
 const ItemName = styled.span`
   font-weight: 500;
   font-size: 12px;
-  color: ${Colors.black.c800.hex()};
+  color: ${Colors.black.c800};
   line-height: 16px;
   .summary &{
     font-weight: 400;
-    color: ${Colors.grey.c900.hex()};
+    color: ${Colors.grey.c900};
   }
 `;
 const ItemContent = styled.div`
@@ -40,7 +40,7 @@ const RowSubTitle = styled.span`
     .issue:not(.summary) &{
       font-weight: 400;
       font-size: 11px;
-      color: ${Colors.grey.c700.hex()};
+      color: ${Colors.grey.c700};
       line-height: 16px;
     }
 `;
@@ -55,19 +55,19 @@ const SuggestionIcon = styled.span`
     display: inline-block;
     width: 11px;
     height: 11px;
-    border: 2px solid ${Colors.grey.c400.hex()};
+    border: 2px solid ${Colors.grey.c400};
     border-radius: 100px;
     display: flex;
 `;
 const ItemIcon = styled(Icon)`
     display: flex;
-    border: 3px solid ${Colors.grey.c400.hex()};
+    border: 3px solid ${Colors.grey.c400};
     display: inline-block;
 `;
 const Result = styled.span`
     font-weight: 500;
     font-size: 11px;
-    color: ${Colors.yellow.hex()};
+    color: ${Colors.yellow};
     text-transform: uppercase;
 `;
 const RightContent = styled.div`
@@ -81,7 +81,7 @@ function renderItemIcon(item){
   if (icon === "suggestion"){
     return <SuggestionIcon />
   }else{
-    return <ItemIcon name={icon} bg={"transparent"} color={Colors.black.c200.hex()} w={30} p={5} />
+    return <ItemIcon name={icon} bg={"transparent"} color={Colors.black.c200} w={30} p={5} />
   }
 }
 

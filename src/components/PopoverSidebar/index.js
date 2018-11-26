@@ -8,7 +8,7 @@ const PopoverSidebarWrapper = styled.div`
   padding: 26px 0 28px 0;
   height: calc(100vh - 56px);
   overflow: auto;
-  border-right: 1px solid ${Colors.grey.c400.hex()};
+  border-right: 1px solid ${Colors.grey.c400};
   background: #fff;
 `;
 
@@ -22,20 +22,20 @@ const PopoverLinks = styled.ul`
   li{
     padding: 0 32px 0 24px;
     &.selected{
-      background: ${Colors.grey.c300.hex()};
+      background: ${Colors.grey.c300};
       font-weight: 600;
       &:hover a{
-        background: ${Colors.grey.c300.hex()};
+        background: ${Colors.grey.c300};
       }
     }
     &:hover{
-      background: ${Colors.grey.c300.hex()};
+      background: ${Colors.grey.c300};
     }
   }
 `;
 const Link = styled.a`
   font-size: 12px;
-  color: ${Colors.black.c400.hex()};
+  color: ${Colors.black.c400};
   padding: 7px 0;
   display: block;
   max-width: 230px;
@@ -43,7 +43,7 @@ const Link = styled.a`
 const GroupTitle = styled.div`
   font-weight: 500;
   font-size: 12px;
-  color: ${Colors.black.c800.hex()};
+  color: ${Colors.black.c800};
   line-height: 16px;
   text-transform: uppercase;
   margin-bottom: 8px;

@@ -15,7 +15,7 @@ const Sidebar = styled.div`
 `;
 const MenuHolder = styled.div`
   background: #fff;
-  border-right: 1px solid ${Colors.grey.c400.hex()};
+  border-right: 1px solid ${Colors.grey.c400};
   padding-top: 7px;
   height: calc(100vh - 56px);
   z-index: 3;
@@ -40,14 +40,14 @@ const MenuIcon = styled(Icon)`
   &:hover {
     cursor: pointer;
     svg{
-      fill: ${Colors.blue.hex()} !important;
+      fill: ${Colors.blue} !important;
     }
   }
 `;
 export default class MemberSidebar extends React.Component {
 
   render(){
-    var iconColor = Colors.black.c300.hex();
+    var iconColor = Colors.black.c300;
     return (
       <Sidebar>
         <AvaHolder>

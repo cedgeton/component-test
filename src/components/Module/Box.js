@@ -4,8 +4,8 @@ import {Colors}  from '../../components/System';
 
 const Box = styled.section`
   margin: 21px 0 0 0;
-  background: ${Colors.white.hex()};
-  border: 1px solid ${Colors.grey.c400.hex()};
+  background: ${Colors.white};
+  border: 1px solid ${Colors.grey.c400};
   box-shadow: 2px 2px 1px 0 rgba(0,0,0,0.04);
   box-sizing: border-box;
 `;

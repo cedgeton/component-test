@@ -4,19 +4,19 @@ import {Colors}  from '../../components/System';
 
 const RowStyle = styled.div`
     padding: 14px 16px;
-    border-top: 1px solid ${Colors.grey.c400.hex()};
+    border-top: 1px solid ${Colors.grey.c400};
 `;
 const RowTitle = styled.span`
   font-weight: 500;
   font-size: 14px;
-  color: ${Colors.black.c800.hex()};
+  color: ${Colors.black.c800};
   line-height: 20px;
   margin-right: 5px;
 `;
 const RowSubTitle = styled.span`
   font-family: 400;
   font-size: 11px;
-  color: ${Colors.grey.c700.hex()};
+  color: ${Colors.grey.c700};
   line-height: 16px;
 `;
 const Line2 = styled(RowSubTitle)`

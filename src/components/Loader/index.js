@@ -12,10 +12,10 @@ const dash = keyframes`
     100% {stroke-dasharray: 89, 200;stroke-dashoffset: -124px;}
 `;
 const color = keyframes`
-    100%, 0% {stroke: ${Colors.red.hex()};}
-    40% {stroke: ${Colors.blue.hex()};}
-    66% {stroke: ${Colors.green.hex()};}
-    80%, 90% {stroke: ${Colors.yellow.hex()};}
+    100%, 0% {stroke: ${Colors.red};}
+    40% {stroke: ${Colors.blue};}
+    66% {stroke: ${Colors.green};}
+    80%, 90% {stroke: ${Colors.yellow};}
 `;
 
 const Loading = styled.div`

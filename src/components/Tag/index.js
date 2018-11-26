@@ -22,17 +22,17 @@ const Tag = styled.span`
   background: ${props => {
     switch(props.bg) {
       case 'grey':
-          return Colors.grey.c300.hex()
+          return Colors.grey.c300
       case 'green':
-          return Colors.green.hex()
+          return Colors.green
       case 'yellow':
-          return Colors.yellow.hex()
+          return Colors.yellow
       case 'red':
-          return Colors.red.hex()
+          return Colors.red
       default:
-          return Colors.blue.hex()
+          return Colors.blue
   }}};
-  color: ${props => props.bg == 'grey' ? Colors.black.c400.hex() : Colors.white.hex()};
+  color: ${props => props.bg == 'grey' ? Colors.black.c400 : Colors.white};
 `;
 
 export default class TagObj extends React.Component {

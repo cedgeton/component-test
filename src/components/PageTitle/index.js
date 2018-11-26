@@ -5,7 +5,7 @@ import {Colors, Header}  from '../../components/System';
 const SubTitle = styled.div`
   font-weight: 400;
   font-size: 14px;
-  color: ${Colors.grey.c900.hex()};
+  color: ${Colors.grey.c900};
   line-height: 20px;
 `;
 

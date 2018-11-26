@@ -26,7 +26,7 @@ const Ava = styled.div`
   }};
   box-shadow: ${props => props.type === 'image' ? 'inset 0 0 2px rgba(0,0,0,.2)': '' };
   background-size: cover;
-  color: ${Colors.white.hex()};
+  color: ${Colors.white};
   overflow: hidden;
   display: inline-block;
   vertical-align: middle;
@@ -61,24 +61,24 @@ function getWidth(size){
 function getColor(color){
   switch(color) {
     case 'green':
-      return Colors.green.hex()
+      return Colors.green
     case 'yellow':
-      return Colors.yellow.hex()
+      return Colors.yellow
     case 'red':
-      return Colors.red.hex()
+      return Colors.red
     case 'purple':
-      return Colors.purple.hex()
+      return Colors.purple
     case 'grey':
-      return Colors.grey.c500.hex()
+      return Colors.grey.c500
     default:
-      return Colors.blue.hex()
+      return Colors.blue
   }
 }
 function getContent(type, content, size, color){
   var width=getWidth(size);
   switch(type) {
       case 'icon':
-        return <Icon name={content} color={Colors.white.hex()} w={width.w} p={width.w*.11} />;
+        return <Icon name={content} color={Colors.white} w={width.w} p={width.w*.11} />;
       case 'default-profile':
         return <Icon name={'profile-circle'} color={getColor(color)} w={width.w+width.p} />
       case 'image':

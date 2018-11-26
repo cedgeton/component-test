@@ -18,9 +18,9 @@ const JumpLinks = styled.ul`
 const Link = styled.a`
   font-weight: 400;
   font-size: 12px;
-  color: ${Colors.blue.hex()};
+  color: ${Colors.blue};
   &:hover{
-    color: ${Colors.blue.hsl().darken(.2).string()};
+    color: ${Colors.blue};
   }
 `;
 const RiskTag = styled(Tag)`
@@ -30,8 +30,8 @@ const RiskTag = styled(Tag)`
   border-radius: 2px;
 `;
 const IssueBox = styled.div`
-  background: ${Colors.grey.c200.hex()};
-  border: 1px solid ${Colors.grey.c400.hex()};
+  background: ${Colors.grey.c200};
+  border: 1px solid ${Colors.grey.c400};
   box-shadow: 0 0 1px 0 rgba(10,31,68,0.08), 0 3px 4px 0 rgba(10,31,68,0.10);
   margin: 21px 18px;
   padding-bottom: 21px;
