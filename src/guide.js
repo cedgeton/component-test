@@ -6,11 +6,14 @@ import {Colors, Header}  from './components/System';
 import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
-import Code from './components/Code';
-import PropTable from './components/Props';
 import Loader from './components/Loader';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
+import Modal, {ModalProviders} from './components/Modal';
+
+import Code from './components/Code';
+import PropTable from './components/Props';
+
 
 const Content = styled.div`
   overflow: auto;
@@ -134,8 +137,11 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     result.push(array.slice(index, index + 2));
     return result;
   }, []);
+function loremFunction(){
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample};
+}
+
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal};
 
 class Guide extends Component {
   render() {
@@ -439,6 +445,36 @@ class Guide extends Component {
               />
             </Column>
           </div>
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Modal</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>This is not finished. Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
+                {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Modal
+  title='Lorem Ipsum Sit'
+  content='Hot chicken copper mug art party crucifix scenester. Brunch try-hard roof party asymmetrical readymade squid, banjo lyft vaporware organic 8-bit cornhole vegan master cleanse marfa. Tilde woke thundercats, ennui locavore crucifix normcore quinoa snackwave. Offal freegan sriracha scenester semiotics mlkshk. Waistcoat shaman quinoa wolf. Pinterest polaroid waistcoat stumptown church-key seitan kombucha butcher irony quinoa next level selfies XOXO austin ramps. Intelligentsia migas sartorial ramps chillwave, neutra 8-bit irony sustainable echo park readymade glossier.'
+  actions={[
+    {text: 'Cancel', style:'cancel'},
+    {text: 'Save', style:'primary'}
+  ]}
+/>`}
+          />
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>

@@ -76,6 +76,7 @@ export default class Button extends React.Component {
         type        = {this.props.type}
         size        = {this.props.size}
         outline     = {this.props.outline}
+        onClick     = {this.props.onClick}
       >
         {this.props.children}
       </ButtonWrapper>
