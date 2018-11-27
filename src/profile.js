@@ -187,8 +187,8 @@ class Profile extends Component {
                 type  = "table"
                 category  = "medication"
                 rows  = {[
-                      {name: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
-                      {name: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
+                      {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
+                      {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
                     ]}
               />
               <Module

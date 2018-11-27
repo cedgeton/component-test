@@ -13,6 +13,9 @@ const StyledLivePreview = styled(LivePreview)`
   .issue:not(.summary){
     padding: 26px 26px 32px;
   }
+  .tableModule & .tableRow{
+    background:#fff;
+  }
 `;
 const StyledLiveEditor = styled(LiveEditor)`
   &.prism-code{

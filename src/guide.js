@@ -11,6 +11,7 @@ import Button from './components/Button';
 import Avatar from './components/Avatar';
 import {Input} from './components/Form';
 import Issue from './components/Issue';
+import TableRow from './components/TableRow';
 import Modal, {ModalProviders} from './components/Modal';
 
 import Code from './components/Code';
@@ -77,13 +78,14 @@ const Column = styled.section`
   width: 50%;
   float:left;
   box-sizing: border-box;
-  margin: 0 0 40px;
+  margin: 0;
   &:first-of-type{
     padding-right: 21px;
   }
 `;
 const Columns = styled.div`
   clear:both;
+  margin: 0 0 40px;
 `;
 const ColorExample = styled.div`
   width: 100%;
@@ -133,6 +135,9 @@ const Table = styled.div`
     vertical-align: middle;
   }
 `;
+const Clear = styled.div`
+  clear: both;
+`;
 const iconKeys = Object.keys(icons);
 const tableKeys = iconKeys.reduce(function(result, value, index, array) {
   if (index % 2 === 0)
@@ -143,7 +148,7 @@ function loremFunction(){
 
 }
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow};
 
 class Guide extends Component {
   render() {
@@ -170,6 +175,7 @@ class Guide extends Component {
                 })}
               </Column>
             </Columns>
+            <Clear />
             <Columns>
               <Column>
                 <SubTitle>Colors</SubTitle>
@@ -181,6 +187,7 @@ class Guide extends Component {
                 <ColorExample bg={Colors.pink}>Pink</ColorExample>
               </Column>
             </Columns>
+            <Clear />
           </ComponentType>
           <Columns>
             <Column>
@@ -202,8 +209,8 @@ class Guide extends Component {
               />
             </Column>
           </Columns>
+          <Clear />
         </Topic>
-
         <TopicTitle>
           <SubTitle>Component</SubTitle>
           <Header level={0} >Button</Header>
@@ -239,6 +246,28 @@ class Guide extends Component {
           <Code
             scope={scope}
             code={`<Button style='primary'>Button</Button>`}
+          />
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Loader</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'size', description:'The size of the loading indicator', type: 'string', options: ['small', 'medium', 'large'], default: 'medium'},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Loader size='medium' />`}
           />
         </Topic>
         <TopicTitle>
@@ -288,100 +317,7 @@ class Guide extends Component {
               />
             </Column>
           </Columns>
-        </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Avatar</Header>
-        </TopicTitle>
-        <Topic>
-          <ComponentType>
-          <SubGroup>
-            <Avatar size='small' type='icon' content='activity' />
-            <Avatar size='medium' type='icon' content='activity' />
-            <Avatar size='large' type='icon' content='activity' />
-            <Avatar size='small' type='default-profile' color='purple' />
-            <Avatar size='medium' type='default-profile' color='purple' />
-            <Avatar size='large' type='default-profile' color='purple' />
-            <Avatar size='small' content='ce' color='red' />
-            <Avatar size='medium' content='ce' color='red' />
-            <Avatar size='large' content='ce' color='red' />
-            <Avatar size='small' type='image' />
-            <Avatar size='medium' type='image' />
-            <Avatar size='large' type='image' />
-          </SubGroup>
-          <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
-
-          </ComponentType>
-          <Table>
-            <ComponentTitle>Props</ComponentTitle>
-            <PropTable
-              properties = {[
-                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'default-profile', 'image'], default: 'initials'},
-                {property:'color', description:'Color of avatar', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
-                {property:'size', description:'The size of the avater', type: 'string', options: ['small', 'medium', 'large'], default: 'large'},
-                {property:'content', description:'The name of the icon for type icon or the initials for type intials', type: 'string', options: [], default: ''},
-                {property:'url', description:'The url of the image for avatar of type image', type: 'string', options: [], default: 'a random cat photo'},
-              ]}
-            />
-          </Table>
-          <Columns>
-            <Column>
-              <ComponentTitle>Code <span>Initials</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Avatar size='large' content='ce' color='red' />`}
-              />
-            </Column>
-            <Column>
-              <ComponentTitle>Code <span>Default Profile</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Avatar size='large' type='default-profile' color='purple' />`}
-              />
-            </Column>
-          </Columns>
-          <Columns>
-            <Column>
-              <ComponentTitle>Code <span>Icon</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Avatar size='large' type='icon' content='forward' />`}
-              />
-            </Column>
-            <Column>
-              <ComponentTitle>Code <span>Image</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Avatar size='large' type='image' url='http://placekitten.com/429/429' />`}
-              />
-            </Column>
-          </Columns>
-        </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Loader</Header>
-        </TopicTitle>
-        <Topic>
-          <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
-          </ComponentType>
-          <Table>
-            <ComponentTitle>Props</ComponentTitle>
-            <PropTable
-              properties = {[
-                {property:'size', description:'The size of the loading indicator', type: 'string', options: ['small', 'medium', 'large'], default: 'medium'},
-              ]}
-            />
-          </Table>
-          <ComponentTitle>Code</ComponentTitle>
-          <Code
-            scope={scope}
-            code={`<div>
-  <Loader size='small' />
-  <Loader size='medium' />
-  <Loader size='large' />
-</div>`}
-          />
+          <Clear />
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -448,6 +384,7 @@ class Guide extends Component {
               />
             </Column>
           </div>
+          <Clear />
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -481,24 +418,147 @@ class Guide extends Component {
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
-          <Header level={0} >Module</Header>
+          <Header level={0} >Avatar</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+          <SubGroup>
+            <Avatar size='small' type='icon' content='activity' />
+            <Avatar size='medium' type='icon' content='activity' />
+            <Avatar size='large' type='icon' content='activity' />
+            <Avatar size='small' type='default-profile' color='purple' />
+            <Avatar size='medium' type='default-profile' color='purple' />
+            <Avatar size='large' type='default-profile' color='purple' />
+            <Avatar size='small' content='ce' color='red' />
+            <Avatar size='medium' content='ce' color='red' />
+            <Avatar size='large' content='ce' color='red' />
+            <Avatar size='small' type='image' />
+            <Avatar size='medium' type='image' />
+            <Avatar size='large' type='image' />
+          </SubGroup>
+          <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'default-profile', 'image'], default: 'initials'},
+                {property:'color', description:'Color of avatar', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
+                {property:'size', description:'The size of the avater', type: 'string', options: ['small', 'medium', 'large'], default: 'large'},
+                {property:'content', description:'The name of the icon for type icon or the initials for type intials', type: 'string', options: [], default: ''},
+                {property:'url', description:'The url of the image for avatar of type image', type: 'string', options: [], default: 'a random cat photo'},
+              ]}
+            />
+          </Table>
+          <Columns>
+            <Column>
+              <ComponentTitle>Code <span>Initials</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' content='ce' color='red' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Default Profile</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='default-profile' color='purple' />`}
+              />
+            </Column>
+          </Columns>
+          <Clear />
+          <Columns>
+            <Column>
+              <ComponentTitle>Code <span>Icon</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='icon' content='forward' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Image</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Avatar size='large' type='image' url='http://placekitten.com/429/429' />`}
+              />
+            </Column>
+          </Columns>
+          <Clear />
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Table Row</Header>
         </TopicTitle>
         <Topic>
           <ComponentType>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
-            <Column>
-              <Module
-                title     = "Basic Module"
-                content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'title', description:'The main text for the row', type: 'string', options: [], default: ''},
+                {property:'subtitle', description:'The smaller text on the main row', type: 'string', options: [], default: ''},
+                {property:'line2', description:'The smaller text on the second row', type: 'string', options: [], default: ''},
+                {property:'icon', description:'The name of the icon to go in circle on the left', type: 'string', options: [], default: ''},
+                {property:'result', description:'The text for the right section.', type: 'string', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <Columns>
+            <Column className="tableModule">
+              <ComponentTitle>Code <span>Standard</span></ComponentTitle>
+              <Code
+                p={'0px'}
+                scope={scope}
+                code={`<TableRow
+  title={'Sartorial typewriter banh mi'}
+  subtitle={'10mg tablet'}
+  line2={'Take once daily'}
+/>`}
               />
             </Column>
-            <Column>
-              <Module
-                title     = "Notes"
-                category  = "note"
-                content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
+            <Column className="tableModule">
+              <ComponentTitle>Code <span>With Icon</span></ComponentTitle>
+              <Code
+                p={'0px'}
+                scope={scope}
+                code={`<TableRow
+  title={'Fingerstache flexitarian'}
+  subtitle={'10mg tablet'}
+  line2={'Take once daily'}
+  icon={'medication'}
+  result={'Abmormal'}
+/>`}
               />
             </Column>
+          </Columns>
+          <Clear />
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Module</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Columns>
+              <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+              <Column>
+                <Module
+                  title     = "Basic Module"
+                  content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
+                />
+              </Column>
+              <Column>
+                <Module
+                  title     = "Notes"
+                  category  = "note"
+                  content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
+                />
+              </Column>
+            </Columns>
+            <Clear />
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -507,16 +567,19 @@ class Guide extends Component {
                 {property:'title', description:'Text for title of the module', type: 'string', options: [], default: ''},
                 {property:'type', description:'Type of Module', type: 'string', options: ['basic', 'tag', 'table', 'issues'], default: 'basic'},
                 {property:'category', description:'The category the module relates to. Determines the icon.', type: 'string', options: ['icon name'], default: ''},
-                {property:'content', description:'The text for a basic module', type: 'string', options: [], default: ''},
-                {property:'tags', description:'An Array of tags for the Tags Module.', type: 'array', options: [], default: ''},
-                {property:'rows', description:'An Array of rows for the Rows Module.', type: 'array', options: [], default: ''},
-                {property:'issues', description:'  An Array of issues for the Issues Module.', type: 'array', options: [], default: ''},
               ]}
             />
           </Table>
           <ComponentType>
             <ComponentTitle>Basic Module</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'content', description:'The text for a basic module', type: 'string', options: [], default: ''},
+                ]}
+              />
+            </Table>
             <Code
               scope={scope}
               code={`<Module
@@ -528,6 +591,13 @@ class Guide extends Component {
           <ComponentType>
             <ComponentTitle>Tag Module</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'tags', description:'Array of Tags', type: 'array', options: [], default: ''},
+                ]}
+              />
+            </Table>
             <Code
               scope={scope}
               code={`<Module
@@ -545,9 +615,16 @@ class Guide extends Component {
 />`}
             />
           </ComponentType>
-          <ComponentType>
+          <ComponentType className="tableModule">
             <ComponentTitle>Table Module</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'rows', description:'Array of Rows', type: 'array', options: [], default: ''},
+                ]}
+              />
+            </Table>
             <Code
               scope={scope}
               code={`<Module
@@ -555,16 +632,25 @@ class Guide extends Component {
   type  = "table"
   category  = "medication"
   rows  = {[
-        {name: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
-        {name: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
+        {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
+        {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
       ]}
 />`}
             />
 
           </ComponentType>
           <ComponentType>
-            <ComponentTitle>Issue Module <span>Summary</span></ComponentTitle>
+            <ComponentTitle>Issue Module</ComponentTitle>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'issue', description:'A hash with all of the information for an issue', type: 'associative array', options: [], default: ''},
+                  {property:'summary', description:'If true, show the issue in summary form, paring down the information shown', type: 'bool', options: [], default: 'false'},
+                ]}
+              />
+            </Table>
+            <ComponentTitle><span>Summary</span></ComponentTitle>
             <Code
               p='15%'
               scope={scope}
@@ -595,9 +681,8 @@ render(<Issue issue={issue} summary />)`}
             />
           </ComponentType>
           <ComponentType>
-            <ComponentTitle>Issue Module <span>Full</span></ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
-            <Code
+          <ComponentTitle><span>Full Issue</span></ComponentTitle>
+          <Code
               p='15%'
               scope={scope}
               code={`const issue = {

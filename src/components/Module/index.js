@@ -5,7 +5,7 @@ import {Colors} from '../../components/System';
 import Box from './Box.js';
 import TagContent from './Tags.js';
 import IssueContent from './Issues.js';
-import TableContent from '../../components/TableRows';
+import TableContent from './Table.js';
 
 const ModuleTitle = styled.span`
     font-weight: 500;

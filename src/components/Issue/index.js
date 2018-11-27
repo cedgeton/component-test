@@ -5,7 +5,7 @@ import Icon from '../../components/Icon';
 import Tag from '../../components/Tag';
 import Bull from '../Module/Bull.js';
 import RiskStatus from '../../components/RiskStatus';
-import PlanItem from './planItem.js';
+import TableRow from '../../components/TableRow';
 
 const TitleSection = styled.div`
     background: transparent;
@@ -128,7 +128,7 @@ export default class Issue extends React.Component {
           {items.map(function(item, i){
             if (i<4 || !summary){
               return(
-                <PlanItem item={item} summary={summary} />
+                <TableRow title={item.name} subtitle={item.dosage} line2={item.instructions} icon={item.type} result={item.result} summary={summary} />
               )
             }
             else{
