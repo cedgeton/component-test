@@ -62,9 +62,7 @@ export default class IssueContent extends React.Component {
         renderJumpLinks(issues),
         issues.map(function(issue, i){
            return(
-            <IssueBox id={"issue"+i}>
-              <Issue issue={issue} summary />
-            </IssueBox>
+            <Issue id={"issue"+i} issue={issue} summary />
           )
         })
     ])

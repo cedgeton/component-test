@@ -10,6 +10,7 @@ import Loader from './components/Loader';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
 import {Input} from './components/Form';
+import Issue from './components/Issue';
 import Modal, {ModalProviders} from './components/Modal';
 
 import Code from './components/Code';
@@ -142,7 +143,7 @@ function loremFunction(){
 
 }
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue};
 
 class Guide extends Component {
   render() {
@@ -202,6 +203,7 @@ class Guide extends Component {
             </Column>
           </Columns>
         </Topic>
+
         <TopicTitle>
           <SubTitle>Component</SubTitle>
           <Header level={0} >Button</Header>
@@ -559,6 +561,70 @@ class Guide extends Component {
 />`}
             />
 
+          </ComponentType>
+          <ComponentType>
+            <ComponentTitle>Issue Module <span>Summary</span></ComponentTitle>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Code
+              p='15%'
+              scope={scope}
+              code={`const issue = {
+  title: "Possible Atrial Standstill",
+  favorite: true,
+  status: "high",
+  assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
+  planItems: [
+      {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
+      {name:"NT-proBNP", type:"lab", result:"Abnormal"},
+      {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
+      {name:"Troponin T", type:"lab"},
+    ],
+  goals: [
+    'Lower Cholesterol to 185 mg/dL',
+    'Lose 10lb (145b)'
+  ],
+  workflows: [
+    'Lorem Ipsum Doler',
+    'Sit Amet rap airhorn'
+  ],
+  notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
+};
+
+render(<Issue issue={issue} summary />)`}
+              noInline
+            />
+          </ComponentType>
+          <ComponentType>
+            <ComponentTitle>Issue Module <span>Full</span></ComponentTitle>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Code
+              p='15%'
+              scope={scope}
+              code={`const issue = {
+  title: "Possible Atrial Standstill",
+  favorite: true,
+  status: "high",
+  assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
+  planItems: [
+      {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
+      {name:"NT-proBNP", type:"lab", result:"Abnormal"},
+      {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
+      {name:"Troponin T", type:"lab"},
+    ],
+  goals: [
+    'Lower Cholesterol to 185 mg/dL',
+    'Lose 10lb (145b)'
+  ],
+  workflows: [
+    'Lorem Ipsum Doler',
+    'Sit Amet rap airhorn'
+  ],
+  notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
+};
+
+render(<Issue issue={issue} />)`}
+              noInline
+            />
           </ComponentType>
         </Topic>
       </Content>

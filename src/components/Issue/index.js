@@ -9,7 +9,7 @@ import PlanItem from './planItem.js';
 
 const TitleSection = styled.div`
     background: transparent;
-    span.summary & {
+    .summary & {
       padding: 16px;
       border-bottom: 1px solid ${Colors.grey.c400};
       border-radius: 2px 2px 0 0;
@@ -32,7 +32,7 @@ const Assessment = styled.span`
     margin-bottom: 24px;
     display: block;
 
-    span.summary & {
+    .summary & {
       font-weight: 300;
       color: #7A838E;
       line-height: 18px;
@@ -63,7 +63,7 @@ const Goal = styled.div`
 `;
 const TitleBull = styled(Bull)`
     margin-left: -15px;
-    span.summary & {
+    .summary & {
       margin-left: 0;
     }
 `;
@@ -82,6 +82,20 @@ const NotesTitle = styled.div`
     color: ${Colors.black.c400};
     line-height: 24px;
 `;
+const IssueHolder = styled.div`
+  text-align: left;
+  background: #fff;
+  &.summary{
+    text-align: left;
+    background: ${Colors.grey.c200};
+    border: 1px solid ${Colors.grey.c400};
+    box-shadow: 0 0 1px 0 rgba(10,31,68,0.08), 0 3px 4px 0 rgba(10,31,68,0.10);
+    margin: 21px 18px;
+    padding-bottom: 21px;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+`;
 
 export default class Issue extends React.Component {
   render(){
@@ -89,7 +103,7 @@ export default class Issue extends React.Component {
     var items = issue.planItems
     var summary = this.props.summary
     return (
-      <span className={summary? "issue summary" : "issue"}>
+      <IssueHolder className={summary? "issue summary" : "issue"} id={this.props.id}>
         <TitleSection>
           {!summary &&
             <IconClose name="close" color={Colors.black.c200} w={18} />
@@ -132,7 +146,7 @@ export default class Issue extends React.Component {
             {issue.notes}
           </Notes>
         }
-      </span>
+      </IssueHolder>
     )
   }
 }

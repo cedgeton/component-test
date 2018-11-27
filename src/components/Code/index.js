@@ -5,11 +5,14 @@ import {LiveProvider, LiveEditor, LiveError, LivePreview} from 'react-live'
 
 
 const StyledLivePreview = styled(LivePreview)`
-  padding: 20px 30%;
+  padding: 20px ${props => props.p ? props.p : '30%'};
   border: 1px solid ${Colors.grey.c400};
   border-radius: 2px 2px 0 0;
   background: ${Colors.grey.c200};
   text-align: center;
+  .issue:not(.summary){
+    padding: 26px 26px 32px;
+  }
 `;
 const StyledLiveEditor = styled(LiveEditor)`
   &.prism-code{
@@ -37,9 +40,9 @@ const StyledLiveError = styled(LiveError)`
 
 export default class CodeObj extends React.Component {
   render(){
-    return (<LiveProvider code={this.props.code} scope={this.props.scope}>
+    return (<LiveProvider code={this.props.code} scope={this.props.scope} noInline={this.props.noInline}>
       <StyledLiveError />
-      <StyledLivePreview />
+      <StyledLivePreview p={this.props.p} />
       <StyledLiveEditor />
     </LiveProvider>
     )
