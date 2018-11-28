@@ -61,7 +61,7 @@ const HeaderStyle = styled.div`
         return '500'
   }}};
   color: ${Colors.black.c800};
-  margin: 0;
+  margin: 0 0 5px;
 `;
 
 export class Header extends React.Component {

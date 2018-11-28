@@ -85,7 +85,6 @@ const RightContent = styled.div`
 
 
 function renderItemIcon(icon){
-  console.log(icon)
   if(icon === "suggestion"){
     return <SuggestionIcon />
   }else{

@@ -8,13 +8,16 @@ const SubTitle = styled.div`
   color: ${Colors.grey.c900};
   line-height: 20px;
 `;
+const StyledHeader = styled(Header)`
+  margin:0;
+`;
 
 export default class PageTitle extends React.Component {
 
   render(){
     return (
       <span>
-        <Header>{this.props.title}</Header>
+        <StyledHeader>{this.props.title}</StyledHeader>
         <SubTitle>{this.props.subTitle}</SubTitle>
       </span>
     )

@@ -9,7 +9,7 @@ import icons from './components/Icon/icons.js';
 import Loader from './components/Loader';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
-import {Input} from './components/Form';
+import {Input, InputGroup, Textarea} from './components/Form';
 import Issue from './components/Issue';
 import TableRow from './components/TableRow';
 import Modal, {ModalProviders} from './components/Modal';
@@ -148,7 +148,7 @@ function loremFunction(){
 
 }
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea};
 
 class Guide extends Component {
   render() {
@@ -385,6 +385,101 @@ class Guide extends Component {
             </Column>
           </div>
           <Clear />
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Form</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Header level={1}>Input</Header>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
+                {property:'type', description:'Input type', type: 'string', options: ['text', 'number', 'date', 'time', 'email', 'password', 'url', 'tel', 'range', 'file'], default: 'text'},
+                {property:'value', description:'Default value of the input', type: 'string', options: [], default: ''},
+                {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
+                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+                {property:'max', description:'Maximum value for an input field', type: 'num', options: [], default: ''},
+                {property:'min', description:'Maximum value for an input field', type: 'num', options: [], default: ''},
+                {property:'step', description:'The legal number intervals for an input field', type: 'num', options: [], default: ''},
+                {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Input label='Name' type='text' placeholder='First and Last Name' />`}
+          />
+          <br /><br />
+          <ComponentType>
+            <Header level={1}>Textarea</Header>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
+                {property:'value', description:'Default value of the input', type: 'string', options: [], default: ''},
+                {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
+                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+                {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Textarea label='Name' placeholder='First and Last Name' />`}
+          />
+          <br /><br />
+          <ComponentType>
+            <Header level={1}>InputGroup</Header>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
+                {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <Columns>
+            <Column>
+              <ComponentTitle>Code</ComponentTitle>
+              <Code
+                p={'30px'}
+                scope={scope}
+                code={`<InputGroup>
+  <Input label='Name' placeholder='First and Last Name' />
+  <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
+  <Input label='Email' type='email' placeholder='name@email.com' />
+  <Textarea label='Name' placeholder='First and Last Name' />
+</InputGroup>`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Horizontal Layout</span></ComponentTitle>
+              <Code
+                p={'30px'}
+                scope={scope}
+                code={`<InputGroup layout='horizontal'>
+  <Input label='Name' placeholder='First and Last Name' />
+  <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
+  <Input label='Email' type='email' placeholder='name@email.com' />
+  <Textarea label='Name' placeholder='First and Last Name' />
+</InputGroup>`}
+              />
+            </Column>
+          </Columns>
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
