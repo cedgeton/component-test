@@ -9,7 +9,7 @@ import icons from './components/Icon/icons.js';
 import Loader from './components/Loader';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
-import {Input, InputGroup, Textarea} from './components/Form';
+import {Input, InputGroup, Textarea, Checkbox} from './components/Form';
 import Issue from './components/Issue';
 import TableRow from './components/TableRow';
 import Modal, {ModalProviders} from './components/Modal';
@@ -148,7 +148,7 @@ function loremFunction(){
 
 }
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox};
 
 class Guide extends Component {
   render() {
@@ -368,7 +368,7 @@ class Guide extends Component {
               </tbody>
             </table>
           </Table>
-          <div>
+          <Columns>
             <Column>
               <ComponentTitle>Code <span>Icon</span></ComponentTitle>
               <Code
@@ -383,7 +383,7 @@ class Guide extends Component {
                 code={`<Icon name={'activity'} color={Colors.white} bg={Colors.blue} w={30} p={4} />`}
               />
             </Column>
-          </div>
+          </Columns>
           <Clear />
         </Topic>
         <TopicTitle>
@@ -391,6 +391,41 @@ class Guide extends Component {
           <Header level={0} >Form</Header>
         </TopicTitle>
         <Topic>
+          <ComponentType>
+            <Header level={1}>Checkbox</Header>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
+                {property:'GroupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
+                {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
+                {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
+                {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
+                {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
+                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+              ]}
+            />
+          </Table>
+          <Columns>
+            <Column>
+              <ComponentTitle>Code <span>Checkbox</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Checkbox label='Save for Later' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Checkbox with Group Label</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Checkbox label='I agree' groupLabel='Privacy Policy' />`}
+              />
+            </Column>
+          </Columns>
+          <br /><br />
           <ComponentType>
             <Header level={1}>Input</Header>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
@@ -402,6 +437,7 @@ class Guide extends Component {
                 {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
                 {property:'type', description:'Input type', type: 'string', options: ['text', 'number', 'date', 'time', 'email', 'password', 'url', 'tel', 'range', 'file'], default: 'text'},
                 {property:'value', description:'Default value of the input', type: 'string', options: [], default: ''},
+                {property:'id', description:'A unique identifier for the input. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
                 {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
                 {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
                 {property:'max', description:'Maximum value for an input field', type: 'num', options: [], default: ''},
@@ -425,8 +461,9 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
-                {property:'value', description:'Default value of the input', type: 'string', options: [], default: ''},
+                {property:'label', description:'Label for the textarea', type: 'string', options: [], default: ''},
+                {property:'value', description:'Default value of the textarea', type: 'string', options: [], default: ''},
+                {property:'id', description:'A unique identifier for the textarea. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
                 {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
                 {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
                 {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
@@ -436,7 +473,7 @@ class Guide extends Component {
           <ComponentTitle>Code</ComponentTitle>
           <Code
             scope={scope}
-            code={`<Textarea label='Name' placeholder='First and Last Name' />`}
+            code={`<Textarea label='Other' placeholder='More information' />`}
           />
           <br /><br />
           <ComponentType>
@@ -448,6 +485,7 @@ class Guide extends Component {
             <PropTable
               properties = {[
                 {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
+                {property:'layout', description:'Layout of the form group', type: 'string', options: ['vertical', 'horizontal'], default: 'vertical'},
                 {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
               ]}
             />
@@ -462,7 +500,8 @@ class Guide extends Component {
   <Input label='Name' placeholder='First and Last Name' />
   <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
   <Input label='Email' type='email' placeholder='name@email.com' />
-  <Textarea label='Name' placeholder='First and Last Name' />
+  <Textarea label='Other' placeholder='More information' />
+  <Checkbox label='I agree' groupLabel='Privacy Policy' />
 </InputGroup>`}
               />
             </Column>
@@ -475,7 +514,8 @@ class Guide extends Component {
   <Input label='Name' placeholder='First and Last Name' />
   <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
   <Input label='Email' type='email' placeholder='name@email.com' />
-  <Textarea label='Name' placeholder='First and Last Name' />
+  <Textarea label='Other' placeholder='More information' />
+  <Checkbox label='I agree' groupLabel='Privacy Policy' />
 </InputGroup>`}
               />
             </Column>
@@ -778,7 +818,7 @@ render(<Issue issue={issue} summary />)`}
           <ComponentType>
           <ComponentTitle><span>Full Issue</span></ComponentTitle>
           <Code
-              p='15%'
+              p='10%'
               scope={scope}
               code={`const issue = {
   title: "Possible Atrial Standstill",
