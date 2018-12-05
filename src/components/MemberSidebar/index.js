@@ -51,7 +51,7 @@ export default class MemberSidebar extends React.Component {
     return (
       <Sidebar>
         <AvaHolder>
-          <HeaderAvatar type='default-profile' size='medium' />
+          <HeaderAvatar type='defaultProfile' size='medium' />
         </AvaHolder>
         <MenuHolder>
           <MenuIcon name="event" color={iconColor} w={24} />

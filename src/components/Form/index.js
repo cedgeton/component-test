@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Colors}  from '../../components/System';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
+import {Colors}  from '../../components/System';
 
 
 function getCheckShape(checked, color){
@@ -19,11 +20,13 @@ function getCheckShape(checked, color){
     </svg>')`
   }
 }
+function getUniqueID(string){
+  return _.uniqueId(string.replace(/\s/g, '-')+'_')
+}
 
 const Group = styled.div`
   display: block;
   text-align: left;
-  width: ${props => props.w};
   &.horizontal-label{
     display:grid;
     grid-template-columns: min-content 1fr;
@@ -176,16 +179,30 @@ const InputHolder = styled.div`
 `;
 
 export class InputGroup extends React.Component {
+  static defaultProps = {
+    layout: 'vertical',
+  }
+
   render(){
     return(
-      <Group className={this.props.layout === 'horizontal' ? 'horizontal-label' : ''} w={this.props.w} >
+      <Group className={this.props.layout === 'horizontal' ? 'horizontal-label' : ''} >
         {this.props.children}
       </Group>
     )
   }
 }
+InputGroup.propTypes = {
+  layout: PropTypes.oneOf(['horizontal','vertical']),
+}
+
 
 export class Checkbox extends React.Component {
+  static defaultProps = {
+    checked: false,
+    disabled: false,
+    required: false,
+  }
+
   render(){
     var labels = this.props.label.isArray? this.props.label : [this.props.label]
     return(
@@ -193,7 +210,7 @@ export class Checkbox extends React.Component {
         <CheckLabel>{this.props.groupLabel}</CheckLabel>
         <CheckWrap>
           {_.map(labels, function(label, i){
-            var uniqueID = label.id? label.id : _.uniqueId(label.replace(/\s/g, '-')+'_');
+            var uniqueID = label.id? label.id : getUniqueID(label);
             return (
               <Label htmlFor={uniqueID} disabled={label.disabled} key={i} >
                 <StyledCheckbox
@@ -212,10 +229,25 @@ export class Checkbox extends React.Component {
     )
   }
 }
+Checkbox.propTypes = {
+  label: PropTypes.string,
+  groupLabel: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+}
 
 export class Input extends React.Component {
+  static defaultProps = {
+    type: 'text',
+    disabled: false,
+    required: false,
+  }
+
   render(){
-    var uniqueID = this.props.id? this.props.id : _.uniqueId(this.props.label.replace(/\s/g, '-')+'_')
+    var uniqueID = this.props.id? this.props.id : getUniqueID(this.props.label)
     return(
       <InputHolder>
         <Label htmlFor={uniqueID}>{this.props.label}</Label>
@@ -234,10 +266,26 @@ export class Input extends React.Component {
     )
   }
 }
+Input.propTypes = {
+  label: PropTypes.string,
+  type: PropTypes.oneOf(['text', 'number', 'date', 'time', 'email', 'password', 'url', 'tel', 'range', 'file']),
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  step: PropTypes.number,
+  placeholder: PropTypes.string,
+}
+
 
 export class Textarea extends React.Component {
+  static defaultProps = {
+    disabled: false,
+    required: false,
+  }
+
   render(){
-    var uniqueID = this.props.id? this.props.id : _.uniqueId(this.props.label.replace(/\s/g, '-')+'_')
+    var uniqueID = this.props.id? this.props.id : getUniqueID(this.props.label)
     return(
       <InputHolder className='textarea-holder'>
         <Label htmlFor={uniqueID}>{this.props.label}</Label>
@@ -255,4 +303,11 @@ export class Textarea extends React.Component {
       </InputHolder>
     )
   }
+}
+Textarea.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  placeholder: PropTypes.string,
 }

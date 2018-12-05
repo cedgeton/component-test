@@ -463,12 +463,12 @@ class Guide extends Component {
             <PropTable
               properties = {[
                 {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
-                {property:'GroupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
+                {property:'groupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
                 {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
                 {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
                 {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
                 {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
-                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+                {property:'required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
               ]}
             />
           </Table>
@@ -497,9 +497,7 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
                 {property:'layout', description:'Layout of the form group', type: 'string', options: ['vertical', 'horizontal'], default: 'vertical'},
-                {property:'placeholder', description:'Text for the placeholder text', type: 'string', options: [], default: ''},
               ]}
             />
           </Table>
@@ -574,9 +572,9 @@ class Guide extends Component {
             <Avatar size='small' type='icon' content='activity' />
             <Avatar size='medium' type='icon' content='activity' />
             <Avatar size='large' type='icon' content='activity' />
-            <Avatar size='small' type='default-profile' color='purple' />
-            <Avatar size='medium' type='default-profile' color='purple' />
-            <Avatar size='large' type='default-profile' color='purple' />
+            <Avatar size='small' type='defaultProfile' color='purple' />
+            <Avatar size='medium' type='defaultProfile' color='purple' />
+            <Avatar size='large' type='defaultProfile' color='purple' />
             <Avatar size='small' content='ce' color='red' />
             <Avatar size='medium' content='ce' color='red' />
             <Avatar size='large' content='ce' color='red' />
@@ -591,7 +589,7 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'default-profile', 'image'], default: 'initials'},
+                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'defaultProfile', 'image'], default: 'initials'},
                 {property:'color', description:'Color of avatar', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
                 {property:'size', description:'The size of the avater', type: 'string', options: ['small', 'medium', 'large'], default: 'large'},
                 {property:'content', description:'The name of the icon for type icon or the initials for type intials', type: 'string', options: [], default: ''},
@@ -611,7 +609,7 @@ class Guide extends Component {
               <ComponentTitle>Code <span>Default Profile</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Avatar size='large' type='default-profile' color='purple' />`}
+                code={`<Avatar size='large' type='defaultProfile' color='purple' />`}
               />
             </Column>
           </Columns>

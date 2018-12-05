@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {Colors}  from '../../components/System';
 import Icon  from '../../components/Icon';
 
@@ -20,7 +21,7 @@ const Ava = styled.div`
   background: ${props => {
     if(props.type === 'image'){
       return 'url('+props.url+')'
-    }else if(props.type === 'default-profile'){
+    }else if(props.type === 'defaultProfile'){
       return
     }else{return getColor(props.color)}
   }};
@@ -52,10 +53,11 @@ function getWidth(size){
   switch(size) {
       case 'small':
         return {w:17, p:6};
-      case 'medium':
-        return {w:30, p:8};
+      case 'large':
+        return {w:38, p:12};
       default:
-        return {w:38, p:12}
+        return {w:30, p:8};
+
   }
 }
 function getColor(color){
@@ -79,7 +81,7 @@ function getContent(type, content, size, color){
   switch(type) {
       case 'icon':
         return <Icon name={content} color={Colors.white} w={width.w} p={width.w*.11} />;
-      case 'default-profile':
+      case 'defaultProfile':
         return <Icon name={'profile-circle'} color={getColor(color)} w={width.w+width.p} />
       case 'image':
         return
@@ -94,10 +96,18 @@ function randomImage(){
   return 'http://placekitten.com/'+random+'/'+random
 }
 
-export default class Avatar extends React.Component {
+class Avatar extends React.Component {
+  static defaultProps = {
+    type: 'initials',
+    color: 'blue',
+    size: 'medium',
+    content: '',
+    url: randomImage()
+  }
+
   render(){
     return(
-      <Ava size={this.props.size} w={getWidth(this.props.size).w} color={this.props.color} type={this.props.type} url={this.props.url? this.props.url : randomImage()} className={this.props.className}>
+      <Ava size={this.props.size} w={getWidth(this.props.size).w} color={this.props.color} type={this.props.type} url={this.props.url} className={this.props.className}>
         <ContentContainer>
           <AvaText>{getContent(this.props.type, this.props.content, this.props.size, this.props.color)}</AvaText>
         </ContentContainer>
@@ -105,3 +115,12 @@ export default class Avatar extends React.Component {
     )
   }
 }
+Avatar.propTypes = {
+  type: PropTypes.oneOf(['initials','icon','defaultProfile','image']),
+  color: PropTypes.oneOf(['blue','green','yellow','red','purple','grey']),
+  size: PropTypes.oneOf(['small','medium','large']),
+  content: PropTypes.string,
+  url: PropTypes.string
+}
+
+export default Avatar
