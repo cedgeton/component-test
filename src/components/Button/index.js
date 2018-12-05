@@ -1,5 +1,6 @@
 import React from 'react';
 import styled  from 'styled-components';
+import PropTypes from 'prop-types';
 import {Colors}  from '../../components/System';
 import Icon  from '../../components/Icon';
 import Color  from 'color';
@@ -67,12 +68,19 @@ const ButtonWrapper = styled.button`
 `;
 
 
-export default class Button extends React.Component {
+class Button extends React.Component {
+  static defaultProps = {
+    style: 'primary',
+    type: 'button',
+    size: 'medium',
+    outline: false,
+    disabled: false
+  }
 
   render(){
     return(
       <ButtonWrapper
-        buttonStyle = {ButtonColors[this.props.style] != null ? this.props.style : 'primary'}
+        buttonStyle = {ButtonColors[this.props.style] != null ? this.props.style : Button.defaultProps.style}
         disabled    = {this.props.disabled && 'disabled'}
         type        = {this.props.type}
         size        = {this.props.size}
@@ -84,3 +92,12 @@ export default class Button extends React.Component {
     )
   }
 }
+Button.propTypes = {
+  style: PropTypes.oneOf(['primary','secondary','confirm','destroy','cancel']),
+  type: PropTypes.oneOf(['button','submit']),
+  size: PropTypes.oneOf(['small','medium']),
+  outline: PropTypes.bool,
+  disabled: PropTypes.bool,
+}
+
+export default Button;

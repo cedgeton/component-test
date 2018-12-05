@@ -74,7 +74,7 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
     grid-row: span 1;
   }
   & + ${LabelWrapper}::before{
-    background:${getCheckShape(false, Colors.black.c200)} no-repeat;
+    background:${getCheckShape(false, Colors.grey.c500)} no-repeat;
     background-position: left center;
     vertical-align: top;
   }
@@ -84,10 +84,10 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
     vertical-align: top;
   }
   &:checked:disabled + ${LabelWrapper}::before{
-    background-image: ${getCheckShape(true, Colors.grey.c400)};
+    background-image: ${getCheckShape(true, Colors.grey.c300)};
   }
   &:disabled + ${LabelWrapper}::before{
-    background-image: ${getCheckShape(false, Colors.grey.c400)};
+    background-image: ${getCheckShape(false, Colors.grey.c300)};
   }
 `;
 const CheckLabel = styled.span`

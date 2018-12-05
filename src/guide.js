@@ -388,14 +388,14 @@ class Guide extends Component {
               <ComponentTitle>Code <span>Icon</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Icon name={'activity'} color={Colors.blue} w={30} />`}
+                code={`<Icon name='activity' color={Colors.blue} w={30} />`}
               />
             </Column>
             <Column>
               <ComponentTitle>Code <span>Icon with Background</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Icon name={'activity'} color={Colors.white} bg={Colors.blue} w={30} p={4} />`}
+                code={`<Icon name='activity' color={Colors.white} bg={Colors.blue} w={30} p={4} />`}
               />
             </Column>
           </Columns>
@@ -406,41 +406,6 @@ class Guide extends Component {
           <Header level={0} >Form</Header>
         </TopicTitle>
         <Topic>
-          <ComponentType>
-            <Header level={1}>Checkbox</Header>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
-          </ComponentType>
-          <Table>
-            <ComponentTitle>Props</ComponentTitle>
-            <PropTable
-              properties = {[
-                {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
-                {property:'GroupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
-                {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
-                {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
-                {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
-                {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
-                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
-              ]}
-            />
-          </Table>
-          <Columns>
-            <Column>
-              <ComponentTitle>Code <span>Checkbox</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Checkbox label='Save for Later' />`}
-              />
-            </Column>
-            <Column>
-              <ComponentTitle>Code <span>Checkbox with Group Label</span></ComponentTitle>
-              <Code
-                scope={scope}
-                code={`<Checkbox label='I agree' groupLabel='Privacy Policy' />`}
-              />
-            </Column>
-          </Columns>
-          <br /><br />
           <ComponentType>
             <Header level={1}>Input</Header>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
@@ -490,6 +455,41 @@ class Guide extends Component {
             scope={scope}
             code={`<Textarea label='Other' placeholder='More information' />`}
           />
+          <br /><br />
+          <ComponentType>
+            <Header level={1}>Checkbox</Header>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
+                {property:'GroupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
+                {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
+                {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
+                {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
+                {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
+                {property:'Required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+              ]}
+            />
+          </Table>
+          <Columns>
+            <Column>
+              <ComponentTitle>Code <span>Checkbox</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Checkbox label='Save for Later' />`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Checkbox with Group Label</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<Checkbox label='I agree' groupLabel='Privacy Policy' />`}
+              />
+            </Column>
+          </Columns>
           <br /><br />
           <ComponentType>
             <Header level={1}>InputGroup</Header>
@@ -663,9 +663,9 @@ class Guide extends Component {
                 p={'0px'}
                 scope={scope}
                 code={`<TableRow
-  title={'Sartorial typewriter banh mi'}
-  subtitle={'10mg tablet'}
-  line2={'Take once daily'}
+  title='Sartorial typewriter banh mi'
+  subtitle='10mg tablet'
+  line2='Take once daily'
 />`}
               />
             </Column>
@@ -675,11 +675,11 @@ class Guide extends Component {
                 p={'0px'}
                 scope={scope}
                 code={`<TableRow
-  title={'Fingerstache flexitarian'}
-  subtitle={'10mg tablet'}
-  line2={'Take once daily'}
-  icon={'medication'}
-  result={'Abmormal'}
+  title='Fingerstache flexitarian'
+  subtitle='10mg tablet'
+  line2='Take once daily'
+  icon='medication'
+  result='Abmormal'
 />`}
               />
             </Column>
