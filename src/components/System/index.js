@@ -31,6 +31,13 @@ export const Colors = {
     c200: '#F8F9FB',
     c100: '#FCFCFD',
   },
+  gradient: {
+    blueGreen: 'linear-gradient(45deg, #2D85FB 0%, #00C596 100%)',
+    bluePink: 'linear-gradient(45deg, #2D85FB 0%, #A600A3 100%)',
+    purplePink: 'linear-gradient(45deg, #735BFA 0%, #A600A3 100%)',
+    pinkRed: 'linear-gradient(45deg, #A600A3 0%, #EC4068 100%)',
+    pinkYellow: 'linear-gradient(45deg, #A602A2 0%, #FF8811 100%)',
+  }
 }
 
 

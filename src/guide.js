@@ -96,7 +96,10 @@ const ColorExample = styled.div`
   font-size: 11px;
   box-sizing: border-box;
   .greys &{
-    color: ${Colors.black.c600}
+    color: ${Colors.black.c700}
+  }
+  .gradients &{
+    padding: 10px 10px 165px;
   }
 `;
 const IconComponent = styled(Icon)`
@@ -163,21 +166,6 @@ class Guide extends Component {
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
             <Columns>
               <Column>
-                <SubTitle>Blacks</SubTitle>
-                {Object.keys(Colors.black).map(function(color, i){
-                  return <ColorExample bg={Colors.black[color]}>Black {color}</ColorExample>
-                })}
-              </Column>
-              <Column className="greys">
-                <SubTitle>Greys</SubTitle>
-                {Object.keys(Colors.grey).map(function(color, i){
-                  return <ColorExample bg={Colors.grey[color]}>Grey {color}</ColorExample>
-                })}
-              </Column>
-            </Columns>
-            <Clear />
-            <Columns>
-              <Column>
                 <SubTitle>Colors</SubTitle>
                 <ColorExample bg={Colors.red}>Red</ColorExample>
                 <ColorExample bg={Colors.yellow}>Yellow</ColorExample>
@@ -185,13 +173,38 @@ class Guide extends Component {
                 <ColorExample bg={Colors.blue}>Blue</ColorExample>
                 <ColorExample bg={Colors.purple}>Purple</ColorExample>
                 <ColorExample bg={Colors.pink}>Pink</ColorExample>
+                <SubTitle>Blacks</SubTitle>
+                {Object.keys(Colors.black).map(function(color, i){
+                  return <ColorExample bg={Colors.black[color]}>Black {color}</ColorExample>
+                })}
+                <div className="greys">
+                  <SubTitle>Greys</SubTitle>
+                  {Object.keys(Colors.grey).map(function(color, i){
+                    return <ColorExample bg={Colors.grey[color]}>Grey {color}</ColorExample>
+                  })}
+                </div>
+              </Column>
+              <Column className="gradients">
+                <SubTitle>Gradients</SubTitle>
+                {Object.keys(Colors.gradient).map(function(gradient, i){
+                  return <ColorExample bg={Colors.gradient[gradient]}>{gradient}</ColorExample>
+                })}
               </Column>
             </Columns>
             <Clear />
           </ComponentType>
           <Columns>
             <Column>
-              <ComponentTitle>Code</ComponentTitle>
+              <ComponentTitle>Code <span>Color</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<ColorExample bg={Colors.red}>
+  Red
+</ColorExample>`}
+              />
+            </Column>
+            <Column>
+              <ComponentTitle>Code <span>Sub Color</span></ComponentTitle>
               <Code
                 scope={scope}
                 code={`<ColorExample bg={Colors.black.c400}>
@@ -199,12 +212,14 @@ class Guide extends Component {
 </ColorExample>`}
               />
             </Column>
-            <Column>
-              <ComponentTitle>Code</ComponentTitle>
+          </Columns>
+          <Columns>
+            <Column className='gradient'>
+              <ComponentTitle>Code <span>Gradient</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<ColorExample bg={Colors.red}>
-  Red
+                code={`<ColorExample bg={Colors.gradient.bluePink}>
+  Blue Purple
 </ColorExample>`}
               />
             </Column>
