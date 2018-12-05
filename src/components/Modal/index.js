@@ -95,7 +95,7 @@ export default class Modal extends React.Component {
                 return (
                   <Button
                     style={action.style}
-                    onClick={this.toggleModal}>{action.text}</Button>
+                    onClick={this.toggleModal} key={i}>{action.text}</Button>
                 )
               }, this)}
             </Footer>

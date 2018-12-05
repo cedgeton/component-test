@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 import {Colors, Header} from '../../components/System';
 import Icon from '../../components/Icon';
 import Tag from '../../components/Tag';
@@ -117,22 +118,30 @@ export default class Issue extends React.Component {
         </TitleSection>
         {!summary && issue.goals &&
           <Goals>
-            {issue.goals.map(function(goal, i){
+            {_.map(issue.goals, function(goal, i){
               return(
-                <Goal><Tag text="Goal" bg="green" />{goal}</Goal>
+                <Goal key={i}><Tag text="Goal" bg="green" />{goal}</Goal>
               )
             })}
           </Goals>
         }
         <span>
-          {items.map(function(item, i){
+          {_.map(items, function(item, i){
             if (i<4 || !summary){
               return(
-                <TableRow title={item.name} subtitle={item.dosage} line2={item.instructions} icon={item.type} result={item.result} summary={summary} />
+                <TableRow
+                  title={item.name}
+                  subtitle={item.dosage}
+                  line2={item.instructions}
+                  icon={item.type}
+                  result={item.result}
+                  summary={summary}
+                  key={i}
+                />
               )
             }
             else{
-              return
+              return null
             }
           })}
         </span>

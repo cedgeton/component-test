@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../components/Icon';
-import Tag from '../../components/Tag';
 import PopoverSidebar from '../../components/PopoverSidebar';
-import PageTitle from '../../components/PageTitle';
 import Issue from '../../components/Issue';
 
 

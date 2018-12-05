@@ -39,7 +39,7 @@ const StyledBox = styled(Box)`
 
 
 
-export default class TagModule extends React.Component {
+export default class Module extends React.Component {
   render(){
     return (
       <StyledBox>

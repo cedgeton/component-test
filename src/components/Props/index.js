@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 const Option = styled.span`
   display: block;
@@ -20,15 +21,15 @@ export default class PropTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.properties.map(function(prop, i){
+          {_.map(this.props.properties, function(prop, i){
             return (
-              <tr>
+              <tr key={i}>
                 <td>{prop.property}</td>
                 <td>{prop.description}</td>
                 <td>{prop.type}</td>
                 <td>
-                  {prop.options.map(function(option, i){
-                    return <Option>{option}</Option>
+                  {_.map(prop.options, function(option, i){
+                    return <Option key={i}>{option}</Option>
                   })}
                 </td>
                 <td>{prop.default}</td>

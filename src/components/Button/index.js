@@ -2,7 +2,6 @@ import React from 'react';
 import styled  from 'styled-components';
 import PropTypes from 'prop-types';
 import {Colors}  from '../../components/System';
-import Icon  from '../../components/Icon';
 import Color  from 'color';
 
 const ButtonColors = {
@@ -16,22 +15,22 @@ const ButtonColors = {
 
 const ButtonWrapper = styled.button`
     background: ${props => props.outline ? 'transparent' : ButtonColors[props.buttonStyle].bg };
-    box-shadow: ${props => props.buttonStyle != 'cancel' ? '0 0 1px 0 rgba(10,31,68,0.08), 1px 1px 1px 0 rgba(10,31,68,0.08)': ''};
+    box-shadow: ${props => props.buttonStyle !== 'cancel' ? '0 0 1px 0 rgba(10,31,68,0.08), 1px 1px 1px 0 rgba(10,31,68,0.08)': ''};
     border-radius: 2px;
     outline: 0;
     cursor: pointer;
     font-weight: 500;
-    font-size: ${props => props.size == 'small' ? '11px' : '13px'};
-    color: ${props => (props.outline && props.buttonStyle != 'secondary') ? ButtonColors[props.buttonStyle].bg : ButtonColors[props.buttonStyle].text};
+    font-size: ${props => props.size === 'small' ? '11px' : '13px'};
+    color: ${props => (props.outline && props.buttonStyle !== 'secondary') ? ButtonColors[props.buttonStyle].bg : ButtonColors[props.buttonStyle].text};
     text-align: center;
-    line-height: ${props => props.size == 'small' ? '16px' : '18px'};
+    line-height: ${props => props.size === 'small' ? '16px' : '18px'};
     margin: 4px;
-    padding: ${props => props.size == 'small' ? '2px 10px' : '5px 17px'};
+    padding: ${props => props.size === 'small' ? '2px 10px' : '5px 17px'};
     box-sizing: border-box;
     border: 1px solid ${props =>
-      {if(props.outline && props.buttonStyle === 'secondary' && props.buttonStyle != 'cancel'){
+      {if(props.outline && props.buttonStyle === 'secondary' && props.buttonStyle !== 'cancel'){
           return ButtonColors[props.buttonStyle].text
-        } else if(props.outline && props.buttonStyle != 'cancel'){
+        } else if(props.outline && props.buttonStyle !== 'cancel'){
           return ButtonColors[props.buttonStyle].bg
         } else{
           return 'transparent';
@@ -70,7 +69,7 @@ const ButtonWrapper = styled.button`
 
 class Button extends React.Component {
   static defaultProps = {
-    style: 'primary',
+    buttonStyle: 'primary',
     type: 'button',
     size: 'medium',
     outline: false,
@@ -80,7 +79,7 @@ class Button extends React.Component {
   render(){
     return(
       <ButtonWrapper
-        buttonStyle = {ButtonColors[this.props.style] != null ? this.props.style : Button.defaultProps.style}
+        buttonStyle = {ButtonColors[this.props.buttonStyle] != null ? this.props.buttonStyle : Button.defaultProps.buttonStyle}
         disabled    = {this.props.disabled && 'disabled'}
         type        = {this.props.type}
         size        = {this.props.size}
@@ -93,7 +92,7 @@ class Button extends React.Component {
   }
 }
 Button.propTypes = {
-  style: PropTypes.oneOf(['primary','secondary','confirm','destroy','cancel']),
+  buttonStyle: PropTypes.oneOf(['primary','secondary','confirm','destroy','cancel']),
   type: PropTypes.oneOf(['button','submit']),
   size: PropTypes.oneOf(['small','medium']),
   outline: PropTypes.bool,

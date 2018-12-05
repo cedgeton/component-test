@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
+import _ from 'lodash';
 import Module from './components/Module';
 import {Colors, Header}  from './components/System';
 import Tag from './components/Tag';
@@ -12,7 +13,7 @@ import Avatar from './components/Avatar';
 import {Input, InputGroup, Textarea, Checkbox} from './components/Form';
 import Issue from './components/Issue';
 import TableRow from './components/TableRow';
-import Modal, {ModalProviders} from './components/Modal';
+import Modal from './components/Modal';
 
 import Code from './components/Code';
 import PropTable from './components/Props';
@@ -146,10 +147,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
   if (index % 2 === 0)
     result.push(array.slice(index, index + 2));
     return result;
-  }, []);
-function loremFunction(){
-
-}
+}, []);
 
 const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox};
 
@@ -174,20 +172,20 @@ class Guide extends Component {
                 <ColorExample bg={Colors.purple}>Purple</ColorExample>
                 <ColorExample bg={Colors.pink}>Pink</ColorExample>
                 <SubTitle>Blacks</SubTitle>
-                {Object.keys(Colors.black).map(function(color, i){
-                  return <ColorExample bg={Colors.black[color]}>Black {color}</ColorExample>
+                {_.map(Object.keys(Colors.black),function(black, i){
+                  return <ColorExample bg={Colors.black[black]} key={i}>Black {black}</ColorExample>
                 })}
                 <div className="greys">
                   <SubTitle>Greys</SubTitle>
-                  {Object.keys(Colors.grey).map(function(color, i){
-                    return <ColorExample bg={Colors.grey[color]}>Grey {color}</ColorExample>
+                  {_.map(Object.keys(Colors.grey), function(grey, i){
+                    return <ColorExample bg={Colors.grey[grey]} key={i}>Grey {grey}</ColorExample>
                   })}
                 </div>
               </Column>
               <Column className="gradients">
                 <SubTitle>Gradients</SubTitle>
-                {Object.keys(Colors.gradient).map(function(gradient, i){
-                  return <ColorExample bg={Colors.gradient[gradient]}>{gradient}</ColorExample>
+                {_.map(Object.keys(Colors.gradient), function(gradient, i){
+                  return <ColorExample bg={Colors.gradient[gradient]} key={i}>{gradient}</ColorExample>
                 })}
               </Column>
             </Columns>
@@ -233,15 +231,15 @@ class Guide extends Component {
         <Topic>
           <ComponentType>
             <SubGroup>
-              <Button style='primary'>Button</Button>
-              <Button style='secondary'>Button</Button>
-              <Button style='confirm'>Button</Button>
-              <Button style='destroy'>Button</Button>
-              <Button style='primary' outline>Button</Button>
-              <Button style='secondary' outline>Button</Button>
-              <Button style='confirm' outline>Button</Button>
-              <Button style='destroy' outline>Button</Button>
-              <Button style='cancel'>Cancel</Button>
+              <Button buttonStyle='primary'>Button</Button>
+              <Button buttonStyle='secondary'>Button</Button>
+              <Button buttonStyle='confirm'>Button</Button>
+              <Button buttonStyle='destroy'>Button</Button>
+              <Button buttonStyle='primary' outline>Button</Button>
+              <Button buttonStyle='secondary' outline>Button</Button>
+              <Button buttonStyle='confirm' outline>Button</Button>
+              <Button buttonStyle='destroy' outline>Button</Button>
+              <Button buttonStyle='cancel'>Cancel</Button>
             </SubGroup>
             <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
           </ComponentType>
@@ -249,7 +247,7 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'style', description:'The style of the button', type: 'string', options: ['primary', 'secondary', 'confirm', 'destroy', 'cancel'], default: 'primary'},
+                {property:'buttonStyle', description:'The style of the button', type: 'string', options: ['primary', 'secondary', 'confirm', 'destroy', 'cancel'], default: 'primary'},
                 {property:'type', description:'The type of the button', type: 'string', options: ['button', 'submit'], default: 'button'},
                 {property:'size', description:'The size of the button', type: 'string', options: ['small', 'medium'], default: 'medium'},
                 {property:'outline', description:'Gives the button an outline and a transparent background', type: 'bool', options: [], default: 'false'},
@@ -260,7 +258,7 @@ class Guide extends Component {
           <ComponentTitle>Code</ComponentTitle>
           <Code
             scope={scope}
-            code={`<Button style='primary'>Button</Button>`}
+            code={`<Button buttonStyle='primary'>Button</Button>`}
           />
         </Topic>
         <TopicTitle>
@@ -340,7 +338,7 @@ class Guide extends Component {
         </TopicTitle>
         <Topic>
           {iconKeys.map(function(icon, i){
-            return <IconComponent name={icon} color={Colors.grey.c800} />
+            return <IconComponent name={icon} color={Colors.grey.c800} key={i} />
           })}
           <ComponentType>
             <ComponentTitle topMargin >Icon Set</ComponentTitle>
@@ -372,7 +370,7 @@ class Guide extends Component {
               <tbody>
                 {tableKeys.map(function(icon, i){
                   return (
-                    <tr>
+                    <tr key={i}>
                       <td><IconComponent name={icon[0]} color={Colors.grey.c800} w={25} /></td>
                       <td>{icon[0]}</td>
                       <td><IconComponent name={icon[1]} color={Colors.grey.c800} w={25} /></td>

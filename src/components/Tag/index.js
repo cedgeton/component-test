@@ -32,7 +32,7 @@ const Tag = styled.span`
       default:
           return Colors.blue
   }}};
-  color: ${props => props.bg == 'grey' ? Colors.black.c400 : Colors.white};
+  color: ${props => props.bg === 'grey' ? Colors.black.c400 : Colors.white};
 `;
 
 export default class TagObj extends React.Component {

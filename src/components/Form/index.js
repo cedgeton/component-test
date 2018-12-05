@@ -177,7 +177,6 @@ const InputHolder = styled.div`
 
 export class InputGroup extends React.Component {
   render(){
-    var uniqueID = _.uniqueId(this.props.label+'_')
     return(
       <Group className={this.props.layout === 'horizontal' ? 'horizontal-label' : ''} w={this.props.w} >
         {this.props.children}
@@ -193,10 +192,10 @@ export class Checkbox extends React.Component {
       <InputHolder>
         <CheckLabel>{this.props.groupLabel}</CheckLabel>
         <CheckWrap>
-          {labels.map(function(label, i){
+          {_.map(labels, function(label, i){
             var uniqueID = label.id? label.id : _.uniqueId(label.replace(/\s/g, '-')+'_');
             return (
-              <Label for={uniqueID} disabled={label.disabled}>
+              <Label htmlFor={uniqueID} disabled={label.disabled} key={i} >
                 <StyledCheckbox
                   checked={label.checked}
                   disabled={label.disabled}
@@ -219,7 +218,7 @@ export class Input extends React.Component {
     var uniqueID = this.props.id? this.props.id : _.uniqueId(this.props.label.replace(/\s/g, '-')+'_')
     return(
       <InputHolder>
-        <Label for={uniqueID}>{this.props.label}</Label>
+        <Label htmlFor={uniqueID}>{this.props.label}</Label>
         <StyledInput
           type={this.props.type}
           placeholder={this.props.placeholder}
@@ -241,7 +240,7 @@ export class Textarea extends React.Component {
     var uniqueID = this.props.id? this.props.id : _.uniqueId(this.props.label.replace(/\s/g, '-')+'_')
     return(
       <InputHolder className='textarea-holder'>
-        <Label for={uniqueID}>{this.props.label}</Label>
+        <Label htmlFor={uniqueID}>{this.props.label}</Label>
         <StyledTextarea
           type={this.props.type}
           placeholder={this.props.placeholder}

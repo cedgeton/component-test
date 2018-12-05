@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Colors}  from '../../components/System';
 import Icon from '../../components/Icon';
-import Bull from '../Module/Bull.js';
-import RiskStatus from '../../components/RiskStatus';
 
 const Item = styled.div`
   display: grid;

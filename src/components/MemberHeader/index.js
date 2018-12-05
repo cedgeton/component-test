@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../components/Icon';
 import {Colors} from '../../components/System';
 
 const Header = styled.div`

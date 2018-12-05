@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 import Bull from '../Module/Bull.js';
 import RiskStatus from '../../components/RiskStatus';
 import {Colors}  from '../../components/System';
@@ -63,20 +64,20 @@ export default class PopoverSidebar extends React.Component {
     var selected = this.props.selected;
     return (
       <PopoverSidebarWrapper>
-        {this.props.links.map(function(group, i){
-          var selectedId = selected.group == group.group ? selected.id : null;
+        {_.map(this.props.links, function(group, i){
+          var selectedId = selected.group === group.group ? selected.id : null;
           return(
-            <div>
+            <div key={i}>
               <GroupTitle>{group.group}</GroupTitle>
               <PopoverLinks>
-                {group.array.map(function(item, i){
+                {_.map(group.array, function(item, i){
                   return (
-                    <li className={selectedId == i? "selected" : ""}>
+                    <li className={selectedId === i? "selected" : ""} key={i}>
                       {item.favorite ? (<ListBull>&bull;</ListBull>):("")}
                       <Link href={"#issue"+i}>{item.title}
                       <ListRiskStatus status={item.status} /></Link>
                     </li>
-                  )
+                    )
                 })}
               </PopoverLinks>
             </div>
