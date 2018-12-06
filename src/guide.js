@@ -351,7 +351,7 @@ class Guide extends Component {
                 {property:'color', description:'Hex code for the color for the icon.', type: 'string', options: [], default: '#000000'},
                 {property:'bg', description:'Hex code for the background color for the circle behind the icon.', type: 'string', options: [], default: 'transparent'},
                 {property:'name', description:'Name of the icon', type: 'string', options: ['See Table'], default: ''},
-                {property:'w', description:'Height & width of the circular icon', type: 'num', options: [], default: '30'},
+                {property:'w', description:'Total height & width of the circular icon including padding.', type: 'num', options: [], default: '30'},
                 {property:'p', description:'Padding of the icon', type: 'num', options: [], default: '0'},
               ]}
             />
