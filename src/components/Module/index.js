@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Icons from '../../components/Icon/icons.js';
 import Icon from '../../components/Icon';
+import PropTypes from 'prop-types';
 import {Colors} from '../../components/System';
 import Panel from './Panel.js';
 import TagContent from './Tags.js';
@@ -39,7 +41,7 @@ const StyledPanel = styled(Panel)`
 
 
 
-export default class Module extends React.Component {
+class Module extends React.Component {
   render(){
     return (
       <StyledPanel>
@@ -64,3 +66,22 @@ export default class Module extends React.Component {
     )
   }
 }
+Module.propTypes = {
+  title: PropTypes.string,
+  type: PropTypes.oneOf(['basic', 'tag', 'table', 'issues']),
+  category: PropTypes.oneOf(Object.keys(Icons)),
+  content: PropTypes.string,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      bg: PropTypes.oneOf(['blue', 'green', 'yellow', 'red', 'grey'])
+    })),
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      line2: PropTypes.string,
+    })),
+  issues: PropTypes.array
+}
+export default Module;

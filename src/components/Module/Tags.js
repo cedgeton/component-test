@@ -20,7 +20,6 @@ class TagContent extends React.Component {
     )
   }
 }
-
 TagContent.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
