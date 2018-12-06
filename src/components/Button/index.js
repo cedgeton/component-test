@@ -97,6 +97,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small','medium']),
   outline: PropTypes.bool,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Button;

@@ -253,6 +253,7 @@ class Guide extends Component {
                 {property:'size', description:'The size of the button', type: 'oneOf', options: ['small', 'medium'], default: 'medium'},
                 {property:'outline', description:'Gives the button an outline and a transparent background', type: 'bool', options: [], default: 'false'},
                 {property:'disabled', description:'Make the button disabled', type: 'bool', options: [], default: 'false'},
+                {property:'onClick', description:'The function to call when button is clicked', type: 'func', options: [], default: ''},
               ]}
             />
           </Table>
