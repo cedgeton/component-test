@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Colors}  from '../../components/System';
+import PropTypes from 'prop-types';
+import icons from '../../components/Icon/icons.js';
 import Icon from '../../components/Icon';
 
 const Item = styled.div`
@@ -90,7 +92,11 @@ function renderItemIcon(icon){
   }
 }
 
-export default class Issue extends React.Component {
+class TableRow extends React.Component {
+  static defaultProps = {
+    summary: false,
+  }
+
   render(){
     return (
       <Item icon={this.props.icon} className="tableRow">
@@ -109,3 +115,15 @@ export default class Issue extends React.Component {
     )
   }
 }
+var iconKeys = Object.keys(icons)
+iconKeys.push('suggestion')
+TableRow.propTypes = {
+  icon: PropTypes.oneOf(iconKeys),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  line2: PropTypes.string,
+  summary: PropTypes.bool,
+  result: PropTypes.string,
+}
+
+export default TableRow

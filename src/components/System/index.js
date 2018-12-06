@@ -1,5 +1,6 @@
 import React from 'react';
 import styled  from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const Colors = {
   blue: '#2D85FB',
@@ -72,8 +73,13 @@ const HeaderStyle = styled.div`
 `;
 
 export class Header extends React.Component {
+  static defaultProps = {
+    level: 1
+  }
   render(){
     return <HeaderStyle className={this.props.className} level={this.props.level}>{this.props.children}</HeaderStyle>
-
   }
+}
+Header.propTypes = {
+  level: PropTypes.number,
 }

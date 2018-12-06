@@ -44,7 +44,7 @@ const MenuIcon = styled(Icon)`
     }
   }
 `;
-export default class MemberSidebar extends React.Component {
+class MemberSidebar extends React.Component {
 
   render(){
     var iconColor = Colors.black.c300;
@@ -65,3 +65,4 @@ export default class MemberSidebar extends React.Component {
     )
   }
 }
+export default MemberSidebar

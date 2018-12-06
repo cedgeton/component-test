@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import TableRow from '../../components/TableRow';
 import _ from 'lodash';
 
@@ -7,7 +8,7 @@ const TableWrapper = styled.section`
 
 `;
 
-export default class TableContent extends React.Component {
+class TableContent extends React.Component {
   render(){
     var rows = this.props.rows;
     return (
@@ -19,3 +20,13 @@ export default class TableContent extends React.Component {
     )
   }
 }
+TableContent.propTypes = {
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      line2: PropTypes.string,
+    })
+  )
+}
+export default TableContent;

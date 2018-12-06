@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {Colors} from '../../components/System';
 
 const Header = styled.div`
@@ -23,8 +24,10 @@ const SubTitle = styled.div`
   color: ${Colors.black.c400};
   line-height: 16px;
 `;
+const sites = ['SF1', 'LA1', 'LA2', 'NY1', 'NY2', 'OC1']
+const mdList = ['Nate Favini', 'Barry Breaux']
 
-export default class MemberHeader extends React.Component {
+class MemberHeader extends React.Component {
 
   render(){
     return (
@@ -35,3 +38,12 @@ export default class MemberHeader extends React.Component {
     )
   }
 }
+MemberHeader.propTypes = {
+  name: PropTypes.string,
+  dob: PropTypes.string,
+  age: PropTypes.number,
+  gender: PropTypes.oneOf(['Male', 'Female']),
+  md: PropTypes.oneOf(mdList),
+  site: PropTypes.oneOf(sites),
+}
+export default MemberHeader

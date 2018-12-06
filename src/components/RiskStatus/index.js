@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Tag from '../../components/Tag';
 
 const RiskTag = styled(Tag)`
@@ -10,7 +11,7 @@ const RiskTag = styled(Tag)`
   border-radius: 2px;
 `;
 
-export default class RiskStatus extends React.Component {
+class RiskStatus extends React.Component {
   render(){
     if(this.props.status === "moderate"){
       return <RiskTag text="Medium" bg="grey" className={this.props.className} />
@@ -21,3 +22,7 @@ export default class RiskStatus extends React.Component {
     }
   }
 }
+RiskStatus.propTypes = {
+  status: PropTypes.oneOf(['moderate','high']),
+}
+export default RiskStatus

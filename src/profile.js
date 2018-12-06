@@ -152,7 +152,7 @@ class Profile extends Component {
         <MemberHeader
           name="Alexandre Paiva"
           dob="Nov 26, 1983"
-          age="34"
+          age={34}
           gender="Female"
           md="Nate Favini" site="SF1"
         />
