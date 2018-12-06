@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../components/Icon';
 import {Colors} from '../../components/System';
-import Box from './Box.js';
+import Panel from './Panel.js';
 import TagContent from './Tags.js';
 import IssueContent from './Issues.js';
 import TableContent from './Table.js';
@@ -33,7 +33,7 @@ const DefaultContent = styled.span`
     padding: 0 16px 16px;
     display: block;
 `;
-const StyledBox = styled(Box)`
+const StyledPanel = styled(Panel)`
     text-align: left;
 `;
 
@@ -42,7 +42,7 @@ const StyledBox = styled(Box)`
 export default class Module extends React.Component {
   render(){
     return (
-      <StyledBox>
+      <StyledPanel>
         {this.props.category &&
           <TitleIcon name={this.props.category} bg={Colors.grey.c300} color={Colors.grey.c800} w={28} p={4} />
         }
@@ -60,7 +60,7 @@ export default class Module extends React.Component {
             <DefaultContent>{this.props.content}</DefaultContent>
           )}
         </ModuleContent>
-      </StyledBox>
+      </StyledPanel>
     )
   }
 }

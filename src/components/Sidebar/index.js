@@ -5,15 +5,16 @@ import Bull from '../Module/Bull.js';
 import RiskStatus from '../../components/RiskStatus';
 import {Colors}  from '../../components/System';
 
-const PopoverSidebarWrapper = styled.div`
+const SidebarWrapper = styled.div`
   padding: 26px 0 28px 0;
   height: calc(100vh - 56px);
   overflow: auto;
   border-right: 1px solid ${Colors.grey.c400};
   background: #fff;
+  text-align: left;
 `;
 
-const PopoverLinks = styled.ul`
+const Links = styled.ul`
   text-align: left;
   padding: 0;
   margin: 0 0 40px;
@@ -59,17 +60,17 @@ const ListRiskStatus = styled(RiskStatus)`
   margin: 0 0 0 6px;
 `;
 
-export default class PopoverSidebar extends React.Component {
+export default class Sidebar extends React.Component {
   render(){
     var selected = this.props.selected;
     return (
-      <PopoverSidebarWrapper>
+      <SidebarWrapper>
         {_.map(this.props.links, function(group, i){
           var selectedId = selected.group === group.group ? selected.id : null;
           return(
             <div key={i}>
               <GroupTitle>{group.group}</GroupTitle>
-              <PopoverLinks>
+              <Links>
                 {_.map(group.array, function(item, i){
                   return (
                     <li className={selectedId === i? "selected" : ""} key={i}>
@@ -79,11 +80,11 @@ export default class PopoverSidebar extends React.Component {
                     </li>
                     )
                 })}
-              </PopoverLinks>
+              </Links>
             </div>
           )
         })}
-      </PopoverSidebarWrapper>
+      </SidebarWrapper>
     )
   }
 }

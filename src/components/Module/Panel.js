@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {Colors}  from '../../components/System';
 
-const Box = styled.section`
+const Panel = styled.section`
   margin: 21px 0 0 0;
   background: ${Colors.white};
   border: 1px solid ${Colors.grey.c400};
@@ -10,4 +10,4 @@ const Box = styled.section`
 `;
 
 
-export default Box;
+export default Panel;

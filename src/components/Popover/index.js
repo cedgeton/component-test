@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PopoverSidebar from '../../components/PopoverSidebar';
+import Sidebar from '../../components/Sidebar';
 import Issue from '../../components/Issue';
 
 
@@ -43,7 +43,7 @@ export default class Popover extends React.Component {
   render(){
     return ([
       <PopoverWrapper>
-        <PopoverSidebar links={this.props.links} selected={this.props.selected}  />
+        <Sidebar links={this.props.links} selected={this.props.selected}  />
         <PopoverContent>
           <Issue issue={this.props.selected.issue} />
         </PopoverContent>

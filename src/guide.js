@@ -8,6 +8,7 @@ import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
 import Loader from './components/Loader';
+import Sidebar from './components/Sidebar';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
 import {Input, InputGroup, Textarea, Checkbox} from './components/Form';
@@ -149,7 +150,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
 }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar};
 
 class Guide extends Component {
   render() {
@@ -247,9 +248,9 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'buttonStyle', description:'The style of the button', type: 'string', options: ['primary', 'secondary', 'confirm', 'destroy', 'cancel'], default: 'primary'},
-                {property:'type', description:'The type of the button', type: 'string', options: ['button', 'submit'], default: 'button'},
-                {property:'size', description:'The size of the button', type: 'string', options: ['small', 'medium'], default: 'medium'},
+                {property:'buttonStyle', description:'The style of the button', type: 'oneOf', options: ['primary', 'secondary', 'confirm', 'destroy', 'cancel'], default: 'primary'},
+                {property:'type', description:'The type of the button', type: 'oneOf', options: ['button', 'submit'], default: 'button'},
+                {property:'size', description:'The size of the button', type: 'oneOf', options: ['small', 'medium'], default: 'medium'},
                 {property:'outline', description:'Gives the button an outline and a transparent background', type: 'bool', options: [], default: 'false'},
                 {property:'disabled', description:'Make the button disabled', type: 'bool', options: [], default: 'false'},
               ]}
@@ -273,7 +274,7 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'size', description:'The size of the loading indicator', type: 'string', options: ['small', 'medium', 'large'], default: 'medium'},
+                {property:'size', description:'The size of the loading indicator', type: 'oneOf', options: ['small', 'medium', 'large'], default: 'medium'},
               ]}
             />
           </Table>
@@ -308,7 +309,7 @@ class Guide extends Component {
             <PropTable
               properties = {[
                 {property:'text', description:'The content of the tag', type: 'string', options: [], default: ''},
-                {property:'bg', description:'Background color of the tag', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'grey'], default: 'blue'},
+                {property:'bg', description:'Background color of the tag', type: 'oneOf', options: ['blue', 'green', 'yellow', 'red', 'grey'], default: 'blue'},
                 {property:'big', description:'Larger tag with more padding', type: 'bool', options: [], default: 'false'},
                 {property:'squared', description:'Squared off corners', type: 'bool', options: [], default: 'false'},
               ]}
@@ -350,7 +351,7 @@ class Guide extends Component {
               properties = {[
                 {property:'color', description:'Hex code for the color for the icon.', type: 'string', options: [], default: '#000000'},
                 {property:'bg', description:'Hex code for the background color for the circle behind the icon.', type: 'string', options: [], default: 'transparent'},
-                {property:'name', description:'Name of the icon', type: 'string', options: ['See Table'], default: ''},
+                {property:'name', description:'Name of the icon', type: 'oneOf', options: ['See Table'], default: ''},
                 {property:'w', description:'Total height & width of the circular icon including padding.', type: 'num', options: [], default: '30'},
                 {property:'p', description:'Padding of the icon', type: 'num', options: [], default: '0'},
               ]}
@@ -413,7 +414,7 @@ class Guide extends Component {
             <PropTable
               properties = {[
                 {property:'label', description:'Label for the input', type: 'string', options: [], default: ''},
-                {property:'type', description:'Input type', type: 'string', options: ['text', 'number', 'date', 'time', 'email', 'password', 'url', 'tel', 'range', 'file'], default: 'text'},
+                {property:'type', description:'Input type', type: 'oneOf', options: ['text', 'number', 'date', 'time', 'email', 'password', 'url', 'tel', 'range', 'file'], default: 'text'},
                 {property:'value', description:'Default value of the input', type: 'string', options: [], default: ''},
                 {property:'id', description:'A unique identifier for the input. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
                 {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
@@ -497,7 +498,7 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'layout', description:'Layout of the form group', type: 'string', options: ['vertical', 'horizontal'], default: 'vertical'},
+                {property:'layout', description:'Layout of the form group', type: 'oneOf', options: ['vertical', 'horizontal'], default: 'vertical'},
               ]}
             />
           </Table>
@@ -531,6 +532,62 @@ class Guide extends Component {
               />
             </Column>
           </Columns>
+        </Topic>
+        <TopicTitle>
+          <SubTitle>Component</SubTitle>
+          <Header level={0} >Sidebar</Header>
+        </TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
+                {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`const issues = [
+  {title: "Possible Atrial Standstill"},
+  {title: "Depressed Mood"},
+  {title: "Elevated Cholesterol"},
+  {title: "Right Nasal Polyp"},
+  {title: "Diet for Longevity"},
+  {title: "Syncope (Fainting)"},
+  {title: "Bilateral Leg Cramps"}
+];
+const preventive = [
+  {title:'Pap smear'},
+  {title:'Mammography'},
+  {title:'Colorectal cancer'},
+  {title:'Osteoporosis'},
+  {title:'Lung cancer'},
+  {title:'AAA'},
+  {title:'Hep C'},
+  {title:'Gonorrhea'},
+  {title:'Chlamydia'},
+  {title:'HIV'},
+  {title:'Hemoglobin A1c'},
+  {title:'Vaccines'}
+];
+const sidebarlinks = [
+  {group:'Issues', array: issues},
+  {group:'Preventive Care', array: preventive},
+]
+var selectedIssue = sidebarlinks[0].array[0];
+
+render(<Sidebar
+  links={sidebarlinks}
+  selected = {{group:'Issues',issue:selectedIssue, id:0}}
+/>)`}
+          noInline
+          />
         </Topic>
         <TopicTitle>
           <SubTitle>Component</SubTitle>
@@ -589,9 +646,9 @@ class Guide extends Component {
             <ComponentTitle>Props</ComponentTitle>
             <PropTable
               properties = {[
-                {property:'type', description:'Type of avatar', type: 'string', options: ['initials', 'icon', 'defaultProfile', 'image'], default: 'initials'},
-                {property:'color', description:'Color of avatar', type: 'string', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
-                {property:'size', description:'The size of the avater', type: 'string', options: ['small', 'medium', 'large'], default: 'large'},
+                {property:'type', description:'Type of avatar', type: 'oneOf', options: ['initials', 'icon', 'defaultProfile', 'image'], default: 'initials'},
+                {property:'color', description:'Color of avatar', type: 'oneOf', options: ['blue', 'green', 'yellow', 'red', 'purple', 'grey'], default: 'blue'},
+                {property:'size', description:'The size of the avater', type: 'oneOf', options: ['small', 'medium', 'large'], default: 'large'},
                 {property:'content', description:'The name of the icon for type icon or the initials for type intials', type: 'string', options: [], default: ''},
                 {property:'url', description:'The url of the image for avatar of type image', type: 'string', options: [], default: 'a random cat photo'},
               ]}
@@ -711,8 +768,8 @@ class Guide extends Component {
             <PropTable
               properties = {[
                 {property:'title', description:'Text for title of the module', type: 'string', options: [], default: ''},
-                {property:'type', description:'Type of Module', type: 'string', options: ['basic', 'tag', 'table', 'issues'], default: 'basic'},
-                {property:'category', description:'The category the module relates to. Determines the icon.', type: 'string', options: ['icon name'], default: ''},
+                {property:'type', description:'Type of Module', type: 'oneOf', options: ['basic', 'tag', 'table', 'issues'], default: 'basic'},
+                {property:'category', description:'The category the module relates to. Determines the icon.', type: 'oneOf', options: ['From icon list'], default: ''},
               ]}
             />
           </Table>
