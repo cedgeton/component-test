@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes }  from 'styled-components';
+import PropTypes from 'prop-types';
 import {Colors}  from '../../components/System';
 
 
@@ -60,8 +61,10 @@ const Path = styled.circle`
 
 
 
-export default class Loader extends React.Component {
-
+class Loader extends React.Component {
+  static defaultProps = {
+    size: 'medium',
+  }
   render(){
     return(
       <Loading size={this.props.size}>
@@ -72,3 +75,8 @@ export default class Loader extends React.Component {
     )
   }
 }
+Loader.propTypes = {
+  size: PropTypes.oneOf(['small','medium','large']),
+}
+
+export default Loader

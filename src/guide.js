@@ -290,11 +290,11 @@ class Guide extends Component {
         <Topic>
           <ComponentType>
             <SubGroup>
-              <Tag text="Grey Tag" bg="grey" big />
-              <Tag text="Blue Tag" big />
-              <Tag text="Green Tag" bg="green" big />
-              <Tag text="Yellow Tag" bg="yellow" big />
-              <Tag text="Red Tag" bg="red" big />
+              <Tag text="Grey Tag" bg="grey"  size="large" />
+              <Tag text="Blue Tag"  size="large" />
+              <Tag text="Green Tag" bg="green"  size="large" />
+              <Tag text="Yellow Tag" bg="yellow"  size="large" />
+              <Tag text="Red Tag" bg="red"  size="large" />
               <Tag text="Red Tag" bg="red" squared />
               <Tag text="Yellow Tag" bg="yellow" squared />
               <Tag text="Green Tag" bg="green" squared />
@@ -319,7 +319,7 @@ class Guide extends Component {
               <ComponentTitle>Code <span>Tag</span></ComponentTitle>
               <Code
                 scope={scope}
-                code={`<Tag text="Tag" bg="green" big />`}
+                code={`<Tag text="Tag" bg="green" size="large" />`}
               />
             </Column>
             <Column>

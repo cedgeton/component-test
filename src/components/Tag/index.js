@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Colors}  from '../../components/System';
+import PropTypes from 'prop-types';
 
 const Tag = styled.span`
   border-radius: ${props => props.squared? '2px' : '100px'};
   padding: ${props =>
-    {if(props.big){
+    {if(props.size === 'large'){
         return '6px 10px'
       } else if(props.squared){
         return '2px 5px'
@@ -35,8 +36,16 @@ const Tag = styled.span`
   color: ${props => props.bg === 'grey' ? Colors.black.c400 : Colors.white};
 `;
 
-export default class TagObj extends React.Component {
+class TagObj extends React.Component {
   render(){
-    return <Tag bg={this.props.bg} className={this.props.className} squared={this.props.squared} big={this.props.big}>{this.props.text}</Tag>
+    return <Tag bg={this.props.bg} className={this.props.className} squared={this.props.squared} size={this.props.size}>{this.props.text}</Tag>
   }
 }
+TagObj.propTypes = {
+  text: PropTypes.string,
+  bg: PropTypes.oneOf(['blue', 'green', 'yellow', 'red', 'grey']),
+  size: PropTypes.oneOf(['small','large']),
+  squared: PropTypes.bool,
+}
+
+export default TagObj;
