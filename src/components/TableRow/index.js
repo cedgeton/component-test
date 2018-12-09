@@ -48,6 +48,7 @@ const SuggestionIcon = styled.span`
     border: 2px solid ${Colors.grey.c400};
     border-radius: 100px;
     display: flex;
+    margin-top: 3px;
 `;
 const ItemIcon = styled(Icon)`
     display: flex;
