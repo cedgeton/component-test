@@ -3,6 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 import _ from 'lodash';
 import Module from './components/Module';
+import Panel from './components/Module/Panel.js';
 import {Colors, Header, Caps, Text}  from './components/System';
 import Tag from './components/Tag';
 import Icon from './components/Icon';
@@ -136,7 +137,7 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
 }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar, Header};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar, Header, Text, Caps, Panel};
 
 class TopicTitle extends Component {
   render() {
@@ -222,45 +223,57 @@ class Guide extends Component {
         <TopicTitle type='System'>Typography</TopicTitle>
         <Topic>
           <ComponentType>
+            <ComponentTitle>Header</ComponentTitle>
             <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
-            <Table id="iconTable" className="iconTable">
-              <ComponentTitle>Icons</ComponentTitle>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Level</th>
-                    <th>px</th>
-                    <th>Actual</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Header</td>
-                    <td>2</td>
-                    <td>16px</td>
-                    <td><Header size='component' >Impact at Scale</Header></td>
-                  </tr>
-                  <tr>
-                    <td>Header</td>
-                    <td>1</td>
-                    <td>20px</td>
-                    <td><Header size='page' >Impact at Scale</Header></td>
-                  </tr>
-                  <tr>
-                    <td>Header</td>
-                    <td>0</td>
-                    <td>40px</td>
-                    <td><Header size='huge' >Impact at Scale</Header></td>
-                  </tr>
-                </tbody>
-              </table>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'Size', description:'The size of the header', type: 'oneOf', options: ['huge', 'page', 'component'], default: 'page'},
+                  {property:'bottom', description:'The size of the bottom margin', type: 'oneOf', options: ['none','large', 'medium', 'small'], default: 'none'},
+                ]}
+              />
             </Table>
           </ComponentType>
-          <ComponentTitle>Code <span>Header</span></ComponentTitle>
           <Code
             scope={scope}
-            code={`<Header size='page' >A title for my example</Header>`}
+            code={`<Header size='page'>Impact at scale</Header>`}
+          />
+          <ComponentType>
+            <ComponentTitle>Text</ComponentTitle>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'Size', description:'The size of the text', type: 'oneOf', options: ['default','small','large','title'], default: 'default'},
+                  {property:'color', description:'The color of the text', type: 'oneOf', options: ['subtle','default','contrast','nonessential'], default: 'default'},
+                  {property:'numlines', description:'Number of lines to show, after which will be hidden with an ellipsis', type: 'number', options: [], default: ''},
+                  {property:'spacing', description:'The line-spacing of the text', type: 'oneOf', options: ['tight','default','loose'], default: 'default'},
+                  {property:'bottom', description:'The size of the bottom margin', type: 'oneOf', options: ['none','large', 'medium', 'small'], default: 'none'},
+                ]}
+              />
+            </Table>
+          </ComponentType>
+          <Code
+            scope={scope}
+            code={`<Text size='large' color='contrast'>Impact at scale</Text>`}
+          />
+          <ComponentType>
+            <ComponentTitle>Caps</ComponentTitle>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            <Table>
+              <PropTable
+                properties = {[
+                  {property:'Size', description:'The size of the text', type: 'oneOf', options: ['default','small','large','title'], default: 'default'},
+                  {property:'color', description:'The color of the text', type: 'oneOf', options: ['subtle','default','contrast','nonessential', 'warning'], default: 'default'},
+                  {property:'spacing', description:'The line-spacing of the text', type: 'oneOf', options: ['tight','default','loose'], default: 'default'},
+                  {property:'bottom', description:'The size of the bottom margin', type: 'oneOf', options: ['none','large', 'medium', 'small'], default: 'none'},
+                ]}
+              />
+            </Table>
+          </ComponentType>
+          <Code
+            scope={scope}
+            code={`<Caps size='large' color='contrast'>Impact at scale</Caps>`}
           />
         </Topic>
         <TopicTitle type='Component'>Button</TopicTitle>
@@ -750,6 +763,27 @@ render(<Sidebar
             </Column>
           </Columns>
           <Clear />
+        </Topic>
+        <TopicTitle type='Component'>Panel</TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+          </ComponentType>
+          <Table>
+            <ComponentTitle>Props</ComponentTitle>
+            <PropTable
+              properties = {[
+                {property:'padding', description:'A boolean indicator to add padding to the panel', type: 'bool', options: [], default: 'false'},
+              ]}
+            />
+          </Table>
+          <ComponentTitle>Code</ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Panel padding>
+  <Header size='component'>Panel Content</Header>
+</Panel>`}
+          />
         </Topic>
         <TopicTitle type='Component'>Module</TopicTitle>
         <Topic>

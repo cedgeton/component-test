@@ -9,11 +9,12 @@ const PanelStyle = styled.section`
   box-shadow: 2px 2px 1px 0 rgba(0,0,0,0.04);
   box-sizing: border-box;
   text-align: left;
+  padding: ${props => props.padding ? '20px' : 0 }
 `;
 
 
 export default class Panel extends React.Component{
   render(){
-    return <PanelStyle>{this.props.children}</PanelStyle>
+    return <PanelStyle padding={this.props.padding}>{this.props.children}</PanelStyle>
   }
 }
