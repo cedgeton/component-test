@@ -46,7 +46,7 @@ const HeaderStyle = styled.div`
   font-size: ${props => {
     switch(props.size) {
       case 'huge':
-        return '40px'
+        return '32px'
       case 'component':
         return '16px'
       default:

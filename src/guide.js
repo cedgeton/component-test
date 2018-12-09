@@ -43,9 +43,11 @@ const TopicTitleStyle = styled.div`
   border-bottom: 1px solid ${Colors.grey.c400};
   width: 100%;
   margin: 0;
-  padding: 45px 51px 25px;
+  padding: 45px 51px 18px;
   box-sizing: border-box;
   clear: both;
+  position: sticky;
+  top: -18px;
 `;
 const ComponentType = styled.section`
   margin: 0 0 60px 0;
