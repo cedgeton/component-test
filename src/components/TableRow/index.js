@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Colors}  from '../../components/System';
+import {Colors, Text, Caps}  from '../../components/System';
 import PropTypes from 'prop-types';
 import icons from '../../components/Icon/icons.js';
 import Icon from '../../components/Icon';
@@ -10,8 +10,8 @@ const Item = styled.div`
   grid-template-columns: ${props => props.icon? '36px' : 'min-content'} 1fr min-content;
   grid-gap: ${props => props.icon? '10px' : '0'};
   border-top: 1px solid #eaeaea;
-  padding: 12px 26px 12px 26px;
-  margin: 0 -26px;
+  padding: 18px 32px;
+  margin: 0 -32px;
   text-align: left;
   &:last-of-type{
     border-bottom: 1px solid #eaeaea;
@@ -27,33 +27,15 @@ const Item = styled.div`
   }
 `;
 const ItemName = styled.span`
-  font-weight: 500;
-  font-size: 14px;
-  color: ${Colors.black.c800};
-  line-height: 20px;
-  margin-right: 5px;
-  .summary &{
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 400;
-    color: ${Colors.grey.c900};
+  span {
+    display: inline-block;
+    margin-right: 5px
   }
 `;
 const ItemContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`;
-const RowSubTitle = styled.span`
-    .issue:not(.summary) &, .tableModule &{
-      font-weight: 400;
-      font-size: 12px;
-      color: ${Colors.grey.c700};
-      line-height: 16px;
-    }
-`;
-const Line2 = styled(RowSubTitle)`
-    margin-top:3px;
 `;
 const IconWrapper = styled.div`
     display: flex;
@@ -71,12 +53,6 @@ const ItemIcon = styled(Icon)`
     display: flex;
     border: 3px solid ${Colors.grey.c400};
     display: inline-block;
-`;
-const Result = styled.span`
-    font-weight: 500;
-    font-size: 11px;
-    color: ${Colors.yellow};
-    text-transform: uppercase;
 `;
 const RightContent = styled.div`
     display: flex;
@@ -102,14 +78,17 @@ class TableRow extends React.Component {
       <Item icon={this.props.icon} className="tableRow">
         <IconWrapper>{this.props.icon && renderItemIcon(this.props.icon)}</IconWrapper>
         <ItemContent>
-          <ItemName>{this.props.title} {this.props.subtitle && <RowSubTitle>{this.props.subtitle}</RowSubTitle>}</ItemName>
+          <ItemName>
+            <Text size={this.props.summary ? 'default' : 'title'} color={this.props.summary ? 'subtle' : 'contrast'}>{this.props.title}</Text>
+            {this.props.subtitle && <Text color={this.props.summary ? 'subtle' : 'nonessential'}>{this.props.subtitle}</Text>}
+          </ItemName>
           {!this.props.summary && this.props.line2 &&
-            <Line2>{this.props.line2}</Line2>
+            <Text color='nonessential'>{this.props.line2}</Text>
           }
         </ItemContent>
 
         {this.props.result && <RightContent>
-          <Result>{this.props.result}</Result>
+          <Caps color='warning'>{this.props.result}</Caps>
         </RightContent>}
       </Item>
     )

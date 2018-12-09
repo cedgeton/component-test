@@ -107,7 +107,16 @@ class Avatar extends React.Component {
 
   render(){
     return(
-      <Ava size={this.props.size} w={getWidth(this.props.size).w} color={this.props.color} type={this.props.type} url={this.props.url} className={this.props.className}>
+      <Ava
+        size={this.props.size}
+        w={getWidth(this.props.size).w}
+        color={this.props.color}
+        type={this.props.type}
+        url={this.props.url}
+        className={this.props.className}
+        data-tooltip={this.props.dataTooltip}
+        data-tooltip-position={this.props.dataTooltipPosition}
+      >
         <ContentContainer>
           <AvaText>{getContent(this.props.type, this.props.content, this.props.size, this.props.color)}</AvaText>
         </ContentContainer>

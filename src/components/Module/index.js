@@ -3,21 +3,15 @@ import styled from 'styled-components';
 import Icons from '../../components/Icon/icons.js';
 import Icon from '../../components/Icon';
 import PropTypes from 'prop-types';
-import {Colors} from '../../components/System';
+import {Colors,Text,Caps} from '../../components/System';
 import Panel from './Panel.js';
 import TagContent from './Tags.js';
 import IssueContent from './Issues.js';
 import TableContent from './Table.js';
 
 const ModuleTitle = styled.span`
-    font-weight: 500;
-    font-size: 13px;
-    color: ${Colors.grey.c700};
-    letter-spacing: 0;
-    line-height: 16px;
-    text-transform: uppercase;
-    display: block;
     padding: 16px 16px 14px;
+    display: block;
 `;
 const ModuleContent = styled.span`
     display: block;
@@ -27,29 +21,21 @@ const TitleIcon = styled(Icon)`
     text-align: center;
     margin: 10px 12px 0 0;
 `;
-const DefaultContent = styled.span`
-    font-weight: 400;
-    font-size: 12px;
-    color: ${Colors.black.c400};
-    line-height: 20px;
+const DefaultContent = styled.div`
     padding: 0 16px 16px;
-    display: block;
-`;
-const StyledPanel = styled(Panel)`
-    text-align: left;
 `;
 
 
 
-class Module extends React.Component {
+class Module extends React.Component{
   render(){
     return (
-      <StyledPanel>
+      <Panel>
         {this.props.category &&
           <TitleIcon name={this.props.category} bg={Colors.grey.c300} color={Colors.grey.c800} w={28} p={4} />
         }
         <ModuleTitle>
-          {this.props.title}
+          <Caps size='large' color='nonessential'>{this.props.title}</Caps>
         </ModuleTitle>
         <ModuleContent>
           {(this.props.type === "tag") ?(
@@ -59,10 +45,12 @@ class Module extends React.Component {
           ):(this.props.type === "issues") ?(
             <IssueContent issues={this.props.issues}  />
           ):(
-            <DefaultContent>{this.props.content}</DefaultContent>
+            <DefaultContent>
+              <Text>{this.props.content}</Text>
+            </DefaultContent>
           )}
         </ModuleContent>
-      </StyledPanel>
+      </Panel>
     )
   }
 }

@@ -24,7 +24,7 @@ const PopoverWrapper = styled.div`
   transition: left 200ms cubic-bezier(0.755, 0.050, 0.855, 0.060);
 `;
 const PopoverContent = styled.div`
-  padding: 26px 26px 32px;
+  padding: 32px;
 `;
 const Vignette = styled.div`
   height: calc(100vh - 56px);

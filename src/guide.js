@@ -3,7 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 import _ from 'lodash';
 import Module from './components/Module';
-import {Colors, Header}  from './components/System';
+import {Colors, Header, Caps, Text}  from './components/System';
 import Tag from './components/Tag';
 import Icon from './components/Icon';
 import icons from './components/Icon/icons.js';
@@ -32,7 +32,7 @@ const Topic = styled.section`
   margin-bottom: 45px;
   padding: 50px 60px 55px 60px;
 `;
-const TopicTitle = styled.div`
+const TopicTitleStyle = styled.div`
   background: ${Colors.grey.c200};
   border-bottom: 1px solid ${Colors.grey.c400};
   width: 100%;
@@ -43,6 +43,9 @@ const TopicTitle = styled.div`
 `;
 const ComponentType = styled.section`
   margin: 0 0 60px 0;
+`;
+const SubTitle = styled(Caps)`
+  margin: 15px 0 5px;
 `;
 const ComponentTitle = styled.h3`
   font-weight: 500;
@@ -58,23 +61,6 @@ const ComponentTitle = styled.h3`
 `;
 const SubGroup = styled.div`
   margin-bottom: 25px;
-`;
-const SubTitle = styled.h4`
-  font-weight: 400;
-  font-size: 11px;
-  color: ${Colors.black.c200};
-  letter-spacing: 0;
-  line-height: 16px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-`;
-const Explanation = styled.p`
-  font-weight: 400;
-  font-size: 13px;
-  color: ${Colors.black.c800};
-  letter-spacing: 0;
-  line-height: 16px;
-  margin-top: 0;
 `;
 const Column = styled.section`
   width: 50%;
@@ -150,19 +136,27 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
 }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar};
+const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar, Header};
+
+class TopicTitle extends Component {
+  render() {
+    return (
+      <TopicTitleStyle>
+        <Caps>{this.props.type}</Caps>
+        <Header size='huge' >{this.props.children}</Header>
+      </TopicTitleStyle>
+    )
+  }
+}
 
 class Guide extends Component {
   render() {
     return (
       <Content>
-        <TopicTitle>
-          <SubTitle>System</SubTitle>
-          <Header level={0} >Colors</Header>
-        </TopicTitle>
+        <TopicTitle type='System'>Colors</TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             <Columns>
               <Column>
                 <SubTitle>Colors</SubTitle>
@@ -225,10 +219,51 @@ class Guide extends Component {
           </Columns>
           <Clear />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Button</Header>
-        </TopicTitle>
+        <TopicTitle type='System'>Typography</TopicTitle>
+        <Topic>
+          <ComponentType>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            <Table id="iconTable" className="iconTable">
+              <ComponentTitle>Icons</ComponentTitle>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Level</th>
+                    <th>px</th>
+                    <th>Actual</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Header</td>
+                    <td>2</td>
+                    <td>16px</td>
+                    <td><Header size='component' >Impact at Scale</Header></td>
+                  </tr>
+                  <tr>
+                    <td>Header</td>
+                    <td>1</td>
+                    <td>20px</td>
+                    <td><Header size='page' >Impact at Scale</Header></td>
+                  </tr>
+                  <tr>
+                    <td>Header</td>
+                    <td>0</td>
+                    <td>40px</td>
+                    <td><Header size='huge' >Impact at Scale</Header></td>
+                  </tr>
+                </tbody>
+              </table>
+            </Table>
+          </ComponentType>
+          <ComponentTitle>Code <span>Header</span></ComponentTitle>
+          <Code
+            scope={scope}
+            code={`<Header size='page' >A title for my example</Header>`}
+          />
+        </Topic>
+        <TopicTitle type='Component'>Button</TopicTitle>
         <Topic>
           <ComponentType>
             <SubGroup>
@@ -242,7 +277,7 @@ class Guide extends Component {
               <Button buttonStyle='destroy' outline>Button</Button>
               <Button buttonStyle='cancel'>Cancel</Button>
             </SubGroup>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -263,13 +298,10 @@ class Guide extends Component {
             code={`<Button buttonStyle='primary'>Button</Button>`}
           />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Loader</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Loader</TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -285,10 +317,7 @@ class Guide extends Component {
             code={`<Loader size='medium' />`}
           />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Tag</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Tag</TopicTitle>
         <Topic>
           <ComponentType>
             <SubGroup>
@@ -303,7 +332,7 @@ class Guide extends Component {
               <Tag text="Blue Tag" squared />
               <Tag text="Grey Tag" bg="grey" squared />
             </SubGroup>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -334,17 +363,14 @@ class Guide extends Component {
           </Columns>
           <Clear />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Icon</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Icon</TopicTitle>
         <Topic>
           {iconKeys.map(function(icon, i){
             return <IconComponent name={icon} color={Colors.grey.c800} key={i} />
           })}
           <ComponentType>
             <ComponentTitle topMargin >Icon Set</ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -401,14 +427,11 @@ class Guide extends Component {
           </Columns>
           <Clear />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Form</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Form</TopicTitle>
         <Topic>
           <ComponentType>
-            <Header level={1}>Input</Header>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Header size='page'>Input</Header>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -434,8 +457,8 @@ class Guide extends Component {
           />
           <br /><br />
           <ComponentType>
-            <Header level={1}>Textarea</Header>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Header size='page'>Textarea</Header>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -457,8 +480,8 @@ class Guide extends Component {
           />
           <br /><br />
           <ComponentType>
-            <Header level={1}>Checkbox</Header>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Header size='page'>Checkbox</Header>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -492,8 +515,8 @@ class Guide extends Component {
           </Columns>
           <br /><br />
           <ComponentType>
-            <Header level={1}>InputGroup</Header>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Header size='page'>InputGroup</Header>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -534,13 +557,10 @@ class Guide extends Component {
             </Column>
           </Columns>
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Sidebar</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Sidebar</TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -590,13 +610,10 @@ render(<Sidebar
           noInline
           />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Modal</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Modal</TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>This is not finished. Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -620,10 +637,7 @@ render(<Sidebar
 />`}
           />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Avatar</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Avatar</TopicTitle>
         <Topic>
           <ComponentType>
           <SubGroup>
@@ -640,7 +654,7 @@ render(<Sidebar
             <Avatar size='medium' type='image' />
             <Avatar size='large' type='image' />
           </SubGroup>
-          <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+          <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
 
           </ComponentType>
           <Table>
@@ -690,13 +704,10 @@ render(<Sidebar
           </Columns>
           <Clear />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Table Row</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Table Row</TopicTitle>
         <Topic>
           <ComponentType>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
           </ComponentType>
           <Table>
             <ComponentTitle>Props</ComponentTitle>
@@ -740,14 +751,11 @@ render(<Sidebar
           </Columns>
           <Clear />
         </Topic>
-        <TopicTitle>
-          <SubTitle>Component</SubTitle>
-          <Header level={0} >Module</Header>
-        </TopicTitle>
+        <TopicTitle type='Component'>Module</TopicTitle>
         <Topic>
           <ComponentType>
             <Columns>
-              <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
               <Column>
                 <Module
                   title     = "Basic Module"
@@ -776,7 +784,7 @@ render(<Sidebar
           </Table>
           <ComponentType>
             <ComponentTitle>Basic Module</ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             <Table>
               <PropTable
                 properties = {[
@@ -794,7 +802,7 @@ render(<Sidebar
           </ComponentType>
           <ComponentType>
             <ComponentTitle>Tag Module</ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             <Table>
               <PropTable
                 properties = {[
@@ -821,7 +829,7 @@ render(<Sidebar
           </ComponentType>
           <ComponentType className="tableModule">
             <ComponentTitle>Table Module</ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             <Table>
               <PropTable
                 properties = {[
@@ -845,7 +853,7 @@ render(<Sidebar
           </ComponentType>
           <ComponentType>
             <ComponentTitle>Issue Module</ComponentTitle>
-            <Explanation>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Explanation>
+            <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             <Table>
               <PropTable
                 properties = {[

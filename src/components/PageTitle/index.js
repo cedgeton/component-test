@@ -1,24 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import {Colors, Header}  from '../../components/System';
-
-const SubTitle = styled.div`
-  font-weight: 400;
-  font-size: 14px;
-  color: ${Colors.grey.c900};
-  line-height: 20px;
-`;
-const StyledHeader = styled(Header)`
-  margin:0;
-`;
+import {Colors, Header, Text}  from '../../components/System';
 
 export default class PageTitle extends React.Component {
 
   render(){
     return (
       <span>
-        <StyledHeader>{this.props.title}</StyledHeader>
-        <SubTitle>{this.props.subTitle}</SubTitle>
+        <Header bottom='none'>{this.props.title}</Header>
+        <Text size='large'>{this.props.subTitle}</Text>
       </span>
     )
   }

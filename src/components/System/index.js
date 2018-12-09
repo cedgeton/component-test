@@ -44,42 +44,181 @@ export const Colors = {
 
 const HeaderStyle = styled.div`
   font-size: ${props => {
-    switch(props.level) {
-      case 0:
+    switch(props.size) {
+      case 'huge':
         return '40px'
-      case 2:
+      case 'component':
         return '16px'
       default:
         return '20px'
   }}};
-  line-height: ${props => {
-    switch(props.level) {
-      case 0:
-        return '40px'
-      case 2:
-        return '24px'
-      default:
-        return '28px'
-  }}};
-  font-weight: ${props => {
-    switch(props.level) {
-      case 0:
-        return '400'
-      default:
-        return '500'
-  }}};
+  line-height: 1.25;
+  font-weight: ${props => props.size === 'huge' ? 400 : 500};
   color: ${Colors.black.c800};
-  margin: 0 0 5px;
+  margin-bottom: ${props => {
+    switch(props.bottom) {
+      case 'large':
+        return '24px'
+      case 'medium':
+        return '12px'
+      case 'none':
+        return '0'
+      default:
+        return '5px'
+  }}};
 `;
 
 export class Header extends React.Component {
   static defaultProps = {
-    level: 1
+    size: 'page'
   }
   render(){
-    return <HeaderStyle className={this.props.className} level={this.props.level}>{this.props.children}</HeaderStyle>
+    return (
+      <HeaderStyle
+        className={this.props.className}
+        size={this.props.size}
+        bottom={this.props.bottom}
+      >
+        {this.props.children}
+      </HeaderStyle>)
   }
 }
 Header.propTypes = {
-  level: PropTypes.number,
+  size: PropTypes.oneOf(['huge', 'page', 'component']),
+  bottom: PropTypes.oneOf(['none','large', 'medium', 'small']),
+}
+
+const BodyStyle = styled.span`
+  display: block;
+  font-weight: ${props=> props.size === 'title' ? 500 : 400}
+  margin-bottom: ${props => {
+    switch(props.bottom) {
+      case 'large':
+        return '24px'
+      case 'medium':
+        return '12px'
+      case 'small':
+        return '6px'
+      default:
+        return '0px'
+  }}};
+  font-size: ${props => {
+    switch(props.size) {
+      case 'title':
+        return '14px'
+      case 'small':
+        return '11px'
+      case 'large':
+        return '13px'
+      default:
+        return '12px'
+  }}};
+  line-height: ${props => {
+    switch(props.spacing) {
+      case 'tight':
+        return 1.25
+      case 'loose':
+        return 2
+      default:
+        return 1.5
+  }}};
+  color: ${props => {
+    switch(props.color) {
+      case 'subtle':
+        return Colors.grey.c900
+      case 'contrast':
+        return Colors.black.c800
+      case 'nonessential':
+        return Colors.grey.c600
+      default:
+        return Colors.black.c400
+  }}};
+  ${props=> {
+    if(props.numLines != null){
+      return `overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: ${props.numLines};
+        -webkit-box-orient: vertical;`
+    }}}
+`;
+export class Text extends React.Component {
+  static defaultProps = {
+    size: 'default',
+    color: 'default',
+    numLines: null,
+    spacing: 'default',
+    bottom: 'none'
+  }
+  render(){
+    return(
+      <BodyStyle
+        className={this.props.className}
+        size={this.props.size}
+        numLines={this.props.numLines}
+        color={this.props.color}
+        spacing={this.props.spacing}
+        bottom={this.props.bottom}
+      >
+        {this.props.children}
+      </BodyStyle>
+  )}
+}
+Text.propTypes = {
+  size: PropTypes.oneOf(['default','small','large','title']),
+  color: PropTypes.oneOf(['subtle','default','contrast','nonessential']),
+  numLines: PropTypes.number,
+  spacing: PropTypes.oneOf(['tight','default','loose']),
+  bottom: PropTypes.oneOf(['none','large', 'medium', 'small']),
+}
+
+const CapStyle = styled(BodyStyle)`
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: ${props => {
+    switch(props.size) {
+      case 'large':
+        return '13px'
+      default:
+        return '11px'
+  }}};
+  color: ${props => {
+    switch(props.color) {
+      case 'subtle':
+        return Colors.grey.c900
+      case 'contrast':
+        return Colors.black.c800
+      case 'nonessential':
+        return Colors.grey.c600
+      case 'warning':
+        return Colors.yellow
+      default:
+        return Colors.black.c400
+  }}};
+`;
+
+export class Caps extends React.Component {
+  static defaultProps = {
+    size: 'default',
+    color: 'subtle',
+    spacing: 'default',
+    bottom: 'none'
+  }
+  render(){
+    return(
+      <CapStyle
+        className={this.props.className}
+        size={this.props.size}
+        color={this.props.color}
+        spacing={this.props.spacing}
+        bottom={this.props.bottom}
+      >
+        {this.props.children}
+      </CapStyle>
+  )}
+}
+Caps.propTypes = {
+  size: PropTypes.oneOf(['default','large']),
+  color: PropTypes.oneOf(['subtle','default','contrast','nonessential', 'warning']),
+  spacing: PropTypes.oneOf(['tight','default','loose']),
+  bottom: PropTypes.oneOf(['none','large', 'medium', 'small']),
 }

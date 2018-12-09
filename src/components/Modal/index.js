@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Colors, Header}  from '../../components/System';
+import {Colors, Header, Text}  from '../../components/System';
 import Button  from '../../components/Button';
 import Icon  from '../../components/Icon';
 import ModalClass, { ModalProvider } from "styled-react-modal";
@@ -34,9 +34,6 @@ const Footer = styled(Title)`
 `;
 const Content = styled.div`
   padding: 15px 15px 40px 15px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
   text-align: left;
 `;
 const Close = styled(Icon)`
@@ -88,13 +85,14 @@ export default class Modal extends React.Component {
             onBackgroundClick={this.toggleModal}
             onEscapeKeydown={this.toggleModal}
             opacity={this.state.opacity}>
-            <Title level={2}>{this.props.title} <Close name='close' w={20} p={2.5} color={Colors.black.c300}  onClick={this.toggleModal}/></Title>
-            <Content>{this.props.content} </Content>
+            <Title size='component'>{this.props.title} <Close name='close' w={20} p={2.5} color={Colors.black.c300}  onClick={this.toggleModal}/></Title>
+            <Content><Text size='large' spacing='loose'>{this.props.content}</Text></Content>
             <Footer>
               {this.props.actions.map(function(action, i){
+                console.log(action.style)
                 return (
                   <Button
-                    style={action.style}
+                    buttonStyle={action.style}
                     onClick={this.toggleModal} key={i}>{action.text}</Button>
                 )
               }, this)}
