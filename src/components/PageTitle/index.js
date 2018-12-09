@@ -1,5 +1,5 @@
 import React from 'react';
-import {Colors, Header, Text}  from '../../components/System';
+import {Header, Text}  from '../../components/System';
 
 export default class PageTitle extends React.Component {
 

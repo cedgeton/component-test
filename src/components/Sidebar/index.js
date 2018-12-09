@@ -66,7 +66,7 @@ export default class Sidebar extends React.Component {
     return (
       <SidebarWrapper>
         {_.map(this.props.links, function(group, i){
-          var selectedId = selected.group === group.group ? selected.id : null;
+          if(selected){var selectedId = selected.group === group.group ? selected.id : null;}
           return(
             <div key={i}>
               <GroupTitle>{group.group}</GroupTitle>

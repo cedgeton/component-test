@@ -67,6 +67,17 @@ const LabelWrapper = styled.span`
     width:24px;
     height:18px;
   }
+  .toggle &{
+    width: 50px;
+    height: 24px;
+  	background: ${Colors.grey.c400};
+  	text-indent: -9999px;
+  	border-radius: 100px;
+  	position: relative;
+  }
+  .toggle input[type=checkbox]:checked + &{
+  	background: ${Colors.green};
+  }
 `;
 
 const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
@@ -81,10 +92,34 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
     background-position: left center;
     vertical-align: top;
   }
+  .toggle &{
+    display: initial;
+    height: 0;
+  	width: 0;
+  	visibility: hidden;
+    position: absolute;
+  }
+  .toggle & + ${LabelWrapper}::before{
+    content: '';
+  	position: absolute;
+  	top: 2px;
+  	left: 2px;
+  	width: 20px;
+  	height: 20px;
+  	background: #fff;
+  	border-radius: 90px;
+  	transition: 0.3s;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.1)
+  }
   &:checked + ${LabelWrapper}::before{
     background:${getCheckShape(true, Colors.blue)} no-repeat;
     background-position: left center;
     vertical-align: top;
+  }
+  .toggle &:checked + ${LabelWrapper}::before{
+    left: calc(100% - 2px);
+  	transform: translateX(-100%);
+    background: #fff;
   }
   &:checked:disabled + ${LabelWrapper}::before{
     background-image: ${getCheckShape(true, Colors.grey.c300)};
@@ -93,6 +128,7 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
     background-image: ${getCheckShape(false, Colors.grey.c300)};
   }
 `;
+
 const CheckLabel = styled.span`
   grid-area: label;
   grid-row: span 1;
@@ -204,23 +240,23 @@ export class Checkbox extends React.Component {
   }
 
   render(){
-    var labels = this.props.label.isArray? this.props.label : [this.props.label]
+    var labels = this.props.label.isArray? this.props.label : [this.props]
     return(
       <InputHolder>
-        <CheckLabel>{this.props.groupLabel}</CheckLabel>
+        <CheckLabel>{this.props.toggle ? this.props.label : this.props.groupLabel}</CheckLabel>
         <CheckWrap>
           {_.map(labels, function(label, i){
-            var uniqueID = label.id? label.id : getUniqueID(label);
+            var uniqueID = label.id? label.id : getUniqueID(label.label);
             return (
-              <Label htmlFor={uniqueID} disabled={label.disabled} key={i} >
+              <Label htmlFor={uniqueID} disabled={label.disabled} className={label.toggle ? 'toggle' : ''} key={i} >
                 <StyledCheckbox
-                  checked={label.checked}
+                  defaultChecked = {label.checked}
                   disabled={label.disabled}
                   required={label.required}
                   value={label.value}
                   id={uniqueID}
                   name={uniqueID} />
-                <LabelWrapper>{label}</LabelWrapper>
+                <LabelWrapper>{label.label}</LabelWrapper>
               </Label>
             )
           })}
@@ -237,6 +273,7 @@ Checkbox.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
+  toggle: PropTypes.bool
 }
 
 export class Input extends React.Component {

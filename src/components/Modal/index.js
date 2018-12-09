@@ -89,7 +89,6 @@ export default class Modal extends React.Component {
             <Content><Text size='large' spacing='loose'>{this.props.content}</Text></Content>
             <Footer>
               {this.props.actions.map(function(action, i){
-                console.log(action.style)
                 return (
                   <Button
                     buttonStyle={action.style}
