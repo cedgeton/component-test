@@ -36,7 +36,7 @@ const Content = styled.div`
 `;
 const Topic = styled.section`
   margin-bottom: 45px;
-  padding: 50px 60px 55px 60px;
+  padding: 120px 60px 55px 60px;
 `;
 const TopicTitleStyle = styled.div`
   background: ${Colors.grey.c200};
@@ -176,24 +176,30 @@ const scope = {
   CheckGroup
 };
 
-const guideLinks = [
-  {title: "Link 1"},
-  {title: "Link 2"},
-  {title: "Link 3"},
-  {title: "Link 4"},
-  {title: "Link 5"},
-  {title: "Link 6"},
-  {title: "Link 7"}
-];
 const sidebarlinks = [
-  {group:'System', array: guideLinks},
-  {group:'Components', array: guideLinks},
+  {group:'System', array: [
+    {title: 'Colors', url:'#sectionColors'},
+    {title: 'Typography', url:'#sectionTypography'},
+  ]},
+  {group:'Components', array: [
+    {title: 'Button', url:'#sectionButton'},
+    {title: 'Tag', url:'#sectionTag'},
+    {title: 'Icon', url:'#sectionIcon'},
+    {title: 'Form', url:'#sectionForm'},
+    {title: 'Loader', url:'#sectionLoader'},
+    {title: 'Avatar', url:'#sectionAvatar'},
+    {title: 'Panel', url:'#sectionPanel'},
+    {title: 'Table Row', url:'#sectionTableRow'},
+    {title: 'Module', url:'#sectionModule'},
+    {title: 'Sidebar', url:'#sectionSidebar'},
+    {title: 'Modal', url:'#sectionModal'},
+  ]},
 ]
 
 class TopicTitle extends Component {
   render() {
     return (
-      <TopicTitleStyle>
+      <TopicTitleStyle id={this.props.id}>
         <Caps>{this.props.type}</Caps>
         <Header size='huge' >{this.props.children}</Header>
       </TopicTitleStyle>
@@ -208,7 +214,7 @@ class Guide extends Component {
         <Sidebar links={sidebarlinks} />
         <Content>
           <TopicTitle type='System'>Colors</TopicTitle>
-          <Topic>
+          <Topic id='sectionColors'>
             <ComponentType>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
               <Columns>
@@ -273,8 +279,12 @@ class Guide extends Component {
             </Columns>
             <Clear />
           </Topic>
+
+
+
+
           <TopicTitle type='System'>Typography</TopicTitle>
-          <Topic>
+          <Topic id='sectionTypography'>
             <ComponentType>
               <Header size='page'>Header</Header>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
@@ -333,8 +343,12 @@ class Guide extends Component {
               />
             </ComponentType>
           </Topic>
+
+
+
+
           <TopicTitle type='Component'>Button</TopicTitle>
-          <Topic>
+          <Topic id='sectionButton'>
             <ComponentType>
               <SubGroup>
                 <Button buttonStyle='primary'>Button</Button>
@@ -368,27 +382,12 @@ class Guide extends Component {
               code={`<Button buttonStyle='primary'>Button</Button>`}
             />
           </Topic>
-          <TopicTitle type='Component'>Loader</TopicTitle>
-          <Topic>
-            <ComponentType>
-              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
-            </ComponentType>
-            <Table>
-              <ComponentTitle>Props</ComponentTitle>
-              <PropTable
-                properties = {[
-                  {property:'size', description:'The size of the loading indicator', type: 'oneOf', options: ['small', 'medium', 'large'], default: 'medium'},
-                ]}
-              />
-            </Table>
-            <ComponentTitle>Code</ComponentTitle>
-            <Code
-              scope={scope}
-              code={`<Loader size='medium' />`}
-            />
-          </Topic>
+
+
+
+
           <TopicTitle type='Component'>Tag</TopicTitle>
-          <Topic>
+          <Topic id='sectionTag'>
             <ComponentType>
               <SubGroup>
                 <Tag text="Grey Tag" bg="grey"  size="large" />
@@ -433,8 +432,12 @@ class Guide extends Component {
             </Columns>
             <Clear />
           </Topic>
+
+
+
+
           <TopicTitle type='Component'>Icon</TopicTitle>
-          <Topic>
+          <Topic id='sectionIcon'>
             {iconKeys.map(function(icon, i){
               return <IconComponent name={icon} color={Colors.grey.c800} key={i} />
             })}
@@ -497,8 +500,12 @@ class Guide extends Component {
             </Columns>
             <Clear />
           </Topic>
+
+
+
+
           <TopicTitle type='Component'>Form</TopicTitle>
-          <Topic>
+          <Topic id='sectionForm'>
             <ComponentType>
               <Header size='page'>Input</Header>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
@@ -691,61 +698,12 @@ class Guide extends Component {
             </Columns>
             <Clear />
           </Topic>
-          <TopicTitle type='Component'>Sidebar</TopicTitle>
-          <Topic>
-            <ComponentType>
-              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
-            </ComponentType>
-            <Table>
-              <ComponentTitle>Props</ComponentTitle>
-              <PropTable
-                properties = {[
-                  {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
-                  {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
-                ]}
-              />
-            </Table>
-            <ComponentTitle>Code</ComponentTitle>
-            <Code
-              scope={scope}
-              code={`const issues = [
-  {title: "Possible Atrial Standstill"},
-  {title: "Depressed Mood"},
-  {title: "Elevated Cholesterol"},
-  {title: "Right Nasal Polyp"},
-  {title: "Diet for Longevity"},
-  {title: "Syncope (Fainting)"},
-  {title: "Bilateral Leg Cramps"}
-];
-const preventive = [
-  {title:'Pap smear'},
-  {title:'Mammography'},
-  {title:'Colorectal cancer'},
-  {title:'Osteoporosis'},
-  {title:'Lung cancer'},
-  {title:'AAA'},
-  {title:'Hep C'},
-  {title:'Gonorrhea'},
-  {title:'Chlamydia'},
-  {title:'HIV'},
-  {title:'Hemoglobin A1c'},
-  {title:'Vaccines'}
-];
-const sidebarlinks = [
-  {group:'Issues', array: issues},
-  {group:'Preventive Care', array: preventive},
-]
-var selectedIssue = sidebarlinks[0].array[0];
 
-render(<Sidebar
-  links={sidebarlinks}
-  selected = {{group:'Issues',issue:selectedIssue, id:0}}
-/>)`}
-            noInline
-            />
-          </Topic>
-          <TopicTitle type='Component'>Modal</TopicTitle>
-          <Topic>
+
+
+
+          <TopicTitle type='Component'>Loader</TopicTitle>
+          <Topic id='sectionLoader'>
             <ComponentType>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             </ComponentType>
@@ -753,26 +711,22 @@ render(<Sidebar
               <ComponentTitle>Props</ComponentTitle>
               <PropTable
                 properties = {[
-                  {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
-                  {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
+                  {property:'size', description:'The size of the loading indicator', type: 'oneOf', options: ['small', 'medium', 'large'], default: 'medium'},
                 ]}
               />
             </Table>
             <ComponentTitle>Code</ComponentTitle>
             <Code
               scope={scope}
-              code={`<Modal
-  title='Lorem Ipsum Sit'
-  content='Hot chicken copper mug art party crucifix scenester. Brunch try-hard roof party asymmetrical readymade squid, banjo lyft vaporware organic 8-bit cornhole vegan master cleanse marfa. Tilde woke thundercats, ennui locavore crucifix normcore quinoa snackwave. Offal freegan sriracha scenester semiotics mlkshk. Waistcoat shaman quinoa wolf. Pinterest polaroid waistcoat stumptown church-key seitan kombucha butcher irony quinoa next level selfies XOXO austin ramps. Intelligentsia migas sartorial ramps chillwave, neutra 8-bit irony sustainable echo park readymade glossier.'
-  actions={[
-    {text: 'Cancel', style:'cancel'},
-    {text: 'Save', style:'primary'}
-  ]}
-/>`}
+              code={`<Loader size='medium' />`}
             />
           </Topic>
+
+
+
+
           <TopicTitle type='Component'>Avatar</TopicTitle>
-          <Topic>
+          <Topic id='sectionAvatar'>
             <ComponentType>
             <SubGroup>
               <Avatar size='small' type='icon' content='activity' />
@@ -838,8 +792,38 @@ render(<Sidebar
             </Columns>
             <Clear />
           </Topic>
+
+
+
+
+          <TopicTitle type='Component'>Panel</TopicTitle>
+          <Topic id='sectionPanel'>
+            <ComponentType>
+              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            </ComponentType>
+            <Table>
+              <ComponentTitle>Props</ComponentTitle>
+              <PropTable
+                properties = {[
+                  {property:'padding', description:'A boolean indicator to add padding to the panel', type: 'bool', options: [], default: 'false'},
+                ]}
+              />
+            </Table>
+            <ComponentTitle>Code</ComponentTitle>
+            <Code
+              scope={scope}
+              code={`<Panel padding>
+  <Header size='component'>Panel Content</Header>
+  <Text>Here's some content for your panel</Text>
+</Panel>`}
+            />
+          </Topic>
+
+
+
+
           <TopicTitle type='Component'>Table Row</TopicTitle>
-          <Topic>
+          <Topic id='sectionTableRow'>
             <ComponentType>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
             </ComponentType>
@@ -885,30 +869,12 @@ render(<Sidebar
             </Columns>
             <Clear />
           </Topic>
-          <TopicTitle type='Component'>Panel</TopicTitle>
-          <Topic>
-            <ComponentType>
-              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
-            </ComponentType>
-            <Table>
-              <ComponentTitle>Props</ComponentTitle>
-              <PropTable
-                properties = {[
-                  {property:'padding', description:'A boolean indicator to add padding to the panel', type: 'bool', options: [], default: 'false'},
-                ]}
-              />
-            </Table>
-            <ComponentTitle>Code</ComponentTitle>
-            <Code
-              scope={scope}
-              code={`<Panel padding>
-  <Header size='component'>Panel Content</Header>
-  <Text>Here's some content for your panel</Text>
-</Panel>`}
-            />
-          </Topic>
+
+
+
+
           <TopicTitle type='Component'>Module</TopicTitle>
-          <Topic>
+          <Topic id='sectionModule'>
             <ComponentType>
               <Columns>
                 <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
@@ -1082,6 +1048,93 @@ render(<Issue issue={issue} />)`}
                 noInline
               />
             </ComponentType>
+          </Topic>
+
+
+
+          <TopicTitle type='Component'>Sidebar</TopicTitle>
+          <Topic id='sectionSidebar'>
+            <ComponentType>
+              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            </ComponentType>
+            <Table>
+              <ComponentTitle>Props</ComponentTitle>
+              <PropTable
+                properties = {[
+                  {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
+                  {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
+                ]}
+              />
+            </Table>
+            <ComponentTitle>Code</ComponentTitle>
+            <Code
+              scope={scope}
+              code={`const issues = [
+  {title: "Possible Atrial Standstill"},
+  {title: "Depressed Mood"},
+  {title: "Elevated Cholesterol"},
+  {title: "Right Nasal Polyp"},
+  {title: "Diet for Longevity"},
+  {title: "Syncope (Fainting)"},
+  {title: "Bilateral Leg Cramps"}
+];
+const preventive = [
+  {title:'Pap smear'},
+  {title:'Mammography'},
+  {title:'Colorectal cancer'},
+  {title:'Osteoporosis'},
+  {title:'Lung cancer'},
+  {title:'AAA'},
+  {title:'Hep C'},
+  {title:'Gonorrhea'},
+  {title:'Chlamydia'},
+  {title:'HIV'},
+  {title:'Hemoglobin A1c'},
+  {title:'Vaccines'}
+];
+const sidebarlinks = [
+  {group:'Issues', array: issues},
+  {group:'Preventive Care', array: preventive},
+]
+var selectedIssue = sidebarlinks[0].array[0];
+
+render(<Sidebar
+  links={sidebarlinks}
+  selected = {{group:'Issues',issue:selectedIssue, id:0}}
+/>)`}
+            noInline
+            />
+          </Topic>
+
+
+
+
+          <TopicTitle type='Component'>Modal</TopicTitle>
+          <Topic id='sectionModal'>
+            <ComponentType>
+              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+            </ComponentType>
+            <Table>
+              <ComponentTitle>Props</ComponentTitle>
+              <PropTable
+                properties = {[
+                  {property:'title', description:'Text for the title of the modal', type: 'string', options: [], default: ''},
+                  {property:'actions', description:'array of buttons', type: 'array', options: [], default: ''},
+                ]}
+              />
+            </Table>
+            <ComponentTitle>Code</ComponentTitle>
+            <Code
+              scope={scope}
+              code={`<Modal
+  title='Lorem Ipsum Sit'
+  content='Hot chicken copper mug art party crucifix scenester. Brunch try-hard roof party asymmetrical readymade squid, banjo lyft vaporware organic 8-bit cornhole vegan master cleanse marfa. Tilde woke thundercats, ennui locavore crucifix normcore quinoa snackwave. Offal freegan sriracha scenester semiotics mlkshk. Waistcoat shaman quinoa wolf. Pinterest polaroid waistcoat stumptown church-key seitan kombucha butcher irony quinoa next level selfies XOXO austin ramps. Intelligentsia migas sartorial ramps chillwave, neutra 8-bit irony sustainable echo park readymade glossier.'
+  actions={[
+    {text: 'Cancel', style:'cancel'},
+    {text: 'Save', style:'primary'}
+  ]}
+/>`}
+            />
           </Topic>
         </Content>
       </Page>

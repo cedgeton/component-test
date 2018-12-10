@@ -75,7 +75,7 @@ export default class Sidebar extends React.Component {
                   return (
                     <li className={selectedId === i? "selected" : ""} key={i}>
                       {item.favorite ? (<ListBull>&bull;</ListBull>):("")}
-                      <Link href={"#issue"+i}>{item.title}
+                      <Link href={item.url}>{item.title}
                       <ListRiskStatus status={item.status} /></Link>
                     </li>
                     )
