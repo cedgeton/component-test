@@ -20,8 +20,24 @@ function getCheckShape(checked, color){
     </svg>')`
   }
 }
-function getUniqueID(string){
-  return _.uniqueId(string.replace(/\s/g, '-')+'_')
+function getRadioShape(checked, color){
+  if(checked){
+    return `url('data:image/svg+xml;utf8,<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Icon-/-Radio-on" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M9,4.5 C6.516,4.5 4.5,6.516 4.5,9 C4.5,11.484 6.516,13.5 9,13.5 C11.484,13.5 13.5,11.484 13.5,9 C13.5,6.516 11.484,4.5 9,4.5 Z M9,0 C4.0275,0 0,4.0275 0,9 C0,13.9725 4.0275,18 9,18 C13.9725,18 18,13.9725 18,9 C18,4.0275 13.9725,0 9,0 Z M9,16.2 C5.022,16.2 1.8,12.978 1.8,9 C1.8,5.022 5.022,1.8 9,1.8 C12.978,1.8 16.2,5.022 16.2,9 C16.2,12.978 12.978,16.2 9,16.2 Z" id="Fill-1" fill="${color}"></path>
+        </g>
+    </svg>')`
+  }else{
+    return `url('data:image/svg+xml;utf8,<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Icon-/-Radio-off" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M9,0 C4.0275,0 0,4.0275 0,9 C0,13.9725 4.0275,18 9,18 C13.9725,18 18,13.9725 18,9 C18,4.0275 13.9725,0 9,0 Z M9,16.2 C5.022,16.2 1.8,12.978 1.8,9 C1.8,5.022 5.022,1.8 9,1.8 C12.978,1.8 16.2,5.022 16.2,9 C16.2,12.978 12.978,16.2 9,16.2 Z" id="Fill-1" fill="${color}"></path>
+        </g>
+    </svg>')`
+  }
+}
+function getUniqueID(string, after){
+  var after = after? after : '_'
+  return _.uniqueId(string.replace(/\s/g, '-')+after)
 }
 
 const Group = styled.div`
@@ -41,32 +57,41 @@ const Label = styled.label`
   font-size: 11px;
   color: ${Colors.grey.c700};
   letter-spacing: 0;
-  line-height: 16px;
+  line-height: 18px;
   margin-bottom: 5px;
   display: inline-block;
   cursor: ${props => props.disabled? 'not-allowed' : 'pointer'};
   white-space: nowrap;
+  vertical-align: middle;
   .horizontal-label &{
     grid-area: label;
     margin:0;
     display: flex;
-    align-items: center;
     grid-row: span 1;
+  }
+  .horizontal-label input[type=checkbox] + &{
+    color: transparent;
+  }
+  input[type=checkbox] ~ &, input[type=radio] ~ &{
+    color: ${Colors.black.c400};
   }
   .horizontal-label .textarea-holder &{
     align-items: normal;
     padding-top: 7px;
   }
 `;
-const LabelWrapper = styled.span`
+const CheckLabel = styled.label`
+  grid-area: input;
+  grid-row: span 1;
+  font-weight: 500;
+  font-size: 11px;
+  color: ${Colors.grey.c700};
+  letter-spacing: 0;
+  line-height: 16px;
+  cursor: pointer;
   line-height: 18px;
-  display:block;
-  &::before {
-    content:"";
-    display:inline-block;
-    width:24px;
-    height:18px;
-  }
+  display: inline-block;
+  float: left;
   .toggle &{
     width: 50px;
     height: 24px;
@@ -74,21 +99,26 @@ const LabelWrapper = styled.span`
   	text-indent: -9999px;
   	border-radius: 100px;
   	position: relative;
+    display:block;
+    float: none;
   }
   .toggle input[type=checkbox]:checked + &{
   	background: ${Colors.green};
   }
 `;
-
-const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
+const StyledCheckbox = styled.input`
   display:none;
 
   .horizontal-label &{
     align-items: center;
     grid-row: span 1;
   }
-  & + ${LabelWrapper}::before{
-    background:${getCheckShape(false, Colors.grey.c500)} no-repeat;
+  & + ${CheckLabel}::before{
+    content:"";
+    display:inline-block;
+    width:24px;
+    height:18px;
+    background:${props => props.type === 'radio' ? getRadioShape(false, Colors.grey.c500) : getCheckShape(false, Colors.grey.c500)} no-repeat;
     background-position: left center;
     vertical-align: top;
   }
@@ -99,7 +129,7 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
   	visibility: hidden;
     position: absolute;
   }
-  .toggle & + ${LabelWrapper}::before{
+  .toggle & + ${CheckLabel}::before{
     content: '';
   	position: absolute;
   	top: 2px;
@@ -111,36 +141,39 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
   	transition: 0.3s;
     box-shadow: 1px 1px 1px rgba(0,0,0,.1)
   }
-  &:checked + ${LabelWrapper}::before{
-    background:${getCheckShape(true, Colors.blue)} no-repeat;
+  &:checked + ${CheckLabel}::before{
+    background:${props => props.type === 'radio' ? getRadioShape(true, Colors.blue) : getCheckShape(true, Colors.blue)} no-repeat;
     background-position: left center;
     vertical-align: top;
   }
-  .toggle &:checked + ${LabelWrapper}::before{
+  .toggle &:checked + ${CheckLabel}::before{
     left: calc(100% - 2px);
   	transform: translateX(-100%);
     background: #fff;
   }
-  &:checked:disabled + ${LabelWrapper}::before{
-    background-image: ${getCheckShape(true, Colors.grey.c300)};
+  &:checked:disabled + ${CheckLabel}::before{
+    background-image: ${props => props.type === 'radio' ? getRadioShape(true, Colors.grey.c300) : getCheckShape(true, Colors.grey.c300)};
   }
-  &:disabled + ${LabelWrapper}::before{
-    background-image: ${getCheckShape(false, Colors.grey.c300)};
+  &:disabled + ${CheckLabel}::before{
+    background-image: ${props => props.type === 'radio' ? getRadioShape(false, Colors.grey.c300) : getCheckShape(false, Colors.grey.c300)};
   }
 `;
 
-const CheckLabel = styled.span`
+const GroupLabel = styled(Label)`
   grid-area: label;
   grid-row: span 1;
-  font-weight: 500;
-  font-size: 11px;
-  color: ${Colors.grey.c700};
-  letter-spacing: 0;
-  line-height: 16px;
-  margin-bottom: 5px;
   display: block;
+  cursor: default;
 `;
 const CheckWrap = styled.span`
+  display: inline-block;
+  margin-right: 20px;
+  .horizontal-label &{
+    display: block;
+    margin-bottom: 3px;
+  }
+`;
+const Checks = styled.div`
   grid-area: input;
   grid-row: span 1;
 `;
@@ -240,27 +273,20 @@ export class Checkbox extends React.Component {
   }
 
   render(){
-    var labels = this.props.label.isArray? this.props.label : [this.props]
+    var uniqueID = this.props.id? this.props.id : getUniqueID(this.props.label);
     return(
-      <InputHolder>
-        <CheckLabel>{this.props.toggle ? this.props.label : this.props.groupLabel}</CheckLabel>
-        <CheckWrap>
-          {_.map(labels, function(label, i){
-            var uniqueID = label.id? label.id : getUniqueID(label.label);
-            return (
-              <Label htmlFor={uniqueID} disabled={label.disabled} className={label.toggle ? 'toggle' : ''} key={i} >
-                <StyledCheckbox
-                  defaultChecked = {label.checked}
-                  disabled={label.disabled}
-                  required={label.required}
-                  value={label.value}
-                  id={uniqueID}
-                  name={uniqueID} />
-                <LabelWrapper>{label.label}</LabelWrapper>
-              </Label>
-            )
-          })}
-        </CheckWrap>
+      <InputHolder className={this.props.toggle ? 'toggle' : ''}>
+        <Label htmlFor={uniqueID} disabled={this.props.disabled}>{this.props.label}</Label>
+        <StyledCheckbox
+          defaultChecked = {this.props.checked}
+          disabled={this.props.disabled}
+          required={this.props.required}
+          value={this.props.value}
+          id={uniqueID}
+          name={uniqueID}
+          type='checkbox'
+        />
+        <CheckLabel htmlFor={uniqueID} />
       </InputHolder>
     )
   }
@@ -274,6 +300,57 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
   required: PropTypes.bool,
   toggle: PropTypes.bool
+}
+
+export class CheckGroup extends React.Component {
+  static defaultProps = {
+    type: 'checkbox'
+  }
+
+  render(){
+    var type = this.props.type;
+    var label = this.props.label;
+    var uniqueName = getUniqueID(label, '_name_')
+    return(
+      <InputHolder>
+        <GroupLabel>{label}</GroupLabel>
+        <Checks>
+          {_.map(this.props.checks, function(check, i){
+            var uniqueID = check.id? check.id : getUniqueID(check.label);
+            return(
+              <CheckWrap>
+                <StyledCheckbox
+                  defaultChecked = {check.checked}
+                  disabled={check.disabled}
+                  required={check.required}
+                  value={check.value}
+                  id={uniqueID}
+                  name={type === 'radio' ? uniqueName : uniqueID}
+                  type= {type}
+                />
+                <CheckLabel htmlFor={uniqueID} />
+                <Label htmlFor={uniqueID} disabled={check.disabled}>{check.label}</Label>
+              </CheckWrap>
+            )
+          })}
+        </Checks>
+      </InputHolder>
+    )
+  }
+}
+CheckGroup.propTypes = {
+  label: PropTypes.string,
+  type: PropTypes.oneOf(['radio', 'checkbox']),
+  checks: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.string,
+      id: PropTypes.string,
+      checked: PropTypes.bool,
+      disabled: PropTypes.bool,
+      required: PropTypes.bool,
+    })
+  )
 }
 
 export class Input extends React.Component {

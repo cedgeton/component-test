@@ -12,7 +12,7 @@ import Loader from './components/Loader';
 import Sidebar from './components/Sidebar';
 import Button from './components/Button';
 import Avatar from './components/Avatar';
-import {Input, InputGroup, Textarea, Checkbox} from './components/Form';
+import {Input, InputGroup, Textarea, Checkbox, CheckGroup} from './components/Form';
 import Issue from './components/Issue';
 import TableRow from './components/TableRow';
 import Modal from './components/Modal';
@@ -48,6 +48,7 @@ const TopicTitleStyle = styled.div`
   clear: both;
   position: sticky;
   top: -18px;
+  z-index: 100;
 `;
 const ComponentType = styled.section`
   margin: 0 0 60px 0;
@@ -150,7 +151,30 @@ const tableKeys = iconKeys.reduce(function(result, value, index, array) {
     return result;
 }, []);
 
-const scope = {styled, Icon, Tag, Module, Loader, Button, Colors, Avatar, ColorExample, Modal, Issue, TableRow, Input, InputGroup, Textarea, Checkbox, Sidebar, Header, Text, Caps, Panel};
+const scope = {
+  styled,
+  Icon,
+  Tag,
+  Module,
+  Loader,
+  Button,
+  Colors,
+  Avatar,
+  ColorExample,
+  Modal,
+  Issue,
+  TableRow,
+  Input,
+  InputGroup,
+  Textarea,
+  Checkbox,
+  Sidebar,
+  Header,
+  Text,
+  Caps,
+  Panel,
+  CheckGroup
+};
 
 const guideLinks = [
   {title: "Link 1"},
@@ -222,8 +246,8 @@ class Guide extends Component {
                 <Code
                   scope={scope}
                   code={`<ColorExample bg={Colors.red}>
-    Red
-  </ColorExample>`}
+  Red
+</ColorExample>`}
                 />
               </Column>
               <Column>
@@ -231,8 +255,8 @@ class Guide extends Component {
                 <Code
                   scope={scope}
                   code={`<ColorExample bg={Colors.black.c400}>
-    Black c400
-  </ColorExample>`}
+  Black c400
+</ColorExample>`}
                 />
               </Column>
             </Columns>
@@ -242,8 +266,8 @@ class Guide extends Component {
                 <Code
                   scope={scope}
                   code={`<ColorExample bg={Colors.gradient.bluePink}>
-    Blue Purple
-  </ColorExample>`}
+  Blue Purple
+</ColorExample>`}
                 />
               </Column>
             </Columns>
@@ -528,45 +552,82 @@ class Guide extends Component {
             <ComponentType>
               <Header size='page'>Checkbox</Header>
               <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+              <Table>
+                <ComponentTitle>Props</ComponentTitle>
+                <PropTable
+                  properties = {[
+                    {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
+                    {property:'groupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
+                    {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
+                    {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
+                    {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
+                    {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
+                    {property:'required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
+                    {property:'toggle', description:'Display checkbox as a toggle', type: 'bool', options: [], default: 'false'},
+                  ]}
+                />
+              </Table>
+              <Columns>
+                <Column>
+                  <ComponentTitle>Code <span>Checkbox</span></ComponentTitle>
+                  <Code
+                    scope={scope}
+                    code={`<Checkbox label='Save for Later' />`}
+                  />
+                </Column>
+                <Column>
+                  <ComponentTitle>Code <span>Toggle</span></ComponentTitle>
+                  <Code
+                    scope={scope}
+                    code={`<Checkbox label='Save for Later' toggle />`}
+                  />
+                </Column>
+              </Columns>
             </ComponentType>
-            <Table>
-              <ComponentTitle>Props</ComponentTitle>
-              <PropTable
-                properties = {[
-                  {property:'label', description:'Label for the checkbox', type: 'string', options: [], default: ''},
-                  {property:'groupLabel', description:'Optional label for the input', type: 'string', options: [], default: ''},
-                  {property:'value', description:'The value bound to the input.', type: 'string', options: [], default: ''},
-                  {property:'id', description:'A unique identifier for the checkbox. One will be auto-generated if not provided.', type: 'string', options: [], default: 'auto-generated'},
-                  {property:'checked', description:'If true, the checkbox will be checked', type: 'bool', options: [], default: 'false'},
-                  {property:'disabled', description:'Specifies that the field should be disabled', type: 'bool', options: [], default: 'false'},
-                  {property:'required', description:'Specifies that an input field is required and must be filled out', type: 'bool', options: [], default: 'false'},
-                  {property:'toggle', description:'Display checkbox as a toggle', type: 'bool', options: [], default: 'false'},
-                ]}
-              />
-            </Table>
-            <Columns>
-              <Column>
-                <ComponentTitle>Code <span>Checkbox</span></ComponentTitle>
-                <Code
-                  scope={scope}
-                  code={`<Checkbox label='Save for Later' />`}
-                />
-              </Column>
-              <Column>
-                <ComponentTitle>Code <span>Checkbox with Group Label</span></ComponentTitle>
-                <Code
-                  scope={scope}
-                  code={`<Checkbox label='I agree' groupLabel='Privacy Policy' />`}
-                />
-              </Column>
-            </Columns>
             <Clear />
-            <ComponentTitle>Code <span>Toggle</span></ComponentTitle>
-            <Code
-              p={'40%'}
-              scope={scope}
-              code={`<Checkbox label='Save for Later' toggle />`}
-            />
+            <Horizontal />
+            <ComponentType>
+              <Header size='page'>Check Group</Header>
+              <Text size='large'>Leggings kinfolk pinterest franzen. Asymmetrical farm-to-table fashion axe hella coloring book man braid. Polaroid tacos hell of plaid marfa direct trade pop-up cred keytar food truck. Church-key meh af, lyft copper mug humblebrag drinking vinegar. </Text>
+              <Table>
+                <ComponentTitle>Props</ComponentTitle>
+                <PropTable
+                  properties = {[
+                    {property:'label', description:'Label for the group', type: 'string', options: [], default: ''},
+                    {property:'type', description:'Type of inputs in the group', type: 'oneOf', options: ['radio', 'checkbox'], default: 'checkbox'},
+                    {property:'checks', description:'Array of checkboxes or radio buttons', type: 'array', options: [], default: ''},
+                  ]}
+                />
+              </Table>
+              <ComponentTitle>Code <span>Checkbox Group</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<CheckGroup
+  label='Fruit'
+  checks={[
+    {label:'Banana', checked:true},
+    {label:'Apple'},
+    {label:'Orange'},
+    {label:'Pear'}
+  ]}
+/>`}
+              />
+              <ComponentTitle>Code <span>Radio Group</span></ComponentTitle>
+              <Code
+                scope={scope}
+                code={`<CheckGroup
+  label='Fruit'
+  type='radio'
+  checks={[
+    {label:'Banana', checked:true},
+    {label:'Apple'},
+    {label:'Orange'},
+    {label:'Pear'}
+  ]}
+/>`}
+              />
+            </ComponentType>
+            <Clear />
             <Horizontal />
             <ComponentType>
               <Header size='page'>InputGroup</Header>
@@ -587,12 +648,21 @@ class Guide extends Component {
                   p={'30px'}
                   scope={scope}
                   code={`<InputGroup>
-    <Input label='Name' placeholder='First and Last Name' />
-    <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
-    <Input label='Email' type='email' placeholder='name@email.com' />
-    <Textarea label='Other' placeholder='More information' />
-    <Checkbox label='I agree' groupLabel='Privacy Policy' />
-  </InputGroup>`}
+  <Input label='Name' placeholder='First and Last Name' />
+  <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
+  <Input label='Email' type='email' placeholder='name@email.com' />
+  <Textarea label='Other' placeholder='More information' />
+  <Checkbox label='I agree' />
+  <CheckGroup
+    label='Fruit'
+    checks={[
+      {label:'Banana', checked:true},
+      {label:'Apple'},
+      {label:'Orange'},
+      {label:'Pear'}
+    ]}
+  />
+</InputGroup>`}
                 />
               </Column>
               <Column>
@@ -601,12 +671,21 @@ class Guide extends Component {
                   p={'30px'}
                   scope={scope}
                   code={`<InputGroup layout='horizontal'>
-    <Input label='Name' placeholder='First and Last Name' />
-    <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
-    <Input label='Email' type='email' placeholder='name@email.com' />
-    <Textarea label='Other' placeholder='More information' />
-    <Checkbox label='I agree' groupLabel='Privacy Policy' />
-  </InputGroup>`}
+  <Input label='Name' placeholder='First and Last Name' />
+  <Input label='Phone Number' type='tel' placeholder='123-456-7890' />
+  <Input label='Email' type='email' placeholder='name@email.com' />
+  <Textarea label='Other' placeholder='More information' />
+  <Checkbox label='I agree' />
+  <CheckGroup
+    label='Fruit'
+    checks={[
+      {label:'Banana', checked:true},
+      {label:'Apple'},
+      {label:'Orange'},
+      {label:'Pear'}
+    ]}
+  />
+</InputGroup>`}
                 />
               </Column>
             </Columns>
@@ -630,38 +709,38 @@ class Guide extends Component {
             <Code
               scope={scope}
               code={`const issues = [
-    {title: "Possible Atrial Standstill"},
-    {title: "Depressed Mood"},
-    {title: "Elevated Cholesterol"},
-    {title: "Right Nasal Polyp"},
-    {title: "Diet for Longevity"},
-    {title: "Syncope (Fainting)"},
-    {title: "Bilateral Leg Cramps"}
-  ];
-  const preventive = [
-    {title:'Pap smear'},
-    {title:'Mammography'},
-    {title:'Colorectal cancer'},
-    {title:'Osteoporosis'},
-    {title:'Lung cancer'},
-    {title:'AAA'},
-    {title:'Hep C'},
-    {title:'Gonorrhea'},
-    {title:'Chlamydia'},
-    {title:'HIV'},
-    {title:'Hemoglobin A1c'},
-    {title:'Vaccines'}
-  ];
-  const sidebarlinks = [
-    {group:'Issues', array: issues},
-    {group:'Preventive Care', array: preventive},
-  ]
-  var selectedIssue = sidebarlinks[0].array[0];
+  {title: "Possible Atrial Standstill"},
+  {title: "Depressed Mood"},
+  {title: "Elevated Cholesterol"},
+  {title: "Right Nasal Polyp"},
+  {title: "Diet for Longevity"},
+  {title: "Syncope (Fainting)"},
+  {title: "Bilateral Leg Cramps"}
+];
+const preventive = [
+  {title:'Pap smear'},
+  {title:'Mammography'},
+  {title:'Colorectal cancer'},
+  {title:'Osteoporosis'},
+  {title:'Lung cancer'},
+  {title:'AAA'},
+  {title:'Hep C'},
+  {title:'Gonorrhea'},
+  {title:'Chlamydia'},
+  {title:'HIV'},
+  {title:'Hemoglobin A1c'},
+  {title:'Vaccines'}
+];
+const sidebarlinks = [
+  {group:'Issues', array: issues},
+  {group:'Preventive Care', array: preventive},
+]
+var selectedIssue = sidebarlinks[0].array[0];
 
-  render(<Sidebar
-    links={sidebarlinks}
-    selected = {{group:'Issues',issue:selectedIssue, id:0}}
-  />)`}
+render(<Sidebar
+  links={sidebarlinks}
+  selected = {{group:'Issues',issue:selectedIssue, id:0}}
+/>)`}
             noInline
             />
           </Topic>
@@ -683,13 +762,13 @@ class Guide extends Component {
             <Code
               scope={scope}
               code={`<Modal
-    title='Lorem Ipsum Sit'
-    content='Hot chicken copper mug art party crucifix scenester. Brunch try-hard roof party asymmetrical readymade squid, banjo lyft vaporware organic 8-bit cornhole vegan master cleanse marfa. Tilde woke thundercats, ennui locavore crucifix normcore quinoa snackwave. Offal freegan sriracha scenester semiotics mlkshk. Waistcoat shaman quinoa wolf. Pinterest polaroid waistcoat stumptown church-key seitan kombucha butcher irony quinoa next level selfies XOXO austin ramps. Intelligentsia migas sartorial ramps chillwave, neutra 8-bit irony sustainable echo park readymade glossier.'
-    actions={[
-      {text: 'Cancel', style:'cancel'},
-      {text: 'Save', style:'primary'}
-    ]}
-  />`}
+  title='Lorem Ipsum Sit'
+  content='Hot chicken copper mug art party crucifix scenester. Brunch try-hard roof party asymmetrical readymade squid, banjo lyft vaporware organic 8-bit cornhole vegan master cleanse marfa. Tilde woke thundercats, ennui locavore crucifix normcore quinoa snackwave. Offal freegan sriracha scenester semiotics mlkshk. Waistcoat shaman quinoa wolf. Pinterest polaroid waistcoat stumptown church-key seitan kombucha butcher irony quinoa next level selfies XOXO austin ramps. Intelligentsia migas sartorial ramps chillwave, neutra 8-bit irony sustainable echo park readymade glossier.'
+  actions={[
+    {text: 'Cancel', style:'cancel'},
+    {text: 'Save', style:'primary'}
+  ]}
+/>`}
             />
           </Topic>
           <TopicTitle type='Component'>Avatar</TopicTitle>
@@ -783,10 +862,10 @@ class Guide extends Component {
                   p={'0px'}
                   scope={scope}
                   code={`<TableRow
-    title='Sartorial typewriter banh mi'
-    subtitle='10mg tablet'
-    line2='Take once daily'
-  />`}
+  title='Sartorial typewriter banh mi'
+  subtitle='10mg tablet'
+  line2='Take once daily'
+/>`}
                 />
               </Column>
               <Column className="tableModule">
@@ -795,12 +874,12 @@ class Guide extends Component {
                   p={'0px'}
                   scope={scope}
                   code={`<TableRow
-    title='Fingerstache flexitarian'
-    subtitle='10mg tablet'
-    line2='Take once daily'
-    icon='medication'
-    result='Abmormal'
-  />`}
+  title='Fingerstache flexitarian'
+  subtitle='10mg tablet'
+  line2='Take once daily'
+  icon='medication'
+  result='Abmormal'
+/>`}
                 />
               </Column>
             </Columns>
@@ -824,6 +903,7 @@ class Guide extends Component {
               scope={scope}
               code={`<Panel padding>
   <Header size='component'>Panel Content</Header>
+  <Text>Here's some content for your panel</Text>
 </Panel>`}
             />
           </Topic>
@@ -871,9 +951,9 @@ class Guide extends Component {
               <Code
                 scope={scope}
                 code={`<Module
-    title     = "Basic Module"
-    content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
-  />`}
+  title     = "Basic Module"
+  content   = "Authentic umami hell of disrupt hammock irony you probably haven't heard of them tousled pork belly helvetica man braid celiac waistcoat."
+/>`}
               />
             </ComponentType>
             <Horizontal />
@@ -890,18 +970,18 @@ class Guide extends Component {
               <Code
                 scope={scope}
                 code={`<Module
-    title = "Allergies"
-    type  = "tag"
-    category  = "medication"
-    tags  = {[
-          {text: "Mold", bg: "grey"},
-          {text: "Dust", bg: "grey"},
-          {text: "Pollen", bg: "grey"},
-          {text: "Wheat", bg: "grey"},
-          {text: "Soy", bg: "grey"},
-          {text: "Crab", bg: "grey"}
-        ]}
-  />`}
+  title = "Allergies"
+  type  = "tag"
+  category  = "medication"
+  tags  = {[
+        {text: "Mold", bg: "grey"},
+        {text: "Dust", bg: "grey"},
+        {text: "Pollen", bg: "grey"},
+        {text: "Wheat", bg: "grey"},
+        {text: "Soy", bg: "grey"},
+        {text: "Crab", bg: "grey"}
+      ]}
+/>`}
               />
             </ComponentType>
             <Horizontal />
@@ -918,14 +998,14 @@ class Guide extends Component {
               <Code
                 scope={scope}
                 code={`<Module
-    title = "Medications"
-    type  = "table"
-    category  = "medication"
-    rows  = {[
-          {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
-          {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
-        ]}
-  />`}
+  title = "Medications"
+  type  = "table"
+  category  = "medication"
+  rows  = {[
+        {title: "predniSONE", subtitle: "1 mg oral tablet", line2:"Take one tablet daily."},
+        {title: "Levothyroxine", subtitle: "175 mcg (0.175 mg) oral tablet", line2:"Take one tablet daily."}
+      ]}
+/>`}
               />
 
             </ComponentType>
@@ -946,28 +1026,28 @@ class Guide extends Component {
                 p='15%'
                 scope={scope}
                 code={`const issue = {
-    title: "Possible Atrial Standstill",
-    favorite: true,
-    status: "high",
-    assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
-    planItems: [
-        {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
-        {name:"NT-proBNP", type:"lab", result:"Abnormal"},
-        {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
-        {name:"Troponin T", type:"lab"},
-      ],
-    goals: [
-      'Lower Cholesterol to 185 mg/dL',
-      'Lose 10lb (145b)'
+  title: "Possible Atrial Standstill",
+  favorite: true,
+  status: "high",
+  assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
+  planItems: [
+      {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
+      {name:"NT-proBNP", type:"lab", result:"Abnormal"},
+      {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
+      {name:"Troponin T", type:"lab"},
     ],
-    workflows: [
-      'Lorem Ipsum Doler',
-      'Sit Amet rap airhorn'
-    ],
-    notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
-  };
+  goals: [
+    'Lower Cholesterol to 185 mg/dL',
+    'Lose 10lb (145b)'
+  ],
+  workflows: [
+    'Lorem Ipsum Doler',
+    'Sit Amet rap airhorn'
+  ],
+  notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
+};
 
-  render(<Issue issue={issue} summary />)`}
+render(<Issue issue={issue} summary />)`}
                 noInline
               />
             </ComponentType>
@@ -977,28 +1057,28 @@ class Guide extends Component {
                 p='10%'
                 scope={scope}
                 code={`const issue = {
-    title: "Possible Atrial Standstill",
-    favorite: true,
-    status: "high",
-    assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
-    planItems: [
-        {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
-        {name:"NT-proBNP", type:"lab", result:"Abnormal"},
-        {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
-        {name:"Troponin T", type:"lab"},
-      ],
-    goals: [
-      'Lower Cholesterol to 185 mg/dL',
-      'Lose 10lb (145b)'
+  title: "Possible Atrial Standstill",
+  favorite: true,
+  status: "high",
+  assessment: "Has manifested as dyspnea (fixed with pacer changes) and unexpected aproxysmal episodes of chest pressure/pain without clear etiology. Has had CTA in the past that was negative for any aortopathy or PE. Per discussion with Dr. Vedantham, he is Migas chillwave kitsch, subway tile snackwave literally iPhone slow-carb twee venmo man bun kinfolk keffiyeh. Semiotics flannel cred adaptogen craft beer hoodie hammock knausgaard heirloom.",
+  planItems: [
+      {name:"Metoprolol Tartrate", dosage:"25 mg, 30 TABLET", instructions:"6 refill(s)", type:"medication"},
+      {name:"NT-proBNP", type:"lab", result:"Abnormal"},
+      {name:"CK-MB(CK-2)", instructions:"Fasting",  type:"lab"},
+      {name:"Troponin T", type:"lab"},
     ],
-    workflows: [
-      'Lorem Ipsum Doler',
-      'Sit Amet rap airhorn'
-    ],
-    notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
-  };
+  goals: [
+    'Lower Cholesterol to 185 mg/dL',
+    'Lose 10lb (145b)'
+  ],
+  workflows: [
+    'Lorem Ipsum Doler',
+    'Sit Amet rap airhorn'
+  ],
+  notes: 'Taxidermy messenger bag tote bag sustainable pop-up freegan artisan gluten-free fanny pack shaman.'
+};
 
-  render(<Issue issue={issue} />)`}
+render(<Issue issue={issue} />)`}
                 noInline
               />
             </ComponentType>
