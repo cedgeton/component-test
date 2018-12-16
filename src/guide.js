@@ -2,23 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import _ from 'lodash';
-import Module from './components/Module';
-import Panel from './components/Module/Panel.js';
-import {Colors, Header, Caps, Text}  from './components/System';
-import Tag from './components/Tag';
-import Icon from './components/Icon';
-import icons from './components/Icon/icons.js';
-import Loader from './components/Loader';
-import Sidebar from './components/Sidebar';
-import Button from './components/Button';
-import Avatar from './components/Avatar';
-import {Input, InputGroup, Textarea, Checkbox, CheckGroup} from './components/Form';
-import Issue from './components/Issue';
-import TableRow from './components/TableRow';
-import Modal from './components/Modal';
+import Code from './Pulse/Code';
+import PropTable from './Pulse/Props';
+import icons from './Pulse/Icon/icons.js';
 
-import Code from './components/Code';
-import PropTable from './components/Props';
+import {Module, Panel, Tag, Icon, Sidebar, Button, Avatar, Issue, TableRow, Modal, Loader} from './Pulse/';
+import {Colors, Header, Caps, Text}  from './Pulse/';
+import {Input, InputGroup, Textarea, Checkbox, CheckGroup} from './Pulse';
+
 
 const Page = styled.div`
   display:grid;

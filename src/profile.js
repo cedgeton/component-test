@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Module from './components/Module';
-import MemberHeader from './components/MemberHeader';
-import MemberSidebar from './components/MemberSidebar';
-import PageTitle from './components/PageTitle';
+import Module from './Pulse/Module';
+import MemberHeader from './Pulse/MemberHeader';
+import MemberSidebar from './Pulse/MemberSidebar';
+import PageTitle from './Pulse/PageTitle';
 import styled from 'styled-components';
 
 const AppWrapper = styled.section`
